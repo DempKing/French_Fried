@@ -2,8 +2,8 @@
 
 A single-player card game about discovering **1,001 french fry recipes**.
 
-**▶ Play it:** https://dempking.github.io/French_Fried/ once GitHub Pages is switched on for this repository
-(Settings → Pages → Source: **GitHub Actions**). Free, no sign-in, runs in any browser.
+**▶ Play it:** https://dempking.github.io/French_Fried/
+Free, no sign-in, runs in any browser.
 
 Play ingredient cards from your hand onto a boat of fries — every card you play is drawn onto the
 illustration (ketchup drizzles, cheese melts, a cowboy hat lands on top). Hit **Fry It!** to find out
