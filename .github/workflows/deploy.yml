@@ -2,7 +2,7 @@ name: Test & Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master, 'claude/**']
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -18,6 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages: ${{ steps.pages.outputs.enabled }}
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:
@@ -26,49 +28,38 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: |
-            package-lock.json
-            backyard-league/package-lock.json
-            unicorn/package-lock.json
       - run: npm ci --omit=optional
       - run: npm test
       - run: npm run build
-      # Site layout: Recess Rivals is the main page, French Fried lives at /french-fried/.
-      - name: Build Recess Rivals
-        working-directory: backyard-league
-        run: |
-          npm ci --omit=optional
-          npm test
-          npm run build
-      - name: Build Unicorn
-        working-directory: unicorn
-        run: |
-          npm ci --omit=optional
-          npm run typecheck
-          npm test
-          npm run build
       - name: Assemble site
         run: |
-          mkdir -p site/french-fried site/recess-rivals site/unicorn
-          cp -r unicorn/dist/. site/unicorn/
-          cp dist/index.html dist/embed.html site/french-fried/
-          cp backyard-league/dist/index.html site/index.html
-          cp backyard-league/dist/index.html site/recess-rivals/index.html
+          mkdir -p site
+          cp dist/index.html dist/embed.html site/
           touch site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+      # Publishing only happens once GitHub Pages is switched on for this repository
+      # (Settings → Pages → Source: GitHub Actions), so the workflow stays green until then.
+      - name: Check whether GitHub Pages is enabled
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pages" --silent 2>/dev/null; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GitHub Pages is not enabled for this repository, so French Fried! was built and tested but not published."
+          fi
 
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    if: needs.build.outputs.pages == 'true' && github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - id: deployment
         uses: actions/deploy-pages@v4
