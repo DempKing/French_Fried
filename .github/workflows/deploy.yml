@@ -46,11 +46,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh api "repos/${{ github.repository }}/pages" --silent 2>/dev/null; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-          else
+          # Only a definite "not found" means Pages is off; anything else, try to publish.
+          code=$(curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/pages")
+          if [ "$code" = "404" ]; then
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::GitHub Pages is not enabled for this repository, so French Fried! was built and tested but not published."
+            echo "::notice::GitHub Pages is not enabled for this repository (Settings → Pages → Source: GitHub Actions), so the game was built and tested but not published."
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
           fi
 
   deploy:
