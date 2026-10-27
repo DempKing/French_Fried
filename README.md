@@ -2,7 +2,8 @@
 
 A single-player card game about discovering **1,001 french fry recipes**.
 
-**▶ Play it now: https://7y2yw565vg-jpg.github.io/French-Fried-/** (free, no sign-in, runs in any browser)
+**▶ Play it:** https://dempking.github.io/French_Fried/ once GitHub Pages is switched on for this repository
+(Settings → Pages → Source: **GitHub Actions**). Free, no sign-in, runs in any browser.
 
 Play ingredient cards from your hand onto a boat of fries — every card you play is drawn onto the
 illustration (ketchup drizzles, cheese melts, a cowboy hat lands on top). Hit **Fry It!** to find out
@@ -94,13 +95,3 @@ The code has no runtime dependencies. It is plain ES modules:
    `steamcmd +login <user> +run_app_build ../steam/app_build.vdf +quit`.
 4. Steam integration uses the optional `steamworks.js` dependency. The game reads the App ID from
    `STEAM_APP_ID` or `steam_appid.txt`, and runs fine without Steam.
-
-## Also in this repository
-
-- **[Purrrfect Crime](purrrfect-crime/)** (planning): a turn-based isometric stealth heist game. Leo Tuxedo, a
-  newcomer cat burglar, robs museums at night under the nose of bulldog guards and the legendary NightClaw.
-  See the [design doc](purrrfect-crime/GAME_DESIGN.md).
-- **[Unicorn](unicorn/)** (working title, prototype): an incremental startup game where every decision closes
-  doors. The M1 prototype plays one SaaS company from the garage to Series A; the
-  [design doc](unicorn/GAME_DESIGN.md) covers six product categories, permanent forks for product, pricing,
-  marketing, culture and funding, and a serial-founder prestige loop. The Pages build serves it at `/unicorn/`.
