@@ -1,12 +1,13 @@
 // Card pack shop, progression unlocks, and the Thrift Store.
 
-import { PACKS, openPack, buyThrift, paidRefresh, thriftRefreshCost, tickThrift } from '../game/shop.js';
-import { UNLOCKS, canUnlock, unlock, fmt, discoveredCount } from '../game/state.js';
-import { CARDS } from '../data/recipes.js';
 import { sfx } from '../audio.js';
+import { CARDS } from '../data/recipes.js';
+import { PACKS, buyThrift, openPack, paidRefresh, thriftRefreshCost, tickThrift } from '../game/shop.js';
+import { UNLOCKS, canUnlock, discoveredCount, fmt, unlock } from '../game/state.js';
 import { collectionBar } from './collection.js';
-import { $, $$, cardHtml, esc, openModal, closeModal, toast, packArtSvg, countdown } from './dom.js';
+import { $, $$, cardHtml, closeModal, countdown, esc, openModal, packArtSvg, toast } from './dom.js';
 
+/** The shop screen. */
 export function renderShop(app, root) {
   const s = app.state;
   const packs = Object.values(PACKS)
@@ -65,6 +66,7 @@ export function renderShop(app, root) {
   );
 }
 
+/** Buys and opens a pack. */
 function buyPack(app, packId) {
   const res = openPack(app.state, packId, app.rng);
   if (!res.ok) {
@@ -102,7 +104,7 @@ function buyPack(app, packId) {
   app.render();
 }
 
-// ---------------- Thrift Store ----------------
+// Thrift Store
 export function renderThrift(app, root) {
   const s = app.state;
   tickThrift(s, app.rng);
@@ -154,6 +156,7 @@ export function renderThrift(app, root) {
   };
 }
 
+/** Updates the thrift shop timer. */
 export function thriftTick(app) {
   const el = document.getElementById('thriftTimer');
   if (!el) return;

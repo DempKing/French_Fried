@@ -2,7 +2,7 @@
 // round mask, and the CSS adds spherical shading, an atmosphere and an axial tilt.
 
 import { makeRng } from '../game/rng.js';
-import { INK, f, blob, circle, ellipse, rrect, shade } from './paint.js';
+import { INK, blob, circle, ellipse, f, rrect, shade } from './paint.js';
 
 const W = 200; // one full trip around the planet
 const H = 100;
@@ -17,6 +17,7 @@ function wave(y0, amp, k, ph, x0 = 0, x1 = W) {
 const band = (top, bot, color) =>
   `<path d="M${top[0]}L${top.slice(1).join('L')}L${bot.slice().reverse().join('L')}Z" fill="${color}"/>`;
 
+/** Each planet's surface drawing. */
 const SURFACES = {
   hotdog(rng) {
     let s = `<rect width="${W}" height="${H}" fill="#d9493a"/>`;
@@ -114,6 +115,7 @@ const SURFACES = {
   },
 };
 
+/** Each planet's glow colour. */
 const GLOW = {
   hotdog: '#ffb36b',
   burger: '#ffd27a',
@@ -124,6 +126,7 @@ const GLOW = {
 const RINGS = { alien: '#ffe36d' };
 
 const cache = new Map();
+/** A stripe across a planet. */
 function strip(id) {
   if (!cache.has(id)) {
     const tile = SURFACES[id](makeRng(`planet-${id}`));
@@ -136,6 +139,7 @@ function strip(id) {
   return cache.get(id);
 }
 
+/** A planet ring (back or front half). */
 function ring(color, half) {
   // The back half of the ring sits behind the ball, the front half passes in front.
   const d = half === 'back' ? 'M6 50A94 22 0 0 1 194 50' : 'M194 50A94 22 0 0 1 6 50';

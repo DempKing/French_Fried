@@ -1,5 +1,5 @@
-import { ING } from './ingredientArt.js';
 import { makeRng } from '../game/rng.js';
+import { ING } from './ingredientArt.js';
 
 // Hand-built SVG illustrations for every card. All art uses a 100x100 viewBox
 // with a chunky dark outline for a cartoon sticker look.
@@ -9,7 +9,7 @@ const W = 'stroke="#2b1d14" stroke-width="2.5" stroke-linejoin="round" stroke-li
 const shine = (x, y, w = 4, h = 10, r = -20) =>
   `<ellipse cx="${x}" cy="${y}" rx="${w}" ry="${h}" fill="#fff" opacity=".45" transform="rotate(${r} ${x} ${y})"/>`;
 
-// ---------- Objects (each one hand-drawn) ----------
+// Objects (each one hand-drawn)
 const OBJ = {
   cowboyhat: () => `
     <path d="M6 62 Q10 74 50 74 Q90 74 94 62 Q80 68 50 68 Q20 68 6 62Z" fill="#a0652d" ${W}/>
@@ -192,6 +192,7 @@ const OBJ = {
     <path d="M38 62 Q50 98 62 62Z" fill="#ffb31a" ${W}/><path d="M44 62 Q50 84 56 62Z" fill="#fff3b0"/>`,
 };
 
+/** A card's artwork without the outer <svg> tag. */
 export function cardArtInner(card) {
   if (card.kind === 'object')
     return (OBJ[card.id] || (() => `<text x="50" y="60" text-anchor="middle" font-size="40">?</text>`))();

@@ -1,28 +1,27 @@
 // The Fryer: bracket tournaments for lab fighters. Losers get fried.
 
+import { sfx } from '../audio.js';
 import {
   LEAGUES,
   LEAGUE_MAP,
   WORLD_ARENA_LIST,
   canEnter,
-  enterReason,
-  worldOwned,
-  startRun,
-  fightRound,
-  withdraw,
-  getFry,
-  roundPrize,
   champPrize,
   currentMatch,
+  enterReason,
+  fightRound,
+  getFry,
   roundName,
+  roundPrize,
+  startRun,
+  withdraw,
+  worldOwned,
 } from '../game/lab.js';
-import { WORLD_MAP } from '../data/worlds.js';
 import { fmt } from '../game/state.js';
-import { sfx } from '../audio.js';
+import { animateBattle, logHtml, ringHtml } from './battleView.js';
+import { openLetter } from './cosmos.js';
 import { $, $$, esc, toast } from './dom.js';
 import { fryCardHtml, statBlock } from './labScreen.js';
-import { ringHtml, logHtml, animateBattle } from './battleView.js';
-import { openLetter } from './cosmos.js';
 
 const ui = { fry: null, league: 'rookie', animating: false, result: null };
 
@@ -30,11 +29,13 @@ export function selectLeague(id) {
   ui.league = id;
 }
 
+/** One line describing a league. */
 function leagueLine(L) {
   const last = L.prize * (1 + (L.rounds - 2) * 0.5);
   return `${2 ** L.rounds}-fighter bracket · ${fmt(L.prize)}–${fmt(last)} per win · Champion ${fmt(L.champBonus)}`;
 }
 
+/** The button to enter a league. */
 function leagueButton(s, L, fry) {
   const why = enterReason(s, L.id, fry);
   const open = !why;
@@ -47,6 +48,7 @@ function leagueButton(s, L, fry) {
   </button>`;
 }
 
+/** The Fryer screen. */
 export function renderFryer(app, root) {
   const s = app.state;
   if (ui.result) return renderArena(app, root, ui.result);
@@ -132,6 +134,7 @@ export function bracketHtml(slots, rounds, L, playerName) {
   return `<div class="bracket-wrap"><div class="bracket ${L.rounds >= 6 ? 'huge' : ''}">${cols.join('')}</div></div>`;
 }
 
+/** The arena during a tournament run. */
 function renderArena(app, root, result) {
   const s = app.state;
   const run = s.fryer.run;
@@ -197,6 +200,7 @@ function renderArena(app, root, result) {
   };
 }
 
+/** Fights the next round and animates it. */
 function fight(app) {
   if (ui.animating) return;
   const before = app.state.money;

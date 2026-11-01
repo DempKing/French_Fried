@@ -1,16 +1,17 @@
 // The mysterious letter, the spaceship pickup, and the Hall of Fame.
 
-import { acceptLetter, induct, getFry, power, LEAGUE_MAP } from '../game/lab.js';
 import { renderFryGuy } from '../art/fryguy.js';
-import { planet } from '../art/planets.js';
 import { INK } from '../art/paint.js';
+import { planet } from '../art/planets.js';
 import { sfx } from '../audio.js';
-import { $, $$, esc, openModal, closeModal, toast } from './dom.js';
-import { selectWorld } from './worldsScreen.js';
+import { acceptLetter, getFry, induct, LEAGUE_MAP, power } from '../game/lab.js';
+import { $, $$, closeModal, esc, openModal, toast } from './dom.js';
 import { kindLabel, statBlock } from './labScreen.js';
+import { selectWorld } from './worldsScreen.js';
 
 const S = `stroke="${INK}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"`;
 
+/** The mysterious letter envelope. */
 function envelopeSvg() {
   return `<svg class="envelope" viewBox="0 0 220 150" aria-hidden="true">
     <rect x="10" y="20" width="200" height="120" rx="10" fill="#efe1c6" ${S}/>
@@ -21,6 +22,7 @@ function envelopeSvg() {
   </svg>`;
 }
 
+/** A UFO. */
 export function ufoSvg(cls = '') {
   return `<svg class="ufo ${cls}" viewBox="0 0 200 110" aria-hidden="true">
     <path d="M70 46Q70 8 100 8Q130 8 130 46Z" fill="#9fe8ff" opacity=".9" ${S}/>
@@ -105,6 +107,7 @@ export function pendingLetters(state) {
   return state.lab.fries.filter((f) => f.letter);
 }
 
+/** The Hall of Fame screen. */
 export function renderHall(app, root) {
   const s = app.state;
   const members = s.lab.fries.filter((f) => f.hof).sort((a, b) => (a.inducted || 0) - (b.inducted || 0));

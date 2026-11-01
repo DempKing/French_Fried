@@ -1,50 +1,51 @@
 // The Lab: grow, modify, train and breed GMO fries.
 
-import {
-  traitsFor,
-  trainingFor,
-  speciesOf,
-  labCount,
-  induct,
-  trophiesOffered,
-  TRAIT_MAP,
-  LAB_CAPACITY,
-  GROW_COST,
-  BREED_COST,
-  PURGE_COST,
-  COMPOST_VALUE,
-  WILD_PARENT,
-  computeStats,
-  power,
-  growSpud,
-  splice,
-  purgeTrait,
-  train,
-  trainCost,
-  breed,
-  compost,
-  getFry,
-  LEAGUE_MAP,
-} from '../game/lab.js';
 import { renderFryGuy, traitBadges } from '../art/fryguy.js';
-import { fmt } from '../game/state.js';
+import { sfx } from '../audio.js';
+import { SPECIES_LABEL, SPECIES_STRENGTH } from '../data/species.js';
 import {
   CREATURE_MAP,
-  WORLD_MAP,
-  RARITY,
-  SPLICE_COST,
   GROW_DNA_COST,
   GROW_DNA_SAMPLES,
   MAX_DNA_SPLICES,
+  RARITY,
+  SPLICE_COST,
+  WORLD_MAP,
 } from '../data/worlds.js';
-import { spliceDNA, growFromDNA, worldsUnlocked } from '../game/worlds.js';
-import { sfx } from '../audio.js';
-import { SPECIES_LABEL, SPECIES_STRENGTH } from '../data/species.js';
+import {
+  breed,
+  BREED_COST,
+  compost,
+  COMPOST_VALUE,
+  computeStats,
+  getFry,
+  GROW_COST,
+  growSpud,
+  induct,
+  LAB_CAPACITY,
+  labCount,
+  LEAGUE_MAP,
+  power,
+  PURGE_COST,
+  purgeTrait,
+  speciesOf,
+  splice,
+  train,
+  trainCost,
+  trainingFor,
+  TRAIT_MAP,
+  traitsFor,
+  trophiesOffered,
+  WILD_PARENT,
+} from '../game/lab.js';
+import { fmt } from '../game/state.js';
+import { growFromDNA, spliceDNA, worldsUnlocked } from '../game/worlds.js';
 import { openLetter } from './cosmos.js';
-import { $, $$, esc, openModal, closeModal, toast } from './dom.js';
+import { $, $$, closeModal, esc, openModal, toast } from './dom.js';
 
 const ui = { selected: null, breedA: null, breedB: null };
 
+/** A fry's stats as HTML. */
 export function statBlock(fry) {
   const st = computeStats(fry);
   const bar = (label, v, max) =>
@@ -55,6 +56,7 @@ export function statBlock(fry) {
   </div>`;
 }
 
+/** "Fry" or the creature species. */
 export function kindLabel(fry) {
   if (fry.species && fry.species !== 'fry')
     return `${WORLD_MAP[fry.species]?.name.replace(' World', '')} creature`;
@@ -62,6 +64,7 @@ export function kindLabel(fry) {
   return `Gen ${fry.gen}`;
 }
 
+/** The DNA samples you have. */
 function dnaVault(s, sel) {
   const owned = Object.entries(s.worlds.dna).filter(([, n]) => n > 0);
   if (!owned.length && !worldsUnlocked(s)) return '';
@@ -84,6 +87,7 @@ function dnaVault(s, sel) {
     <div class="dna-list">${items || '<p class="muted">No DNA yet. Go exploring!</p>'}</div>`;
 }
 
+/** A fry card in the lab list. */
 export function fryCardHtml(fry, { selected = false, busy = false } = {}) {
   return `<button class="fry-card ${selected ? 'sel' : ''}" data-fry="${fry.id}">
     ${renderFryGuy(fry)}
@@ -94,6 +98,7 @@ export function fryCardHtml(fry, { selected = false, busy = false } = {}) {
   </button>`;
 }
 
+/** The lab screen. */
 export function renderLab(app, root) {
   const s = app.state;
   const fries = s.lab.fries.filter((f) => !f.hof);
@@ -268,6 +273,7 @@ export function renderLab(app, root) {
   };
 }
 
+/** Runs a lab action and shows the result. */
 function act(app, res, onOk) {
   if (!res.ok) {
     sfx('error');
@@ -281,6 +287,7 @@ function act(app, res, onOk) {
 
 const WILD_PROTO = { name: 'Wild Spud', traits: [], titles: [], hue: 44, base: {} };
 
+/** The breeding screen. */
 function openBreeding(app) {
   const s = app.state;
   const fries = s.lab.fries.filter((f) => s.fryer.run?.fryId !== f.id);

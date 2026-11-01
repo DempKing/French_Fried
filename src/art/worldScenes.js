@@ -1,8 +1,8 @@
 // Illustrated landscapes for each World, drawn in an 800x450 scene. Used for the
 // world picker, world tabs, the world banner, and the Explore backdrop.
 
-import { INK, f, shade } from './paint.js';
 import { makeRng } from '../game/rng.js';
+import { INK, f, shade } from './paint.js';
 
 const S = (w = 3) => `stroke="${INK}" stroke-width="${w}" stroke-linejoin="round" stroke-linecap="round"`;
 let seq = 0;
@@ -15,6 +15,7 @@ function cloud(x, y, s, fill = '#fff', o = 0.95) {
   return `<g opacity="${o}" transform="translate(${f(x)} ${f(y)}) scale(${f(s)})"><path d="M-60 10Q-62 -14 -36 -14Q-30 -36 -4 -32Q14 -48 34 -30Q62 -32 60 -6Q74 10 52 16H-50Q-70 16 -60 10Z" fill="${fill}" ${S(3 / s)}/></g>`;
 }
 
+/** A ferris wheel. */
 function ferrisWheel(cx, cy, r, colors, spokes = 12) {
   const cars = Array.from({ length: spokes }, (_, i) => {
     const a = (i / spokes) * Math.PI * 2;
@@ -26,7 +27,7 @@ function ferrisWheel(cx, cy, r, colors, spokes = 12) {
     <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" ${S(4)}/>${cars}<circle cx="${cx}" cy="${cy}" r="8" fill="#fff" ${S(3)}/>`;
 }
 
-// ---------- Hotdog World: a sunset boardwalk ----------
+// Hotdog World: a sunset boardwalk
 function hotdogScene(id) {
   const rng = makeRng('scene-hotdog');
   const planks = Array.from(
@@ -78,7 +79,7 @@ function hotdogScene(id) {
     }).join('')}`;
 }
 
-// ---------- Burger World: sesame bun hills and a burger mountain ----------
+// Burger World: sesame bun hills and a burger mountain
 function burgerScene(id) {
   const rng = makeRng('scene-burger');
   const hill = (
@@ -131,7 +132,7 @@ function burgerScene(id) {
     ${Array.from({ length: 14 }, () => `<circle cx="${f(rng.range(10, 790))}" cy="${f(rng.range(380, 440))}" r="${f(rng.range(2, 4))}" fill="#4a2414"/>`).join('')}`;
 }
 
-// ---------- Soda World: a fizzy lake with geysers and giant cups ----------
+// Soda World: a fizzy lake with geysers and giant cups
 function sodaScene(id) {
   const rng = makeRng('scene-soda');
   const cup = (
@@ -173,7 +174,7 @@ function sodaScene(id) {
       .join('')}`;
 }
 
-// ---------- Cotton Candy World: floating pastel clouds and a sky carnival ----------
+// Cotton Candy World: floating pastel clouds and a sky carnival
 function cottonScene(id) {
   const rng = makeRng('scene-cc');
   const puff = (x, y, r, col) => `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="${col}" ${S(2.5)}/>`;
@@ -220,7 +221,7 @@ function cottonScene(id) {
       .join('')}`;
 }
 
-// ---------- Alien Planet: purple skies, ringed planets and crystal spires ----------
+// Alien Planet: purple skies, ringed planets and crystal spires
 function alienScene(id) {
   const rng = makeRng('scene-alien');
   const stars = Array.from(
@@ -257,6 +258,7 @@ function alienScene(id) {
     ${dome(470, 318, 40)}${dome(560, 314, 24)}`;
 }
 
+/** The scene drawing for each world. */
 const SCENES = {
   hotdog: hotdogScene,
   burger: burgerScene,

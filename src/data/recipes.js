@@ -1,9 +1,9 @@
 // The recipe book. ~180 hand-written classics and absurdities, then a seeded
 // generator fills the book out to TOTAL_RECIPES with stable, silly combos.
 
+import { makeRng } from '../game/rng.js';
 import { ALL_INGREDIENTS, BASIC_INGREDIENTS, PREMIUM_INGREDIENTS } from './ingredients.js';
 import { OBJECTS } from './objects.js';
-import { makeRng } from '../game/rng.js';
 
 export const TOTAL_RECIPES = 1001;
 export const MAX_BOAT = 5;
@@ -14,7 +14,7 @@ export const recipeKey = (ids) => [...new Set(ids)].sort().join('+');
 
 // [name, ingredients, description]
 const HANDCRAFTED = [
-  // --- Singles with proper names
+  // Singles with proper names
   ['Classic Salted Fries', 'salt', 'The one that started it all.'],
   ['Cheese Fries', 'cheddar', 'Molten cheddar, no notes.'],
   ['Gravy Chips', 'gravy', 'A chip shop staple, drowned with love.'],
@@ -33,7 +33,7 @@ const HANDCRAFTED = [
   ['Frosty Dip Fries', 'icecream', 'The drive-thru dunk, perfected.'],
   ['Churro-ish Fries', 'cinnamon', 'Sweet, sandy, sublime.'],
   ['Diner Fries', 'ketchup', 'Red bottle, red booth, red vinyl.'],
-  // --- Classic combos
+  // Classic combos
   ['Salt & Vinegar Fries', 'salt+vinegar', 'Tangy, salty, legendary.'],
   ['Salt & Pepper Fries', 'salt+pepper', 'The dynamic duo of the spice rack.'],
   ['Chili Cheese Fries', 'chili+cheddar', 'A heart-stopping classic.'],
@@ -165,7 +165,7 @@ const HANDCRAFTED = [
   ['Cheese Overload Fries', 'cheddar+nacho+mozzarella+parmesan+bluecheese', 'Lactose intolerance speedrun.'],
   ['Everything Bagel Fries', 'sesame+garlic+onion+salt', 'Everything but the bagel.'],
   ['Smokehouse Fries', 'bbq+brisket+pulledpork', 'A pit-smoked trinity.'],
-  // --- Thrift store madness
+  // Thrift store madness
   ['Cowboy Fries', 'chili+cheddar+cowboyhat', 'Yeehaw! A chili cheese classic that rides at dawn.'],
   ["Pirate's Booty Fries", 'piratehat+goldleaf', 'X marks the fries.'],
   ['Royal Fries', 'crown+truffleoil+caviar', 'By royal decree.'],
@@ -222,6 +222,7 @@ const HANDCRAFTED = [
   ['The Ultimate Champion', 'trophy+crown+diamond+goldleaf+caviar', 'The final boss of fries.'],
 ];
 
+// Words used to build recipe names and descriptions.
 const FLAIRS = [
   "Grandma's",
   'Midnight',
@@ -276,6 +277,7 @@ const BLURBS = [
   'Will it fry? It did.',
 ];
 
+/** Builds the full list of recipes from the ingredients. */
 function buildRecipes() {
   const recipes = [];
   const byKey = new Map();

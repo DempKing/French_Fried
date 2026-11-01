@@ -1,7 +1,7 @@
 // Deck, hand and the fry-it! evaluation.
 
-import { RECIPES, MAX_BOAT, findRecipe, recipeKey, CARDS } from '../data/recipes.js';
-import { earn, ownedIds, discoveredCount } from './state.js';
+import { CARDS, MAX_BOAT, RECIPES, findRecipe, recipeKey } from '../data/recipes.js';
+import { discoveredCount, earn, ownedIds } from './state.js';
 
 export const HAND_SIZE = 7;
 export const REDRAW_COST = 3;
@@ -9,6 +9,7 @@ export const REDRAW_COST = 3;
 let uidSeq = 1;
 const inst = (id) => ({ uid: uidSeq++, id });
 
+/** The cards in the active deck. */
 export function activeDeckList(state) {
   const list = [];
   for (const [id, n] of Object.entries(state.deck)) {
@@ -19,12 +20,14 @@ export function activeDeckList(state) {
   return list;
 }
 
+/** A fresh kitchen with a shuffled deck. */
 export function createKitchen(state, rng) {
   const k = { draw: rng.shuffle(activeDeckList(state)).map(inst), hand: [], discard: [], boat: [], rng };
   drawCards(k, HAND_SIZE);
   return k;
 }
 
+/** Draws cards into the hand. */
 export function drawCards(k, n) {
   const drawn = [];
   for (let i = 0; i < n; i++) {
@@ -57,6 +60,7 @@ export function boatIds(k) {
   return k.boat.map((c) => c.id);
 }
 
+/** Moves a card from the hand into the boat. */
 export function playCard(k, uid) {
   const i = k.hand.findIndex((c) => c.uid === uid);
   if (i < 0) return { ok: false, reason: 'missing' };
@@ -69,6 +73,7 @@ export function playCard(k, uid) {
   return { ok: true, card };
 }
 
+/** Takes a card back out of the boat. */
 export function unplayCard(k, uid) {
   const i = k.boat.findIndex((c) => c.uid === uid);
   if (i < 0) return { ok: false };
@@ -77,11 +82,13 @@ export function unplayCard(k, uid) {
   return { ok: true, card };
 }
 
+/** Empties the boat. */
 export function clearBoat(k) {
   k.hand.push(...k.boat);
   k.boat = [];
 }
 
+/** Swaps the hand for new cards. */
 export function redraw(k) {
   k.discard.push(...k.hand, ...k.boat);
   k.hand = [];

@@ -1,17 +1,17 @@
 // Worlds: travel, explore for wild creatures and their DNA, and enter world arenas.
 
-import { WORLDS, TRAVEL_WORLDS, WORLD_MAP, RARITY, GROW_DNA_SAMPLES, WORLD_COST } from '../data/worlds.js';
-import { worldsUnlocked, worldCost, unlockWorld, explore, exploreCost } from '../game/worlds.js';
-import { LEAGUE_MAP, TRAIT_MAP, enterReason, worldOwned, getFry, startRun } from '../game/lab.js';
 import { renderFryGuy } from '../art/fryguy.js';
-import { worldScene } from '../art/worldScenes.js';
 import { planet } from '../art/planets.js';
-import { fmt } from '../game/state.js';
+import { worldScene } from '../art/worldScenes.js';
 import { sfx } from '../audio.js';
-import { $, $$, esc, toast, openModal, closeModal } from './dom.js';
-import { kindLabel } from './labScreen.js';
-import { ringHtml, animateBattle } from './battleView.js';
+import { GROW_DNA_SAMPLES, RARITY, TRAVEL_WORLDS, WORLDS, WORLD_COST, WORLD_MAP } from '../data/worlds.js';
+import { LEAGUE_MAP, TRAIT_MAP, enterReason, getFry, startRun, worldOwned } from '../game/lab.js';
+import { fmt } from '../game/state.js';
+import { explore, exploreCost, unlockWorld, worldCost, worldsUnlocked } from '../game/worlds.js';
+import { animateBattle, ringHtml } from './battleView.js';
+import { $, $$, closeModal, esc, openModal, toast } from './dom.js';
 import { selectLeague } from './fryerScreen.js';
+import { kindLabel } from './labScreen.js';
 
 const ui = { world: null, fry: null };
 
@@ -19,6 +19,7 @@ export function selectWorld(id) {
   ui.world = id;
 }
 
+/** A creature entry for the world screen. */
 const proto = (c, world) => ({
   name: c.name,
   species: world,
@@ -39,6 +40,7 @@ function worldCard(w, s, first) {
   </button>`;
 }
 
+/** The worlds screen. */
 export function renderWorlds(app, root) {
   const s = app.state;
   if (!worldsUnlocked(s)) {
@@ -167,6 +169,7 @@ function bindTravel(app, root) {
   $$('[data-travel]', root).forEach((b) => (b.onclick = () => confirmTravel(app, b.dataset.travel)));
 }
 
+/** Asks before travelling to a world. */
 function confirmTravel(app, id) {
   const s = app.state;
   const w = WORLD_MAP[id];
@@ -194,6 +197,7 @@ function confirmTravel(app, id) {
   };
 }
 
+/** Sends a fighter exploring. */
 function doExplore(app, w) {
   const s = app.state;
   const res = explore(s, w.id, ui.fry, app.rng);

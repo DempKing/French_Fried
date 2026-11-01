@@ -1,46 +1,46 @@
-import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { test } from 'node:test';
 
-import { WORLD_ARENAS } from '../src/data/worlds.js';
-import { RECIPES, TOTAL_RECIPES, CARDS, MAX_BOAT, findRecipe, recipeKey } from '../src/data/recipes.js';
+import { ART_TYPES, cardArtSvg, OBJECT_ART } from '../src/art/cards.js';
+import { renderBoat, TOPPING_TYPES } from '../src/art/fries.js';
 import { ALL_INGREDIENTS } from '../src/data/ingredients.js';
 import { OBJECTS } from '../src/data/objects.js';
-import { cardArtSvg, ART_TYPES, OBJECT_ART } from '../src/art/cards.js';
-import { renderBoat, TOPPING_TYPES } from '../src/art/fries.js';
+import { CARDS, findRecipe, MAX_BOAT, recipeKey, RECIPES, TOTAL_RECIPES } from '../src/data/recipes.js';
+import { WORLD_ARENAS } from '../src/data/worlds.js';
+import { checkAchievements } from '../src/game/achievements.js';
+import {
+  activeDeckList,
+  buyRumor,
+  createKitchen,
+  fry,
+  HAND_SIZE,
+  nearMiss,
+  playCard,
+  redraw,
+} from '../src/game/kitchen.js';
+import {
+  breed,
+  fightRound,
+  growSpud,
+  LEAGUES,
+  newFry,
+  npcFry,
+  simulateBattle,
+  splice,
+  startRun,
+  train,
+} from '../src/game/lab.js';
+import { makeRng } from '../src/game/rng.js';
+import { buyThrift, openPack, paidRefresh, THRIFT_REFRESH_MS, tickThrift } from '../src/game/shop.js';
 import {
   defaultState,
   discoveredCount,
-  unlock,
-  migrate,
   exportSave,
   importSave,
+  migrate,
   sellCard,
+  unlock,
 } from '../src/game/state.js';
-import {
-  createKitchen,
-  playCard,
-  fry,
-  redraw,
-  HAND_SIZE,
-  nearMiss,
-  buyRumor,
-  activeDeckList,
-} from '../src/game/kitchen.js';
-import { openPack, tickThrift, buyThrift, paidRefresh, THRIFT_REFRESH_MS } from '../src/game/shop.js';
-import {
-  growSpud,
-  splice,
-  breed,
-  train,
-  startRun,
-  fightRound,
-  simulateBattle,
-  newFry,
-  npcFry,
-  LEAGUES,
-} from '../src/game/lab.js';
-import { checkAchievements } from '../src/game/achievements.js';
-import { makeRng } from '../src/game/rng.js';
 
 test('recipe book has exactly TOTAL_RECIPES (>= 1000) unique recipes', () => {
   assert.ok(TOTAL_RECIPES >= 1000);
@@ -235,8 +235,8 @@ test('selling spares and achievements', () => {
   assert.equal(checkAchievements(s).length, 0);
 });
 
-// ---------- Known-recipe payouts and auto-cook ----------
-import { knownReward, discoveryReward, bestKnownInHand, loadRecipe } from '../src/game/kitchen.js';
+// Known-recipe payouts and auto-cook
+import { bestKnownInHand, discoveryReward, knownReward, loadRecipe } from '../src/game/kitchen.js';
 
 test('multi-card known recipes pay more, and discovery always beats repeats', () => {
   const single = findRecipe(['salt']);
@@ -264,7 +264,7 @@ test('auto-cook picks the best known recipe in hand and fries it', () => {
   assert.equal(s.money - before, knownReward(best));
 });
 
-// ---------- Bracket tournaments ----------
+// Bracket tournaments
 import { currentMatch, LEAGUE_MAP } from '../src/game/lab.js';
 
 test('fryer brackets: 8-fighter rookie bracket, $300 first win, $1,000 champion', () => {
@@ -292,18 +292,18 @@ test('fryer brackets: 8-fighter rookie bracket, $300 first win, $1,000 champion'
   assert.equal(LEAGUE_MAP.legend.rounds, 5);
 });
 
-// ---------- Worlds ----------
-import {
-  worldsUnlocked,
-  worldCost,
-  unlockWorld,
-  explore,
-  spliceDNA,
-  growFromDNA,
-  wildCreature,
-} from '../src/game/worlds.js';
-import { WORLDS, WORLD_COST, CREATURE_MAP } from '../src/data/worlds.js';
+// Worlds
 import { renderFryGuy } from '../src/art/fryguy.js';
+import { CREATURE_MAP, WORLD_COST, WORLDS } from '../src/data/worlds.js';
+import {
+  explore,
+  growFromDNA,
+  spliceDNA,
+  unlockWorld,
+  wildCreature,
+  worldCost,
+  worldsUnlocked,
+} from '../src/game/worlds.js';
 
 test('worlds unlock after the Legendary Vat; first world free, others cost', () => {
   const s = defaultState(0);
@@ -388,7 +388,7 @@ test('kitchen counts possible recipes in hand and with all owned cards', () => {
   assert.equal(q.owned.total, p.owned.total);
 });
 
-import { WILD_PARENT, purgeTrait } from '../src/game/lab.js';
+import { purgeTrait, WILD_PARENT } from '../src/game/lab.js';
 test('breeding works with a single fighter via a wild spud; traits can be removed; hand is 7', () => {
   const rng = makeRng(77);
   const s = defaultState(0);
@@ -405,19 +405,19 @@ test('breeding works with a single fighter via a wild spud; traits can be remove
   assert.equal(HAND_SIZE, 7);
 });
 
-// ---------- Species, per-fighter progression, the letter, the Universe, Hall of Fame ----------
-import {
-  traitsFor,
-  trainingFor,
-  enterReason,
-  letterEligible,
-  acceptLetter,
-  induct,
-  getDifficulty,
-  DIFFICULTY,
-  LEAGUES as ALL_LEAGUES_BASE,
-} from '../src/game/lab.js';
+// Species, per-fighter progression, the letter, the Universe, Hall of Fame
 import { SPECIES_TRAITS } from '../src/data/species.js';
+import {
+  acceptLetter,
+  LEAGUES as ALL_LEAGUES_BASE,
+  DIFFICULTY,
+  enterReason,
+  getDifficulty,
+  induct,
+  letterEligible,
+  trainingFor,
+  traitsFor,
+} from '../src/game/lab.js';
 
 test('each species has its own splicing traits and treatments built around its strength', () => {
   const s = defaultState(0);

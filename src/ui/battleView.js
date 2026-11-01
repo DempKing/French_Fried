@@ -1,8 +1,8 @@
 // Shared battle ring: two fighters, HP bars, a play-by-play log and animation.
 
-import { computeStats, power } from '../game/lab.js';
 import { renderFryGuy, traitBadges } from '../art/fryguy.js';
 import { sfx } from '../audio.js';
+import { computeStats, power } from '../game/lab.js';
 import { $, esc } from './dom.js';
 
 export function hpBar(cur, max) {
@@ -21,6 +21,7 @@ export function ringHtml(a, b, { hp = null, moodA = 'idle', moodB = 'idle', them
   </div>`;
 }
 
+/** The last few battle log lines as HTML. */
 export function logHtml(events, n = 6) {
   return events
     .slice(-n)
@@ -29,6 +30,7 @@ export function logHtml(events, n = 6) {
     .join('');
 }
 
+/** Floating damage/heal text. */
 function floater(el, text, kind) {
   const f = document.createElement('span');
   f.className = `floater ${kind}`;

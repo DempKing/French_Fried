@@ -3,6 +3,7 @@
 export const INK = '#2b1d14';
 export const f = (n) => (Math.round(n * 10) / 10).toString();
 
+/** Hex colour to [r, g, b]. */
 function toRgb(hex) {
   let h = hex.replace('#', '');
   if (h.length === 3)
@@ -13,6 +14,7 @@ function toRgb(hex) {
   const n = parseInt(h, 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
+/** [r, g, b] to a hex colour. */
 const toHex = (r, g, b) =>
   '#' +
   [r, g, b]
@@ -37,7 +39,7 @@ export function mix(a, b, t) {
   return toHex(A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t, A[2] + (B[2] - A[2]) * t);
 }
 
-/** Smooth closed path through points (Catmull-Rom → cubic Bézier). */
+/** Smooth closed path through points (Catmull-Rom -> cubic Bézier). */
 export function smoothClosed(pts) {
   const n = pts.length;
   let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;

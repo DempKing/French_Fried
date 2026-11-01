@@ -2,27 +2,27 @@
 // creatures for their DNA, splice it into fries, or grow creatures from raw DNA.
 
 import {
-  WORLDS,
-  WORLD_MAP,
   CREATURE_MAP,
-  RARITY,
-  WORLD_COST,
   EXPLORE_COST,
-  SPLICE_COST,
   GROW_DNA_COST,
   GROW_DNA_SAMPLES,
   MAX_DNA_SPLICES,
+  RARITY,
+  SPLICE_COST,
+  WORLDS,
+  WORLD_COST,
+  WORLD_MAP,
 } from '../data/worlds.js';
 import {
-  LEAGUES,
   LAB_CAPACITY,
-  getFry,
-  simulateBattle,
-  creatureEntity,
+  LEAGUES,
   TRAIT_MAP,
-  worldOwned,
-  labCount,
+  creatureEntity,
   getDifficulty,
+  getFry,
+  labCount,
+  simulateBattle,
+  worldOwned,
 } from './lab.js';
 
 export const worldsUnlocked = (s) => !!s.fryer.champions[LEAGUES[LEAGUES.length - 1].id];
@@ -31,6 +31,7 @@ export function worldCost(s) {
   return s.worlds.owned.length ? WORLD_COST : 0;
 }
 
+/** Unlocks a world. */
 export function unlockWorld(s, worldId) {
   if (!worldsUnlocked(s)) return { ok: false, reason: 'Win the Legendary Vat to unlock Worlds.' };
   if (!WORLD_MAP[worldId] || WORLD_MAP[worldId].secret) return { ok: false, reason: 'Unknown world.' };
@@ -42,6 +43,7 @@ export function unlockWorld(s, worldId) {
   return { ok: true, cost };
 }
 
+/** Picks a creature to meet in a world. */
 function pickCreature(world, rng) {
   const total = world.creatures.reduce((a, c) => a + RARITY[c.rarity].weight, 0);
   let roll = rng() * total;
@@ -52,6 +54,7 @@ function pickCreature(world, rng) {
   return world.creatures[0];
 }
 
+/** A wild creature to fight. */
 export function wildCreature(creatureId, rng, power = 1) {
   const c = CREATURE_MAP[creatureId];
   const w = WORLD_MAP[c.world];

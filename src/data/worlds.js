@@ -8,6 +8,7 @@ export const GROW_DNA_COST = 800;
 export const GROW_DNA_SAMPLES = 3;
 export const MAX_DNA_SPLICES = 3;
 
+/** Rarity levels and their colours. */
 export const RARITY = {
   common: { weight: 64, wild: 2.3, grown: 1.7, splice: 0.1, reward: 150, label: 'Common' },
   rare: { weight: 29, wild: 2.85, grown: 2.05, splice: 0.15, reward: 400, label: 'Rare' },
@@ -16,6 +17,7 @@ export const RARITY = {
 
 const C = (id, name, rarity, variant, blurb) => ({ id, name, rarity, variant, blurb });
 
+/** The worlds: cost, creatures and arenas. */
 export const WORLDS = [
   {
     id: 'hotdog',

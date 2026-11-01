@@ -3,12 +3,14 @@
 import { BASIC_INGREDIENTS, PREMIUM_INGREDIENTS } from '../data/ingredients.js';
 import { OBJECTS } from '../data/objects.js';
 
+/** Kinds of cards. */
 export const CARD_TYPES = [
   { key: 'basic', label: 'Basic', icon: '🧂', list: BASIC_INGREDIENTS },
   { key: 'premium', label: 'Premium', icon: '⭐', list: PREMIUM_INGREDIENTS },
   { key: 'objects', label: 'Objects', icon: '🧸', list: OBJECTS },
 ];
 
+/** How many cards of each kind you own. */
 export function collectionCounts(state) {
   return CARD_TYPES.map((t) => ({
     ...t,
@@ -17,6 +19,7 @@ export function collectionCounts(state) {
   }));
 }
 
+/** The collection progress bar. */
 export function collectionBar(state) {
   return `<div class="collection-bar" aria-label="Cards collected">${collectionCounts(state)
     .map(

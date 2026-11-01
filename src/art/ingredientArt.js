@@ -3,19 +3,17 @@
 
 import {
   INK,
-  f,
-  shade,
-  mix,
-  cel,
   bit,
-  blob,
   blobPts,
-  smoothClosed,
-  smoothOpen,
+  cel,
   chunkPath,
   circle,
   ellipse,
+  f,
+  mix,
   rrect,
+  shade,
+  smoothClosed,
 } from './paint.js';
 
 const S = `stroke="${INK}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"`;
@@ -44,6 +42,7 @@ function lump(rng, cx, cy, r, c) {
   });
 }
 
+/** Drawing for each ingredient card. */
 export const ING = {
   shaker: ({ c, c2 }) => {
     const metal = '#c9d1da';

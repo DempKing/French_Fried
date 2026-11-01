@@ -6,6 +6,7 @@ let musicGain = null;
 let musicTimer = null;
 const settings = { sfx: true, music: true, volume: 0.6 };
 
+/** The shared AudioContext (created on first use). */
 function ensure() {
   if (ctx) return ctx;
   const AC = globalThis.AudioContext || globalThis.webkitAudioContext;
@@ -20,6 +21,7 @@ function ensure() {
   return ctx;
 }
 
+/** Applies the sound settings. */
 export function configureAudio(s) {
   Object.assign(settings, s);
   if (master) master.gain.value = settings.volume;
@@ -27,12 +29,14 @@ export function configureAudio(s) {
   else stopMusic();
 }
 
+/** Starts audio after the first click (browsers require it). */
 export function unlockAudio() {
   const c = ensure();
   if (c && c.state === 'suspended') c.resume();
   if (settings.music) startMusic();
 }
 
+/** A simple synth tone. */
 function tone(freq, dur, { type = 'sine', vol = 0.3, slide = 0, delay = 0, dest } = {}) {
   const c = ensure();
   if (!c) return;
@@ -50,6 +54,7 @@ function tone(freq, dur, { type = 'sine', vol = 0.3, slide = 0, delay = 0, dest 
   o.stop(t + dur + 0.05);
 }
 
+/** A burst of filtered noise. */
 function noise(dur, { vol = 0.2, filter = 2000, delay = 0 } = {}) {
   const c = ensure();
   if (!c) return;
@@ -69,6 +74,7 @@ function noise(dur, { vol = 0.2, filter = 2000, delay = 0 } = {}) {
   src.start(t);
 }
 
+/** Each sound effect. */
 const SFX = {
   card: () => {
     tone(520, 0.08, { type: 'triangle', vol: 0.18, slide: 200 });
@@ -119,6 +125,7 @@ const SFX = {
   click: () => tone(880, 0.04, { type: 'triangle', vol: 0.08 }),
 };
 
+/** Plays a named sound effect. */
 export function sfx(name) {
   if (!settings.sfx) return;
   try {
@@ -130,6 +137,7 @@ export function sfx(name) {
 
 // A bouncy little diner loop: bass + melody, scheduled a bar at a time.
 const BPM = 112;
+/** The background music notes. */
 const MELODY = [
   72, 0, 76, 79, 77, 0, 76, 72, 74, 0, 77, 81, 79, 77, 76, 74, 72, 0, 76, 79, 81, 79, 77, 76, 74, 77, 76, 74,
   72, 0, 0, 0,
@@ -137,6 +145,7 @@ const MELODY = [
 const BASS = [48, 55, 52, 55, 53, 57, 55, 59, 48, 55, 52, 55, 50, 53, 55, 43];
 const midi = (n) => 440 * Math.pow(2, (n - 69) / 12);
 
+/** Starts the background music. */
 function startMusic() {
   if (musicTimer || !ensure()) return;
   let step = 0;
@@ -160,6 +169,7 @@ function startMusic() {
   musicTimer = setInterval(scheduleBar, eighth * 8 * 1000);
 }
 
+/** Stops the background music. */
 function stopMusic() {
   clearInterval(musicTimer);
   musicTimer = null;

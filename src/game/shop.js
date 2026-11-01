@@ -4,6 +4,7 @@ import { BASIC_INGREDIENTS, PREMIUM_INGREDIENTS } from '../data/ingredients.js';
 import { OBJECTS } from '../data/objects.js';
 import { addCard } from './state.js';
 
+/** Card packs for sale. */
 export const PACKS = {
   basic: {
     id: 'basic',
@@ -23,6 +24,7 @@ export const PACKS = {
   },
 };
 
+/** Picks an item by weight. */
 function weightedPick(rng, items, weightFn) {
   const weights = items.map(weightFn);
   const total = weights.reduce((a, b) => a + b, 0);
@@ -37,6 +39,7 @@ function weightedPick(rng, items, weightFn) {
 // Unowned cards are much more likely, so packs keep feeling fresh.
 const freshness = (state) => (c) => (state.deck[c.id] ? 1 : 4);
 
+/** Opens a card pack. */
 export function openPack(state, packId, rng) {
   const pack = PACKS[packId];
   if (!pack) return { ok: false, reason: 'Unknown pack' };
@@ -57,7 +60,7 @@ export function openPack(state, packId, rng) {
   return { ok: true, ids, newOnes };
 }
 
-// ---------------- Thrift store ----------------
+// Thrift store
 export const THRIFT_REFRESH_MS = 30 * 60 * 1000;
 export const THRIFT_SLOTS = 3;
 const RARITY_WEIGHT = { common: 60, rare: 30, legendary: 10 };
@@ -66,6 +69,7 @@ export function thriftRefreshCost(state) {
   return 25 + Math.min(state.thrift.refreshes, 10) * 5;
 }
 
+/** Restocks the thrift shop. */
 export function rollThrift(state, rng, now = Date.now()) {
   const slots = [];
   const pool = OBJECTS.slice();
@@ -92,6 +96,7 @@ export function tickThrift(state, rng, now = Date.now()) {
   return false;
 }
 
+/** Pays to restock the thrift shop early. */
 export function paidRefresh(state, rng, now = Date.now()) {
   const cost = thriftRefreshCost(state);
   if (state.money < cost) return { ok: false, reason: `Need $${cost}` };
@@ -101,6 +106,7 @@ export function paidRefresh(state, rng, now = Date.now()) {
   return { ok: true, cost };
 }
 
+/** Buys an item from the thrift shop. */
 export function buyThrift(state, slot) {
   const id = state.thrift.slots[slot];
   const o = OBJECTS.find((x) => x.id === id);

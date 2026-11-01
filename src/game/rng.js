@@ -9,6 +9,7 @@ export function hashString(str) {
   return h >>> 0;
 }
 
+/** A seeded random number generator with helpers. */
 export function makeRng(seed) {
   let a = (typeof seed === 'string' ? hashString(seed) : seed) >>> 0;
   const next = () => {

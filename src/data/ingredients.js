@@ -12,6 +12,7 @@ const B = (id, name, noun, adj, value, art, top) => ({
   tier: 'basic',
   kind: 'ingredient',
 });
+/** Shorthand for defining an ingredient. */
 const P = (id, name, noun, adj, value, art, top) => ({
   id,
   name,
@@ -24,6 +25,7 @@ const P = (id, name, noun, adj, value, art, top) => ({
   kind: 'ingredient',
 });
 
+/** Basic ingredient cards. */
 export const BASIC_INGREDIENTS = [
   B(
     'salt',
@@ -414,6 +416,7 @@ export const BASIC_INGREDIENTS = [
   ),
 ];
 
+/** Premium ingredient cards. */
 export const PREMIUM_INGREDIENTS = [
   P(
     'truffleoil',

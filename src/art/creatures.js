@@ -1,15 +1,17 @@
 // World creature bodies and hybrid accessories, drawn in the same 100x100
 // space as the fry fighters so they share faces, arms and legs.
 
-import { INK, f, shade, cel, circle, ellipse, rrect, smoothClosed, blobPts } from './paint.js';
 import { makeRng } from '../game/rng.js';
+import { INK, blobPts, cel, circle, ellipse, f, rrect, shade, smoothClosed } from './paint.js';
 
 const S = `stroke="${INK}" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"`;
+/** A zigzag line (teeth, lightning, spikes). */
 const zig = (x, y0, y1, w, col, sw = 3) => {
   let d = `M${x} ${y0}`;
   for (let y = y0, i = 0; y < y1; y += 6, i++) d += ` L${x + (i % 2 ? -w : w)} ${y + 6}`;
   return `<path d="${d}" fill="none" stroke="${INK}" stroke-width="${sw + 2}" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round"/>`;
 };
+/** Little seed dots at the given points. */
 const seeds = (pts) =>
   pts
     .map(
@@ -18,7 +20,7 @@ const seeds = (pts) =>
     )
     .join('');
 
-// ---------- Hotdog World ----------
+// Hotdog World
 function hotdog(variant, dead) {
   const sausage = dead ? '#5a2e1a' : { brat: '#8a4a2a', chili: '#b04a2c' }[variant] || '#c8553a';
   const bun = dead ? '#8a5a2b' : '#efbf74';
@@ -62,7 +64,7 @@ function hotdog(variant, dead) {
   };
 }
 
-// ---------- Burger World ----------
+// Burger World
 function burger(variant, dead) {
   const bun = dead ? '#8a5a2b' : '#e3a14d';
   const patty = dead ? '#3a2014' : '#6b3a22';
@@ -109,7 +111,7 @@ function burger(variant, dead) {
   return { faceY: 92 - (92 - (topY - 20)) * small, body };
 }
 
-// ---------- Soda World ----------
+// Soda World
 function soda(variant, dead) {
   const cup = dead
     ? '#7a5a4a'
@@ -143,7 +145,7 @@ function soda(variant, dead) {
   return { faceY: top + 20, body };
 }
 
-// ---------- Cotton Candy World ----------
+// Cotton Candy World
 function cottoncandy(variant, dead) {
   const pal = dead
     ? ['#9a8a92', '#7a6a72']
@@ -171,7 +173,7 @@ function cottoncandy(variant, dead) {
   return { faceY: 40, body };
 }
 
-// ---------- Alien Planet ----------
+// Alien Planet
 const antennae = (
   x1,
   x2,
@@ -180,6 +182,7 @@ const antennae = (
 ) => `<path d="M${x1} ${y}Q${x1 - 6} ${y - 16} ${x1 - 10} ${y - 22}M${x2} ${y}Q${x2 + 6} ${y - 16} ${x2 + 10} ${y - 22}" fill="none" ${S}/>
   <circle cx="${x1 - 10}" cy="${y - 24}" r="4.5" fill="${col}" ${S}/><circle cx="${x2 + 10}" cy="${y - 24}" r="4.5" fill="${col}" ${S}/>`;
 
+/** An alien creature (dead or alive). */
 function alien(variant, dead) {
   const g = (c) => (dead ? '#7a7a6a' : c);
   switch (variant) {

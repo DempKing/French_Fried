@@ -3,21 +3,20 @@
 // pieces scattered across the pile. All coordinates are in the boat's
 // 320-wide viewBox; the visible fry pile sits around (160, 100).
 
+import { cardArtInner } from './cards.js';
 import {
   INK,
-  f,
-  shade,
-  mix,
-  cel,
   bit,
   blobPts,
+  cel,
+  chunkPath,
+  ellipse,
+  f,
+  mix,
+  shade,
   smoothClosed,
   smoothOpen,
-  chunkPath,
-  circle,
-  ellipse,
 } from './paint.js';
-import { cardArtInner } from './cards.js';
 
 export const PILE = { cx: 160, cy: 96, rx: 78, ry: 32 };
 
@@ -85,8 +84,9 @@ function pool(
 const haze = (c, o) =>
   `<ellipse cx="${PILE.cx}" cy="${PILE.cy - 4}" rx="${PILE.rx * 0.92}" ry="${PILE.ry * 0.85}" fill="${c}" opacity="${o}"/>`;
 
+/** How each topping is drawn on the fries. */
 export const TOP = {
-  // ---------- Sauces & coatings ----------
+  // Sauces & coatings
   drizzle: ({ c, c2 }, rng) => {
     // Three squiggly squeeze-bottle passes across the pile.
     const passes = [-17, 0, 17].map((dy, k) => {
@@ -196,7 +196,7 @@ export const TOP = {
       )
       .join(''),
 
-  // ---------- Spreads ----------
+  // Spreads
   dollop: ({ c, c2, chunky }, rng) =>
     [
       [-38, 2, 1],
@@ -240,7 +240,7 @@ export const TOP = {
       })
       .join(''),
 
-  // ---------- Sprinkles ----------
+  // Sprinkles
   salt: ({ c }, rng) =>
     haze('#ffffff', 0.28) +
     scatter(rng, 46, 7)
@@ -315,7 +315,7 @@ export const TOP = {
       })
       .join(''),
 
-  // ---------- Pieces ----------
+  // Pieces
   curds: ({ c, c2 }, rng) =>
     scatter(rng, 11, 19, 0.92)
       .map(([x, y], i) => {
@@ -522,7 +522,7 @@ export const TOP = {
       })
       .join(''),
 
-  // ---------- Whole items ----------
+  // Whole items
   egg: ({ c }, rng) => {
     const x = PILE.cx + 4;
     const y = PILE.cy - 10;

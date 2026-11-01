@@ -65,6 +65,7 @@ export const SPECIES_TRAITS = {
 
 // Treatments: each species has its own names, and its signature stat gains more.
 const TR = (hp, atk, def, spd) => ({ hp, atk, def, spd });
+/** Training options for each creature species. */
 export const SPECIES_TRAINING = {
   fry: TR(
     { name: 'Starch Injection', gain: 9 },
@@ -105,6 +106,7 @@ export const SPECIES_TRAINING = {
 };
 export const TRAINING_COST_MULT = { alien: 1.5 };
 
+/** Display names for creature species. */
 export const SPECIES_LABEL = {
   fry: 'Fry',
   hotdog: 'Hotdog',
@@ -113,6 +115,7 @@ export const SPECIES_LABEL = {
   cottoncandy: 'Cotton Candy',
   alien: 'Alien',
 };
+/** How strong each creature species is. */
 export const SPECIES_STRENGTH = {
   fry: 'HP',
   hotdog: 'critical hits',

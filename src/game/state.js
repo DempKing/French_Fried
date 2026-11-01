@@ -3,6 +3,7 @@
 export const SAVE_KEY = 'french-fried-save-v1';
 export const SAVE_VERSION = 1;
 
+/** The cards you start with. */
 export const STARTER_DECK = {
   salt: 2,
   ketchup: 1,
@@ -17,6 +18,7 @@ export const STARTER_DECK = {
   mustard: 1,
 };
 
+/** Things to unlock and their costs. */
 export const UNLOCKS = {
   premium: {
     name: 'Premium Packs',
@@ -47,6 +49,7 @@ export const UNLOCKS = {
   },
 };
 
+/** A new save. */
 export function defaultState(now = Date.now()) {
   return {
     version: SAVE_VERSION,
@@ -90,6 +93,7 @@ export function defaultState(now = Date.now()) {
   };
 }
 
+/** Upgrades an old save to the current format. */
 export function migrate(raw) {
   const base = defaultState();
   if (!raw || typeof raw !== 'object') return base;
@@ -104,6 +108,7 @@ export function migrate(raw) {
   return s;
 }
 
+/** Loads the save. */
 export function load(storage) {
   try {
     const txt = storage?.getItem(SAVE_KEY);
@@ -113,6 +118,7 @@ export function load(storage) {
   }
 }
 
+/** Saves the game. */
 export function save(state, storage) {
   try {
     storage?.setItem(SAVE_KEY, JSON.stringify(state));
@@ -122,6 +128,7 @@ export function save(state, storage) {
   }
 }
 
+/** The save as a text code. */
 export function exportSave(state) {
   const json = JSON.stringify(state);
   return typeof btoa === 'function'
@@ -129,6 +136,7 @@ export function exportSave(state) {
     : Buffer.from(json).toString('base64');
 }
 
+/** Loads a save from a text code. */
 export function importSave(code) {
   const json =
     typeof atob === 'function'
@@ -139,17 +147,20 @@ export function importSave(code) {
 
 export const discoveredCount = (s) => Object.keys(s.discovered).length;
 
+/** Adds money. */
 export function earn(s, amount) {
   s.money += amount;
   if (amount > 0) s.lifetime += amount;
 }
 
+/** Spends money, if there is enough. */
 export function spend(s, amount) {
   if (s.money < amount) return false;
   s.money -= amount;
   return true;
 }
 
+/** Can this be unlocked? (and why not) */
 export function canUnlock(s, key) {
   const u = UNLOCKS[key];
   if (s.unlocks[key]) return { ok: false, reason: 'Already unlocked' };
@@ -160,6 +171,7 @@ export function canUnlock(s, key) {
   return { ok: true };
 }
 
+/** Unlocks something. */
 export function unlock(s, key) {
   const chk = canUnlock(s, key);
   if (!chk.ok) return chk;
@@ -172,6 +184,7 @@ export function addCard(s, id, n = 1) {
   s.deck[id] = (s.deck[id] || 0) + n;
 }
 
+/** What a card sells for. */
 export function sellValue(card) {
   if (card.kind === 'object') return Math.round(card.price * 0.4);
   return card.tier === 'premium' ? 25 : 5;

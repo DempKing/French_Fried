@@ -1,11 +1,11 @@
 // Achievements. Each id doubles as the Steam API name (upper-cased), and `icon` describes the
 // badge art (see art/achievementIcons.js; scripts/steam-icons.mjs exports them for Steamworks).
 
-import { discoveredCount } from './state.js';
-import { TOTAL_RECIPES, RECIPES } from '../data/recipes.js';
 import { BASIC_INGREDIENTS, PREMIUM_INGREDIENTS } from '../data/ingredients.js';
 import { OBJECTS } from '../data/objects.js';
+import { RECIPES, TOTAL_RECIPES } from '../data/recipes.js';
 import { WORLDS, WORLD_ARENAS } from '../data/worlds.js';
+import { discoveredCount } from './state.js';
 
 const tierCount = (s, tier) => RECIPES.filter((r) => r.tier === tier && s.discovered[r.key]).length;
 const found = (s, n) => discoveredCount(s) >= n;
@@ -21,6 +21,7 @@ const ALIEN_CREATURES = WORLDS.find((w) => w.id === 'alien').creatures.map((c) =
 
 const A = (cat, id, name, desc, icon, test, extra = {}) => ({ cat, id, name, desc, icon, test, ...extra });
 
+/** All achievements and how each is earned. */
 export const ACHIEVEMENTS = [
   // Recipes
   A(

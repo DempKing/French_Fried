@@ -1,20 +1,22 @@
 // Deck management: see your collection and bench cards to shape your draws.
 
+import { sfx } from '../audio.js';
 import { BASIC_INGREDIENTS, PREMIUM_INGREDIENTS } from '../data/ingredients.js';
 import { OBJECTS } from '../data/objects.js';
-import { activeDeckList, HAND_SIZE } from '../game/kitchen.js';
-import { sellCard, sellValue, fmt } from '../game/state.js';
 import { CARDS } from '../data/recipes.js';
-import { $$, cardHtml, toast } from './dom.js';
-import { sfx } from '../audio.js';
+import { activeDeckList, HAND_SIZE } from '../game/kitchen.js';
+import { fmt, sellCard, sellValue } from '../game/state.js';
 import { collectionBar } from './collection.js';
+import { $$, cardHtml, toast } from './dom.js';
 
+/** Groups the deck screen sorts cards into. */
 const GROUPS = [
   ['basic', 'Basic Ingredients', BASIC_INGREDIENTS],
   ['premium', 'Premium Ingredients', PREMIUM_INGREDIENTS],
   ['objects', 'Thrift Store Objects', OBJECTS],
 ];
 
+/** The deck screen. */
 export function renderDeck(app, root) {
   const s = app.state;
   const total = Object.values(s.deck).reduce((a, b) => a + b, 0);

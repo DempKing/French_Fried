@@ -1,16 +1,17 @@
 // The fry boat illustration. Each card played adds a layer: sauces drizzle,
 // spices sprinkle, cheese melts, and thrift-store objects sit on (or beside) the boat.
 
+import { CARDS } from '../data/recipes.js';
 import { makeRng } from '../game/rng.js';
 import { cardArtInner } from './cards.js';
-import { CARDS } from '../data/recipes.js';
-import { TOP, SAUCE_TYPES, TOPPING_TYPES } from './toppings.js';
+import { SAUCE_TYPES, TOP, TOPPING_TYPES } from './toppings.js';
 
 const K = '#2b1d14';
 const W = `stroke="${K}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"`;
 
 const f = (n) => n.toFixed(1);
 
+/** The fries in the boat (back or front row). */
 function friesLayer(back) {
   const rng = makeRng(back ? 'fries-back' : 'fries-front');
   const out = [];
@@ -39,6 +40,7 @@ function boatBack() {
 }
 
 let clipSeq = 0;
+/** The front of the fry boat. */
 function boatFront() {
   const cid = `boatClip${++clipSeq}`;
   const stripes = [];
@@ -57,7 +59,7 @@ function boatFront() {
     <path d="M60 156 Q160 172 260 156" fill="none" stroke="${K}" stroke-width="2" opacity=".25"/>`;
 }
 
-// ---------- Object placement ----------
+// Object placement
 function objectLayer(card, slotIndex, anchor) {
   const art = cardArtInner(card);
   const place = (x, y, s, rot = 0) =>

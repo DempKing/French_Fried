@@ -1,29 +1,30 @@
 // The Kitchen: hand of cards, the fry boat, and the big FRY IT! button.
 
 import { renderBoat } from '../art/fries.js';
+import { sfx } from '../audio.js';
 import { CARDS, MAX_BOAT, TOTAL_RECIPES } from '../data/recipes.js';
 import {
-  playCard,
-  unplayCard,
-  clearBoat,
-  redraw,
-  fry,
-  boatIds,
-  REDRAW_COST,
-  buyRumor,
-  rumorCost,
-  possibleRecipes,
   bestKnownInHand,
-  loadRecipe,
-  knownReward,
+  boatIds,
+  buyRumor,
   chefPick,
+  clearBoat,
+  fry,
+  knownReward,
+  loadRecipe,
+  playCard,
+  possibleRecipes,
+  redraw,
+  REDRAW_COST,
+  rumorCost,
+  unplayCard,
 } from '../game/kitchen.js';
-import { fmt, discoveredCount } from '../game/state.js';
-import { sfx } from '../audio.js';
-import { $, $$, cardHtml, chipHtml, esc, openModal, closeModal, toast } from './dom.js';
+import { discoveredCount, fmt } from '../game/state.js';
+import { $, $$, cardHtml, chipHtml, closeModal, esc, openModal, toast } from './dom.js';
 
 let fresh = null;
 
+/** The kitchen screen. */
 export function renderKitchen(app, root) {
   const k = app.kitchen;
   const ids = boatIds(k);
@@ -125,6 +126,7 @@ export function renderKitchen(app, root) {
   );
 }
 
+/** Plays a card into the boat. */
 function doPlay(app, uid) {
   const res = playCard(app.kitchen, uid);
   if (!res.ok) {
@@ -137,6 +139,7 @@ function doPlay(app, uid) {
   app.render();
 }
 
+/** Takes a card out of the boat. */
 function doUnplay(app, uid) {
   if (unplayCard(app.kitchen, uid).ok) {
     sfx('remove');
@@ -144,6 +147,7 @@ function doUnplay(app, uid) {
   }
 }
 
+/** Redraws the hand. */
 function doRedraw(app) {
   const s = app.state;
   if (s.money >= REDRAW_COST) s.money -= REDRAW_COST;
@@ -154,6 +158,7 @@ function doRedraw(app) {
   app.commit();
 }
 
+/** Buys a recipe rumour (a hint). */
 function doRumor(app) {
   const res = buyRumor(app.state, app.rng);
   if (!res.ok) {
@@ -176,6 +181,7 @@ function doRumor(app) {
   app.commit();
 }
 
+/** Fries the boat and shows the result. */
 export function doFry(app) {
   const k = app.kitchen;
   if (!k.boat.length) return;
@@ -223,6 +229,7 @@ export function doFry(app) {
   app.commit({ silentRender: true });
 }
 
+/** Loads the best known recipe that can be made from the hand, and fries it. */
 function doAutoCook(app) {
   const best = bestKnownInHand(app.state, app.kitchen);
   if (!best) {
@@ -235,6 +242,7 @@ function doAutoCook(app) {
   doFry(app);
 }
 
+/** Keyboard shortcuts in the kitchen. */
 export function kitchenKeys(app, e) {
   const k = app.kitchen;
   if (e.key >= '1' && e.key <= '9') {

@@ -3,11 +3,12 @@
 
 import { CARDS } from '../data/recipes.js';
 import { cardArtSvg } from './cards.js';
-import { renderFryGuy } from './fryguy.js';
 import { renderBoat } from './fries.js';
-import { planetSvg } from './planets.js';
+import { renderFryGuy } from './fryguy.js';
 import { INK, shade } from './paint.js';
+import { planetSvg } from './planets.js';
 
+/** Badge colours for each achievement category. */
 export const CATEGORY = {
   recipes: { name: 'Recipes', color: '#f39c32' },
   kitchen: { name: 'Kitchen', color: '#e2533b' },
@@ -28,6 +29,7 @@ function place(svg, x, y, w, h) {
     .replace(/class="[^"]*"/, '');
 }
 
+/** A DNA helix symbol. */
 function dnaSymbol() {
   const pts = (sign) =>
     Array.from(

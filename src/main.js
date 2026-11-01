@@ -1,35 +1,36 @@
-// French Fried! — app shell: navigation, top bar, saving, settings and title screen.
+// French Fried! - app shell: navigation, top bar, saving, settings and title screen.
 
+import { achievementIcon, CATEGORY } from './art/achievementIcons.js';
+import { renderBoat } from './art/fries.js';
+import { configureAudio, sfx, unlockAudio } from './audio.js';
+import { TOTAL_RECIPES } from './data/recipes.js';
+import { ACHIEVEMENTS, checkAchievements } from './game/achievements.js';
+import { addToKitchen, createKitchen } from './game/kitchen.js';
+import { DIFFICULTY, difficultyUnlocked, letterEligible } from './game/lab.js';
+import { makeRng } from './game/rng.js';
+import { tickThrift } from './game/shop.js';
 import {
+  defaultState,
+  discoveredCount,
+  exportSave,
+  fmt,
+  importSave,
   load,
   save,
-  defaultState,
-  exportSave,
-  importSave,
-  fmt,
-  discoveredCount,
   UNLOCKS,
 } from './game/state.js';
-import { createKitchen, addToKitchen } from './game/kitchen.js';
-import { tickThrift } from './game/shop.js';
-import { checkAchievements, ACHIEVEMENTS } from './game/achievements.js';
-import { achievementIcon, CATEGORY } from './art/achievementIcons.js';
-import { makeRng } from './game/rng.js';
-import { TOTAL_RECIPES } from './data/recipes.js';
-import { renderBoat } from './art/fries.js';
-import { sfx, unlockAudio, configureAudio } from './audio.js';
-import { $, $$, esc, toast, openModal, closeModal, modalOpen } from './ui/dom.js';
-import { renderKitchen, kitchenKeys } from './ui/kitchenScreen.js';
-import { renderBook } from './ui/bookScreen.js';
-import { renderDeck } from './ui/deckScreen.js';
-import { renderShop, renderThrift, thriftTick } from './ui/shopScreen.js';
-import { renderLab } from './ui/labScreen.js';
-import { renderFryer } from './ui/fryerScreen.js';
-import { renderWorlds } from './ui/worldsScreen.js';
-import { renderHall } from './ui/cosmos.js';
-import { letterEligible, difficultyUnlocked, DIFFICULTY } from './game/lab.js';
 import { worldsUnlocked } from './game/worlds.js';
+import { renderBook } from './ui/bookScreen.js';
+import { renderHall } from './ui/cosmos.js';
+import { renderDeck } from './ui/deckScreen.js';
+import { $, $$, closeModal, esc, modalOpen, openModal, toast } from './ui/dom.js';
+import { renderFryer } from './ui/fryerScreen.js';
+import { kitchenKeys, renderKitchen } from './ui/kitchenScreen.js';
+import { renderLab } from './ui/labScreen.js';
+import { renderShop, renderThrift, thriftTick } from './ui/shopScreen.js';
+import { renderWorlds } from './ui/worldsScreen.js';
 
+/** localStorage, or an in-memory stand-in if it isn't available. */
 const storage = (() => {
   try {
     return globalThis.localStorage;
@@ -39,6 +40,7 @@ const storage = (() => {
 })();
 const steam = globalThis.frenchFriedNative || null; // provided by the Electron preload
 
+/** The screens and the function that draws each. */
 const SCREENS = {
   kitchen: { label: 'Kitchen', icon: '🍟', render: renderKitchen },
   book: { label: 'Recipes', icon: '📖', render: renderBook },
@@ -51,6 +53,7 @@ const SCREENS = {
   hall: { label: 'Hall', icon: '🏛️', render: renderHall, lock: 'hall', hidden: true },
 };
 
+/** Is a screen still locked? */
 const isLocked = (scr) => {
   if (!scr.lock) return false;
   if (scr.lock === 'worlds') return !worldsUnlocked(app.state);
@@ -58,6 +61,7 @@ const isLocked = (scr) => {
   return !app.state.unlocks[scr.lock];
 };
 
+/** The app: the save, the current screen, and saving/redrawing. */
 const app = {
   state: load(storage),
   rng: makeRng(Date.now() ^ Math.floor(Math.random() * 1e9)),
@@ -159,6 +163,7 @@ const app = {
   },
 };
 
+/** The top bar: money and screen tabs. */
 function renderTopbar() {
   const s = app.state;
   const n = discoveredCount(s);
@@ -185,6 +190,7 @@ function renderTopbar() {
   $('#settingsBtn').onclick = openSettings;
 }
 
+/** The title screen. */
 function renderTitle() {
   $('#topbar').innerHTML = '';
   const root = $('#screen');
@@ -223,6 +229,7 @@ function renderTitle() {
   if (q) q.onclick = () => steam.quit();
 }
 
+/** The how-to-play screen. */
 function showHowTo(firstTime) {
   openModal(
     `<h2>How to Play</h2>
@@ -250,6 +257,7 @@ function showHowTo(firstTime) {
   $('[data-close]').onclick = closeModal;
 }
 
+/** The achievements list. */
 function showAchievements() {
   const s = app.state;
   const done = ACHIEVEMENTS.filter((a) => s.achievements[a.id]).length;
@@ -268,6 +276,7 @@ function showAchievements() {
   );
 }
 
+/** The settings screen. */
 function openSettings() {
   const st = app.state.settings;
   openModal(
@@ -371,12 +380,14 @@ function openSettings() {
   };
 }
 
+/** Toggles fullscreen. */
 function toggleFullscreen() {
   if (steam?.toggleFullscreen) return steam.toggleFullscreen();
   if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
   else document.exitFullscreen?.();
 }
 
+/** Keyboard shortcuts. */
 function onKey(e) {
   if (e.key === 'Escape') {
     if (modalOpen()) closeModal();
@@ -391,6 +402,7 @@ function onKey(e) {
   if (app.screen === 'kitchen' && kitchenKeys(app, e)) e.preventDefault();
 }
 
+/** Starts the game. */
 function boot() {
   configureAudio(app.state.settings);
   tickThrift(app.state, app.rng);

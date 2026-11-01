@@ -15,6 +15,7 @@ const O = (id, name, prefix, rarity, anchor) => ({
   price: rarity === 'legendary' ? 450 : rarity === 'rare' ? 220 : 110,
 });
 
+/** Thrift-store object cards. */
 export const OBJECTS = [
   O('cowboyhat', 'Cowboy Hat', 'Cowboy', 'common', 'top'),
   O('sunglasses', 'Sunglasses', 'Cool', 'common', 'face'),

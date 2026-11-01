@@ -1,14 +1,15 @@
 // The Recipe Book: every one of the 1,001 recipes, discovered or not.
 
-import { RECIPES, TOTAL_RECIPES } from '../data/recipes.js';
 import { renderBoat } from '../art/fries.js';
-import { discoveredCount } from '../game/state.js';
+import { RECIPES, TOTAL_RECIPES } from '../data/recipes.js';
 import { knownReward } from '../game/kitchen.js';
+import { discoveredCount } from '../game/state.js';
 import { $, $$, chipHtml, esc, openModal } from './dom.js';
 
 const PAGE = 40;
 const view = { filter: 'all', tier: 'all', q: '', page: 0 };
 
+/** Recipe book tiers. */
 const TIERS = [
   { id: 'all', label: 'All' },
   { id: 'basic', label: 'Basic' },
@@ -16,12 +17,14 @@ const TIERS = [
   { id: 'object', label: 'Thrift' },
 ];
 
+/** How many recipes of a tier are discovered. */
 function tierProgress(state, tier) {
   const list = RECIPES.filter((r) => tier === 'all' || r.tier === tier);
   const done = list.filter((r) => state.discovered[r.key]).length;
   return { done, total: list.length };
 }
 
+/** The recipe book screen. */
 export function renderBook(app, root) {
   const s = app.state;
   const q = view.q.trim().toLowerCase();

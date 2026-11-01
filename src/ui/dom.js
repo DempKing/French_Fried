@@ -6,12 +6,14 @@ import { CARDS } from '../data/recipes.js';
 export const $ = (sel, root = document) => root.querySelector(sel);
 export const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
+/** Escapes text for HTML. */
 export const esc = (s) =>
   String(s).replace(
     /[&<>"']/g,
     (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
   );
 
+/** A short message that pops up and fades. */
 export function toast(msg, kind = 'info', ms = 2600) {
   const box = $('#toasts');
   if (!box) return;
@@ -25,6 +27,7 @@ export function toast(msg, kind = 'info', ms = 2600) {
 }
 
 let modalClose = null;
+/** Opens a modal. */
 export function openModal(html, { cls = '', onClose, dismissable = true } = {}) {
   closeModal();
   const root = $('#modal');
@@ -38,6 +41,7 @@ export function openModal(html, { cls = '', onClose, dismissable = true } = {}) 
   return $('.modal', root);
 }
 
+/** Closes the modal. */
 export function closeModal() {
   const root = $('#modal');
   if (!root || !root.classList.contains('open')) return;
@@ -50,6 +54,7 @@ export function closeModal() {
 
 export const modalOpen = () => $('#modal')?.classList.contains('open');
 
+/** A card's tier name. */
 export function tierLabel(card) {
   if (card.kind === 'object') return card.rarity;
   return card.tier;
@@ -75,6 +80,7 @@ export function chipHtml(id, { unknown = false } = {}) {
   return `<span class="chip ${c.kind === 'object' ? 'tier-object' : `tier-${c.tier}`}" title="${esc(c.name)}">${cardArtSvg(c)}</span>`;
 }
 
+/** Card pack artwork. */
 export function packArtSvg(kind) {
   const premium = kind === 'premium';
   const c1 = premium ? '#2b2b3a' : '#e0342a';
@@ -91,6 +97,7 @@ export function packArtSvg(kind) {
   </svg>`;
 }
 
+/** "2h 5m" style text for a time left. */
 export function countdown(ms) {
   const s = Math.max(0, Math.ceil(ms / 1000));
   const m = Math.floor(s / 60);

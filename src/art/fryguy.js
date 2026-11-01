@@ -1,8 +1,8 @@
 // GMO fry characters for The Lab and The Fryer.
 
-import { fryShape, fryColor, TRAIT_MAP } from '../game/lab.js';
-import { creatureBody, hybridParts } from './creatures.js';
 import { CREATURE_MAP } from '../data/worlds.js';
+import { fryColor, fryShape, TRAIT_MAP } from '../game/lab.js';
+import { creatureBody, hybridParts } from './creatures.js';
 
 const K = '#2b1d14';
 const W = `stroke="${K}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"`;
@@ -43,6 +43,7 @@ function curlyBody(color) {
     .join('');
   return back + front;
 }
+/** SVG path points along a run, without its two end points. */
 const run0 = (r) =>
   r.pts
     .slice(1, -1)
@@ -69,6 +70,7 @@ function crinkleBody(color) {
   return `<path d="${d}" fill="${color}" ${W}/>${ridges}<rect x="36" y="16" width="4" height="58" rx="2" fill="#fff" opacity=".4"/>`;
 }
 
+/** A fry fighter's body. */
 function body(shape, color) {
   switch (shape) {
     case 'curly':
@@ -97,6 +99,7 @@ function body(shape, color) {
   }
 }
 
+/** A fry fighter's face for a mood. */
 function face(mood, shape, yOverride) {
   const y = yOverride ?? (shape === 'tot' ? 52 : shape === 'curly' ? 38 : 40);
   if (mood === 'dead') {
@@ -114,6 +117,7 @@ function face(mood, shape, yOverride) {
   return eyes + (mood === 'happy' ? '' : brows) + mouth;
 }
 
+/** A fry fighter as SVG. */
 export function renderFryGuy(fry, { mood = 'idle', flip = false, cls = '' } = {}) {
   const shape = fryShape(fry);
   const color = mood === 'dead' ? '#7a4a1e' : fryColor(fry);
@@ -159,6 +163,7 @@ export function renderFryGuy(fry, { mood = 'idle', flip = false, cls = '' } = {}
   </svg>`;
 }
 
+/** Badges for a fry's traits. */
 export function traitBadges(fry) {
   return fry.traits
     .map((t) => `<span class="trait" title="${TRAIT_MAP[t]?.desc || ''}">${TRAIT_MAP[t]?.name || t}</span>`)
