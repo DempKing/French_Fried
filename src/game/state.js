@@ -97,6 +97,8 @@ export function defaultState(now = Date.now()) {
 export function migrate(raw) {
   const base = defaultState();
   if (!raw || typeof raw !== 'object') return base;
+  // The Greyling alien became the Grayling (American spelling); rename it in older saves.
+  raw = JSON.parse(JSON.stringify(raw).replace(/"greyling"/g, '"grayling"'));
   const s = { ...base, ...raw };
   for (const k of ['unlocks', 'thrift', 'lab', 'fryer', 'worlds', 'universe', 'stats', 'settings'])
     s[k] = { ...base[k], ...(raw[k] || {}) };

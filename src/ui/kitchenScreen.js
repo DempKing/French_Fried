@@ -158,7 +158,7 @@ function doRedraw(app) {
   app.commit();
 }
 
-/** Buys a recipe rumour (a hint). */
+/** Buys a recipe rumor (a hint). */
 function doRumor(app) {
   const res = buyRumor(app.state, app.rng);
   if (!res.ok) {

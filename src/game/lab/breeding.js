@@ -252,7 +252,7 @@ export function fryShape(fry) {
   for (const tid of fry.traits) if (TRAIT_MAP[tid]?.shape) return TRAIT_MAP[tid].shape;
   return 'straight';
 }
-/** A fry's colour. */
+/** A fry's color. */
 export function fryColor(fry) {
   for (const tid of fry.traits) if (TRAIT_MAP[tid]?.color) return TRAIT_MAP[tid].color;
   return `hsl(${fry.hue} 88% 62%)`;

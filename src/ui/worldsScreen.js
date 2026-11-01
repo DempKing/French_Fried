@@ -169,7 +169,7 @@ function bindTravel(app, root) {
   $$('[data-travel]', root).forEach((b) => (b.onclick = () => confirmTravel(app, b.dataset.travel)));
 }
 
-/** Asks before travelling to a world. */
+/** Asks before traveling to a world. */
 function confirmTravel(app, id) {
   const s = app.state;
   const w = WORLD_MAP[id];

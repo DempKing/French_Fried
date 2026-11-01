@@ -1,9 +1,9 @@
-// Shared drawing toolkit: colour maths, organic blob paths and cel shading.
+// Shared drawing toolkit: color math, organic blob paths and cel shading.
 
 export const INK = '#2b1d14';
 export const f = (n) => (Math.round(n * 10) / 10).toString();
 
-/** Hex colour to [r, g, b]. */
+/** Hex color to [r, g, b]. */
 function toRgb(hex) {
   let h = hex.replace('#', '');
   if (h.length === 3)
@@ -14,7 +14,7 @@ function toRgb(hex) {
   const n = parseInt(h, 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
-/** [r, g, b] to a hex colour. */
+/** [r, g, b] to a hex color. */
 const toHex = (r, g, b) =>
   '#' +
   [r, g, b]
@@ -25,14 +25,14 @@ const toHex = (r, g, b) =>
     )
     .join('');
 
-/** Darken (amt < 0) or lighten (amt > 0) a hex colour. */
+/** Darken (amt < 0) or lighten (amt > 0) a hex color. */
 export function shade(hex, amt) {
   const [r, g, b] = toRgb(hex);
   if (amt < 0) return toHex(r * (1 + amt), g * (1 + amt), b * (1 + amt));
   return toHex(r + (255 - r) * amt, g + (255 - g) * amt, b + (255 - b) * amt);
 }
 
-/** Mix two hex colours. */
+/** Mix two hex colors. */
 export function mix(a, b, t) {
   const A = toRgb(a);
   const B = toRgb(b);

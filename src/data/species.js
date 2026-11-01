@@ -1,5 +1,5 @@
 // Species-specific gene splicing traits and treatments.
-// Fries specialise in HP, burgers in defense, sodas in attack, cotton candy in
+// Fries specialize in HP, burgers in defense, sodas in attack, cotton candy in
 // speed, hotdogs in critical hits, and aliens are strong all-rounders.
 
 const T = (id, name, cost, desc, extra) => ({ id, name, cost, desc, ...extra });

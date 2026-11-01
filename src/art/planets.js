@@ -21,7 +21,7 @@ const band = (top, bot, color) =>
 const SURFACES = {
   hotdog(rng) {
     let s = `<rect width="${W}" height="${H}" fill="#d9493a"/>`;
-    // Ketchup seas with bun-coloured continents, each holding a sausage range.
+    // Ketchup seas with bun-colored continents, each holding a sausage range.
     for (let i = 0; i < 5; i++) {
       const cx = i * 40 + rng.range(5, 30),
         cy = rng.range(28, 72),
@@ -115,7 +115,7 @@ const SURFACES = {
   },
 };
 
-/** Each planet's glow colour. */
+/** Each planet's glow color. */
 const GLOW = {
   hotdog: '#ffb36b',
   burger: '#ffd27a',

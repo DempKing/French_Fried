@@ -1,5 +1,5 @@
 // Card illustrations for ingredients. 100x100 viewBox, cel-shaded cartoon style.
-// Each archetype receives the card's colours ({ c, c2 }) and a seeded rng.
+// Each archetype receives the card's colors ({ c, c2 }) and a seeded rng.
 
 import {
   INK,
@@ -26,7 +26,7 @@ const spark = (x, y, s, c = '#fff') =>
 const steam = (x, y) =>
   `<path d="M${x} ${y}q-5 -6 0 -12t0 -12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>`;
 
-// A labelled paper sticker used on bottles and jars.
+// A labeled paper sticker used on bottles and jars.
 const labelArt = (x, y, w, h, c, icon = '') => `${cel(rrect(x, y, w, h, 3), c, { depth: 2, sw: 2 })}
   <path d="M${x + 5} ${y + h - 5}h${w - 10}" stroke="${shade(c, -0.45)}" stroke-width="1.6" opacity=".55" stroke-linecap="round"/>${icon}`;
 

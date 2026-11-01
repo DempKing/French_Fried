@@ -591,3 +591,9 @@ test('new achievements: millionaire, Universe on Impossible, icons for every ach
   assert.ok(got.includes('impossible') && got.includes('brutal') && got.includes('hardboiled'));
   assert.ok(ACHIEVEMENT_MAP.impossible.test(s));
 });
+
+test('older saves with the Greyling alien load it as the Grayling', async () => {
+  const { migrate } = await import('../src/game/state.js');
+  const s = migrate({ worlds: { dna: { greyling: 2 } } });
+  assert.equal(s.worlds.dna.grayling, 2);
+});

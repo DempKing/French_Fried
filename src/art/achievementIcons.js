@@ -1,5 +1,5 @@
 // Achievement badges, drawn from the game's own art. The same SVG is used in game and
-// exported to 256x256 PNGs (achieved + greyscale locked) for Steam by scripts/steam-icons.mjs.
+// exported to 256x256 PNGs (achieved + grayscale locked) for Steam by scripts/steam-icons.mjs.
 
 import { CARDS } from '../data/recipes.js';
 import { cardArtSvg } from './cards.js';
@@ -8,7 +8,7 @@ import { renderFryGuy } from './fryguy.js';
 import { INK, shade } from './paint.js';
 import { planetSvg } from './planets.js';
 
-/** Badge colours for each achievement category. */
+/** Badge colors for each achievement category. */
 export const CATEGORY = {
   recipes: { name: 'Recipes', color: '#f39c32' },
   kitchen: { name: 'Kitchen', color: '#e2533b' },
@@ -123,7 +123,7 @@ function art(icon) {
 
 let uid = 0;
 
-/** A 256x256 achievement badge. `locked` renders the greyscale version Steam shows before unlocking. */
+/** A 256x256 achievement badge. `locked` renders the grayscale version Steam shows before unlocking. */
 export function achievementIcon(a, { locked = false, size, square = false } = {}) {
   const k = `ach${++uid}`;
   const col = CATEGORY[a.cat]?.color || '#c9a227';

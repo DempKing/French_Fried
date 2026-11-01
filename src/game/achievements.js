@@ -513,7 +513,7 @@ export const ACHIEVEMENTS = [
     'closeencounter',
     'Close Encounter',
     'Collect alien DNA.',
-    { kind: 'fry', species: 'alien', creature: 'greyling' },
+    { kind: 'fry', species: 'alien', creature: 'grayling' },
     (s) => ALIEN_CREATURES.some((id) => (s.worlds?.dna?.[id] || 0) > 0 || s.worlds?.grownSpecies?.alien),
   ),
   A(

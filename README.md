@@ -85,7 +85,7 @@ The code has no runtime dependencies. It is plain ES modules:
 
 1. Create the app in Steamworks. Add the achievements from `steam/achievements.csv` (API names are
    the upper-cased achievement ids). Each row names its icons in `steam/achievements/`: a 256x256
-   `<API_NAME>.png` for the unlocked badge and `<API_NAME>_locked.png` for the greyscale one.
+   `<API_NAME>.png` for the unlocked badge and `<API_NAME>_locked.png` for the grayscale one.
    `steam/achievements/index.html` previews them all. After adding or changing achievements in
    `src/game/achievements.js`, run `npm run steam:achievements` to regenerate the CSV and icons
    (rendering the PNGs needs Playwright: `npm i -D playwright`).

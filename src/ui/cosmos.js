@@ -40,7 +40,7 @@ export function openLetter(app, fry) {
     ${envelopeSvg()}
     <div class="letter-paper">
       <p class="letter-head">To the honorable ${esc(fry.name)},</p>
-      <p>Word of your victories has travelled across the stars. Every arena on your home world and on all four food worlds has fallen before you.</p>
+      <p>Word of your victories has traveled across the stars. Every arena on your home world and on all four food worlds has fallen before you.</p>
       <p>You are hereby invited to the <b>Champions of the Universe Tournament</b>: 128 of the fiercest fighters in the galaxy, one prize of <b>$1,000,000</b>, and the title <i>Champion of the Universe</i>.</p>
       <p>Should you accept, transport will arrive shortly. Please stand very still.</p>
       <p class="letter-sign">— The Galactic Fry Federation 🛸</p>

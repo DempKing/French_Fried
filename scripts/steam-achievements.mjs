@@ -1,7 +1,7 @@
 // Exports every achievement for Steamworks:
 //   steam/achievements.csv                    API name, display name, description, icon files
 //   steam/achievements/<API_NAME>.png         256x256 unlocked icon
-//   steam/achievements/<API_NAME>_locked.png  256x256 greyscale icon shown before unlocking
+//   steam/achievements/<API_NAME>_locked.png  256x256 grayscale icon shown before unlocking
 //   steam/achievements/index.html             preview sheet of every badge
 //
 // Usage: npm run steam:achievements

@@ -232,7 +232,7 @@ function alien(variant, dead) {
         <path d="M26 24L32 2L42 18L50 -2L58 18L68 2L74 24Z" fill="${g('#f2c94c')}" ${S}/><circle cx="50" cy="12" r="4" fill="#e8262f" ${S}/>
         <path d="M30 62L50 74L70 62" fill="none" stroke="${g('#f2c94c')}" stroke-width="3"/>`,
       };
-    default: // grey
+    default: // gray
       return {
         faceY: 38,
         body: `${cel(rrect(38, 58, 24, 34, 10), g('#a9c4a0'), { depth: 3 })}

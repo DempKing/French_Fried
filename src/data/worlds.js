@@ -8,7 +8,7 @@ export const GROW_DNA_COST = 800;
 export const GROW_DNA_SAMPLES = 3;
 export const MAX_DNA_SPLICES = 3;
 
-/** Rarity levels and their colours. */
+/** Rarity levels and their colors. */
 export const RARITY = {
   common: { weight: 64, wild: 2.3, grown: 1.7, splice: 0.1, reward: 150, label: 'Common' },
   rare: { weight: 29, wild: 2.85, grown: 2.05, splice: 0.15, reward: 400, label: 'Rare' },
@@ -200,7 +200,7 @@ export const WORLDS = [
       },
     ],
     creatures: [
-      C('greyling', 'Greyling', 'common', 'grey', 'Big head, bigger questions. Probes everything.'),
+      C('grayling', 'Grayling', 'common', 'gray', 'Big head, bigger questions. Probes everything.'),
       C('gloop', 'Gloop', 'common', 'blob', 'A wobbly green blob that absorbs fries whole.'),
       C('tentaclor', 'Tentaclor', 'rare', 'squid', 'Eight arms. Eight attacks. No mercy.'),
       C('cybermartian', 'Cyber Martian', 'rare', 'cyborg', 'Half alien, half machine, all business.'),
