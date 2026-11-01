@@ -37,21 +37,21 @@ const HANDCRAFTED = [
   ['Salt & Vinegar Fries', 'salt+vinegar', 'Tangy, salty, legendary.'],
   ['Salt & Pepper Fries', 'salt+pepper', 'The dynamic duo of the spice rack.'],
   ['Chili Cheese Fries', 'chili+cheddar', 'A heart-stopping classic.'],
-  ['Poutine', 'curds+gravy', 'Canada\'s greatest export.'],
+  ['Poutine', 'curds+gravy', "Canada's greatest export."],
   ['Disco Fries', 'gravy+mozzarella', 'Jersey diner fries for after the club.'],
   ['Garlic Parmesan Fries', 'garlic+parmesan', 'Garlic and parm, best friends forever.'],
   ['Truffle Parmesan Fries', 'truffleoil+parmesan', 'Bistro royalty.'],
   ['Loaded Fries', 'cheddar+bacon+sourcream+chives', 'Everything, everywhere, all at once.'],
   ['Cheese & Bacon Fries', 'cheddar+bacon', 'An undefeated tag team.'],
   ['Buffalo Ranch Fries', 'buffalo+ranch', 'Wing night in a boat.'],
-  ['Fry Sauce Fries', 'ketchup+mayo', 'Utah\'s pink secret.'],
+  ['Fry Sauce Fries', 'ketchup+mayo', "Utah's pink secret."],
   ['Animal Style Fries', 'cheddar+onion+ketchup+mayo', 'Off the secret menu.'],
-  ['Carne Asada Fries', 'beef+guac+sourcream+cheddar', 'San Diego\'s finest.'],
+  ['Carne Asada Fries', 'beef+guac+sourcream+cheddar', "San Diego's finest."],
   ['Cajun Garlic Fries', 'cajun+garlic', 'Big Easy flavor.'],
   ['Pizza Fries', 'mozzarella+tomato', 'Pizza night, fry edition.'],
   ['Chili Cheese Onion Fries', 'chili+cheddar+onion', 'Extra onion, extra tears.'],
   ['Fries Supreme', 'nacho+jalapeno+salsa+sourcream', 'Supreme in every sense.'],
-  ['Jalapeño Popper Fries', 'jalapeno+cheddar+sourcream', 'Poppin\' off.'],
+  ['Jalapeño Popper Fries', 'jalapeno+cheddar+sourcream', "Poppin' off."],
   ['Honey Mustard Fries', 'honey+mustard', 'Sweet and sharp.'],
   ['BBQ Bacon Fries', 'bbq+bacon', 'Smoke on smoke.'],
   ['Hot Honey Fries', 'honey+hotsauce', 'Sweet heat.'],
@@ -101,7 +101,7 @@ const HANDCRAFTED = [
   ['Sushi Fries', 'salmon+wasabi+soy', 'Rolled? No. Fried? Yes.'],
   ['Harissa Feta Fries', 'harissa+feta', 'North African fire, Greek cool.'],
   ['Inferno Fries', 'ghostpepper+hotsauce+jalapeno', 'You were warned.'],
-  ['Texas Fries', 'brisket+bbq', 'Everything\'s bigger.'],
+  ['Texas Fries', 'brisket+bbq', "Everything's bigger."],
   ['Pitmaster Fries', 'brisket+bbq+pickle+onion', 'Low and slow, fried and fast.'],
   ['Carolina Fries', 'pulledpork+bbq', 'Vinegar-kissed pork heaven.'],
   ['Brie & Honey Fries', 'brie+honey', 'Cheese board energy.'],
@@ -115,10 +115,10 @@ const HANDCRAFTED = [
   ['Unicorn Fries', 'glitter+icecream', 'Magical and mildly concerning.'],
   ['Bling Fries', 'glitter+goldleaf', 'Shine bright.'],
   ['Midas Fries', 'truffle+goldleaf', 'Everything he touched turned to fries.'],
-  ['Sweet & Swine Fries', 'chocolate+bacon', 'Don\'t knock it.'],
+  ['Sweet & Swine Fries', 'chocolate+bacon', "Don't knock it."],
   ['Dill Ranch Fries', 'pickle+ranch', 'Briny and creamy.'],
   ['Chicago Style Fries', 'mustard+onion+pickle+tomato', 'Never ketchup in Chicago.'],
-  ['Cheesesteak Fries', 'beef+onion+nacho', 'Wit\' wiz.'],
+  ['Cheesesteak Fries', 'beef+onion+nacho', "Wit' wiz."],
   ['Cheeseburger Fries', 'beef+cheddar+ketchup+pickle', 'A burger that went fry-side.'],
   ['Bacon Cheeseburger Fries', 'beef+cheddar+bacon+ketchup+pickle', 'Maximum drive-thru.'],
   ['Special Sauce Fries', 'beef+cheddar+pickle+onion+mayo', 'Two all-beef patties... no wait.'],
@@ -160,24 +160,24 @@ const HANDCRAFTED = [
   ['Nacho Average Fries', 'nacho+salsa+guac+jalapeno+sourcream', 'Fully loaded nacho fries.'],
   ['Burrito Bowl Fries', 'chicken+salsa+guac+sourcream', 'Skip the rice.'],
   ['Wake & Bacon Fries', 'bacon+egg', 'Rise and fry.'],
-  ['Chili Dog-less Fries', 'chili+mustard+onion', 'Where\'s the dog? Who cares.'],
+  ['Chili Dog-less Fries', 'chili+mustard+onion', "Where's the dog? Who cares."],
   ['Mac Attack Fries', 'cheddar+nacho+mozzarella', 'Three cheeses, zero regrets.'],
   ['Cheese Overload Fries', 'cheddar+nacho+mozzarella+parmesan+bluecheese', 'Lactose intolerance speedrun.'],
   ['Everything Bagel Fries', 'sesame+garlic+onion+salt', 'Everything but the bagel.'],
   ['Smokehouse Fries', 'bbq+brisket+pulledpork', 'A pit-smoked trinity.'],
   // --- Thrift store madness
   ['Cowboy Fries', 'chili+cheddar+cowboyhat', 'Yeehaw! A chili cheese classic that rides at dawn.'],
-  ['Pirate\'s Booty Fries', 'piratehat+goldleaf', 'X marks the fries.'],
+  ["Pirate's Booty Fries", 'piratehat+goldleaf', 'X marks the fries.'],
   ['Royal Fries', 'crown+truffleoil+caviar', 'By royal decree.'],
-  ['Enchanted Fries', 'wizardhat+glitter', 'You\'re a fry, Harry.'],
+  ['Enchanted Fries', 'wizardhat+glitter', "You're a fry, Harry."],
   ['Valhalla Fries', 'vikinghelmet+beef+gravy', 'Feast of the fallen warriors.'],
   ['Fiesta Fries', 'sombrero+salsa+guac', '¡Olé!'],
   ['Parisian Frites', 'beret+brie', 'Ooh la la.'],
-  ['Chef\'s Kiss Fries', 'chefhat+truffleoil+parmesan', 'Mwah!'],
+  ["Chef's Kiss Fries", 'chefhat+truffleoil+parmesan', 'Mwah!'],
   ['Angel Food Fries', 'halo+icecream', 'Heavenly sweet.'],
-  ['Devil\'s Fries', 'devilhorns+ghostpepper', 'Hot as you-know-where.'],
+  ["Devil's Fries", 'devilhorns+ghostpepper', 'Hot as you-know-where.'],
   ['Angel & Devil Fries', 'halo+devilhorns', 'Good fries, bad fries.'],
-  ['Gentleman\'s Fries', 'tophat+monocle+mustache', 'Indubitably.'],
+  ["Gentleman's Fries", 'tophat+monocle+mustache', 'Indubitably.'],
   ['Dapper Fries', 'bowtie+tophat', 'Black tie required.'],
   ['Circus Fries', 'clownnose+ketchup+mustard', 'Honk honk.'],
   ['Birthday Fries', 'partyhat+candle+icecream', 'Make a wish!'],
@@ -185,7 +185,7 @@ const HANDCRAFTED = [
   ['Rockstar Fries', 'guitar+sunglasses', 'Turn it up to eleven.'],
   ['Haunted Fries', 'skull+candle', 'Spooky scary fries.'],
   ['Winter Wonderland Fries', 'snowglobe+icecream', 'Let it snow.'],
-  ['Tumbleweed Fries', 'cactus+cowboyhat', 'This town ain\'t big enough.'],
+  ['Tumbleweed Fries', 'cactus+cowboyhat', "This town ain't big enough."],
   ['Tailgate Fries', 'football+chili', 'Game day essentials.'],
   ['Groovy Fries', 'lavalamp+discoball', 'Far out, man.'],
   ['Mystic Fries', 'crystalball+truffle', 'I foresee... fries.'],
@@ -202,27 +202,58 @@ const HANDCRAFTED = [
   ['Road Work Fries', 'trafficcone+mustard', 'Caution: hot.'],
   ['Victory Fries', 'flag+trophy', 'We are the champions.'],
   ['Hall of Fame Fries', 'trophy+goldleaf+crown', 'Immortal crispiness.'],
-  ['Fries With Eyes', 'googlyeyes+ketchup', 'They\'re watching you eat.'],
+  ['Fries With Eyes', 'googlyeyes+ketchup', "They're watching you eat."],
   ['King of the Rodeo Fries', 'cowboyhat+crown', 'All hail the rodeo king.'],
-  ['Sheriff Fries', 'cowboyhat+mustache', 'There\'s a new fry in town.'],
-  ['Captain Quack\'s Fries', 'piratehat+rubberduck', 'Arrr-quack!'],
+  ['Sheriff Fries', 'cowboyhat+mustache', "There's a new fry in town."],
+  ["Captain Quack's Fries", 'piratehat+rubberduck', 'Arrr-quack!'],
   ['Sorcerer Supreme Fries', 'wizardhat+crystalball', 'Mystical mastery.'],
   ['Bearded Berserker Fries', 'vikinghelmet+mustache', 'RAAAH!'],
   ['Le Fancy Frites', 'beret+mustache', 'Hon hon hon.'],
   ['Le Chef Frites', 'chefhat+beret', 'Très magnifique.'],
-  ['Beach Bum Fries', 'lei+sunglasses', 'Surf\'s up.'],
-  ['Tropical Fries', 'umbrella+lemon', 'Sippin\' on sunshine.'],
+  ['Beach Bum Fries', 'lei+sunglasses', "Surf's up."],
+  ['Tropical Fries', 'umbrella+lemon', "Sippin' on sunshine."],
   ['Candlelit Fries', 'candle+truffle+brie', 'Date night.'],
   ['Cowboy Breakfast Fries', 'cowboyhat+egg+bacon', 'Chuck wagon chow.'],
   ['Mardi Gras Fries', 'partyhat+cajun+shrimp', 'Throw me something, mister!'],
   ['Day of the Dead Fries', 'skull+sombrero+salsa', 'A colorful celebration.'],
   ['Moon Pie Fries', 'rocket+chocolate+icecream', 'One small bite for fry-kind.'],
-  ['Mad Hatter Fries', 'tophat+partyhat+wizardhat', 'We\'re all mad here.'],
+  ['Mad Hatter Fries', 'tophat+partyhat+wizardhat', "We're all mad here."],
   ['Hat Trick Fries', 'cowboyhat+tophat+beret', 'Three hats, one boat.'],
   ['The Ultimate Champion', 'trophy+crown+diamond+goldleaf+caviar', 'The final boss of fries.'],
 ];
 
-const FLAIRS = ['Grandma\'s', 'Midnight', 'Turbo', 'Deluxe', 'Mega', 'Ultimate', 'Secret', 'Backyard', 'Street-Cart', 'Weekend', 'Diner', 'Supreme', 'Lucky', 'Rebel', 'Cosmic', 'Golden-Hour', 'Double-Down', 'Late-Night', 'Neighborhood', 'Haunted Kitchen', 'Boardwalk', 'County Fair', 'Gas Station', 'Food Truck', 'Wild', 'Mystery', 'Thunder', 'Velvet', 'Rocket', 'Sunday'];
+const FLAIRS = [
+  "Grandma's",
+  'Midnight',
+  'Turbo',
+  'Deluxe',
+  'Mega',
+  'Ultimate',
+  'Secret',
+  'Backyard',
+  'Street-Cart',
+  'Weekend',
+  'Diner',
+  'Supreme',
+  'Lucky',
+  'Rebel',
+  'Cosmic',
+  'Golden-Hour',
+  'Double-Down',
+  'Late-Night',
+  'Neighborhood',
+  'Haunted Kitchen',
+  'Boardwalk',
+  'County Fair',
+  'Gas Station',
+  'Food Truck',
+  'Wild',
+  'Mystery',
+  'Thunder',
+  'Velvet',
+  'Rocket',
+  'Sunday',
+];
 
 const BLURBS = [
   'An unlikely pairing that just works.',
@@ -237,7 +268,7 @@ const BLURBS = [
   'Banned in three countries. Beloved in all of them.',
   'Pairs well with questionable decisions.',
   'A flavor collab nobody asked for, everybody needed.',
-  'It shouldn\'t work. It absolutely does.',
+  "It shouldn't work. It absolutely does.",
   'Approved by a panel of very hungry raccoons.',
   'The secret is the fries. And also everything else.',
   'Certified fresh by the Fry Council.',
@@ -257,7 +288,11 @@ function buildRecipes() {
     const unique = [...new Set(ids)];
     const cards = unique.map((id) => CARDS[id]);
     const value = Math.round(8 + cards.reduce((s, c) => s + c.value, 0) * (1 + 0.15 * (unique.length - 1)));
-    const tier = cards.some((c) => c.kind === 'object') ? 'object' : cards.some((c) => c.tier === 'premium') ? 'premium' : 'basic';
+    const tier = cards.some((c) => c.kind === 'object')
+      ? 'object'
+      : cards.some((c) => c.tier === 'premium')
+        ? 'premium'
+        : 'basic';
     const r = { id: recipes.length, key, name, ids: unique.sort(), desc, source, value, tier };
     recipes.push(r);
     byKey.set(key, r);
@@ -274,11 +309,15 @@ function buildRecipes() {
   // Singles for every card.
   for (const c of [...BASIC_INGREDIENTS, ...PREMIUM_INGREDIENTS]) {
     const desc = `Just fries and ${c.name.toLowerCase()}. Pure.`;
-    add(`${c.noun} Fries`, [c.id], desc, 'gen') || add(`${c.name} Fries`, [c.id], desc, 'gen') || add(`Simply ${c.noun} Fries`, [c.id], desc, 'gen');
+    add(`${c.noun} Fries`, [c.id], desc, 'gen') ||
+      add(`${c.name} Fries`, [c.id], desc, 'gen') ||
+      add(`Simply ${c.noun} Fries`, [c.id], desc, 'gen');
   }
   for (const o of OBJECTS) {
     const desc = `Plain fries wearing a ${o.name.toLowerCase()}. Iconic.`;
-    add(`${o.prefix} Fries`, [o.id], desc, 'gen') || add(`${o.name} Fries`, [o.id], desc, 'gen') || add(`Fries in a ${o.name}`, [o.id], desc, 'gen');
+    add(`${o.prefix} Fries`, [o.id], desc, 'gen') ||
+      add(`${o.name} Fries`, [o.id], desc, 'gen') ||
+      add(`Fries in a ${o.name}`, [o.id], desc, 'gen');
   }
 
   const pairName = (a, b) => {
@@ -305,7 +344,8 @@ function buildRecipes() {
 
   const pairsOf = (list) => {
     const out = [];
-    for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) out.push([list[i], list[j]]);
+    for (let i = 0; i < list.length; i++)
+      for (let j = i + 1; j < list.length; j++) out.push([list[i], list[j]]);
     return out;
   };
 
@@ -318,12 +358,27 @@ function buildRecipes() {
   };
 
   // Basic pairs (early game bread & butter).
-  quota(rng.shuffle(pairsOf(BASIC_INGREDIENTS)).map(([a, b]) => () => tryNames(pairName(a, b), [a.id, b.id], blurb(), 'gen')), 195);
+  quota(
+    rng.shuffle(pairsOf(BASIC_INGREDIENTS)).map(
+      ([a, b]) =>
+        () =>
+          tryNames(pairName(a, b), [a.id, b.id], blurb(), 'gen'),
+    ),
+    195,
+  );
 
   // Premium-involving pairs.
   const premPairs = [];
-  for (const p of PREMIUM_INGREDIENTS) for (const b of ALL_INGREDIENTS) if (p.id !== b.id) premPairs.push([p, b]);
-  quota(rng.shuffle(premPairs).map(([a, b]) => () => tryNames(pairName(a, b), [a.id, b.id], blurb(), 'gen')), 135);
+  for (const p of PREMIUM_INGREDIENTS)
+    for (const b of ALL_INGREDIENTS) if (p.id !== b.id) premPairs.push([p, b]);
+  quota(
+    rng.shuffle(premPairs).map(
+      ([a, b]) =>
+        () =>
+          tryNames(pairName(a, b), [a.id, b.id], blurb(), 'gen'),
+    ),
+    135,
+  );
 
   // Triples (mostly basic, some premium).
   const triples = [];
@@ -332,32 +387,80 @@ function buildRecipes() {
     const t = rng.shuffle(pool).slice(0, 3);
     triples.push(t);
   }
-  quota(triples.map(([a, b, c]) => () => tryNames(tripleName(a, b, c), [a.id, b.id, c.id], blurb(), 'gen')), 115);
+  quota(
+    triples.map(
+      ([a, b, c]) =>
+        () =>
+          tryNames(tripleName(a, b, c), [a.id, b.id, c.id], blurb(), 'gen'),
+    ),
+    115,
+  );
 
   // Object remixes: a classic ingredient recipe + a silly object.
   const remixBases = classics.filter((r) => r.tier !== 'object' && r.ids.length <= 3);
   const remixes = [];
   for (const base of remixBases) for (const o of OBJECTS) remixes.push([base, o]);
-  quota(rng.shuffle(remixes).map(([base, o]) => () => add(`${o.prefix} ${base.name}`, [...base.ids, o.id], `${base.name}, but ${rng.pick(['make it', 'now with', 'featuring', 'starring', 'plus'])} a ${o.name.toLowerCase()}. ${blurb()}`, 'remix')), 150);
+  quota(
+    rng.shuffle(remixes).map(
+      ([base, o]) =>
+        () =>
+          add(
+            `${o.prefix} ${base.name}`,
+            [...base.ids, o.id],
+            `${base.name}, but ${rng.pick(['make it', 'now with', 'featuring', 'starring', 'plus'])} a ${o.name.toLowerCase()}. ${blurb()}`,
+            'remix',
+          ),
+    ),
+    150,
+  );
 
   // Object + ingredient pairs.
   const objIng = [];
   for (const o of OBJECTS) for (const c of ALL_INGREDIENTS) objIng.push([o, c]);
-  quota(rng.shuffle(objIng).map(([o, c]) => () => tryNames([`${o.prefix} ${c.noun} Fries`, `${c.adj} ${o.prefix} Fries`], [o.id, c.id], blurb(), 'gen')), 70);
+  quota(
+    rng.shuffle(objIng).map(
+      ([o, c]) =>
+        () =>
+          tryNames(
+            [`${o.prefix} ${c.noun} Fries`, `${c.adj} ${o.prefix} Fries`],
+            [o.id, c.id],
+            blurb(),
+            'gen',
+          ),
+    ),
+    70,
+  );
 
   // Object + object pairs, then fill whatever is left with wild quads.
-  quota(rng.shuffle(pairsOf(OBJECTS)).map(([a, b]) => () => tryNames([`${a.prefix} ${b.prefix} Fries`, `${b.prefix} ${a.prefix} Fries`], [a.id, b.id], blurb(), 'gen')), 40);
+  quota(
+    rng.shuffle(pairsOf(OBJECTS)).map(
+      ([a, b]) =>
+        () =>
+          tryNames(
+            [`${a.prefix} ${b.prefix} Fries`, `${b.prefix} ${a.prefix} Fries`],
+            [a.id, b.id],
+            blurb(),
+            'gen',
+          ),
+    ),
+    40,
+  );
 
   let guard = 0;
   while (recipes.length < TOTAL_RECIPES && guard++ < 20000) {
     const o = rng.pick(OBJECTS);
     const ings = rng.shuffle(ALL_INGREDIENTS).slice(0, rng.int(2, 3));
     const [a, b] = ings;
-    tryNames([
-      `${o.prefix} ${a.adj} ${b.noun} Fries`,
-      `${rng.pick(FLAIRS)} ${o.prefix} ${b.noun} Fries`,
-      `${o.prefix} ${a.noun} & ${b.noun} Fries`,
-    ], [o.id, ...ings.map((c) => c.id)], blurb(), 'gen');
+    tryNames(
+      [
+        `${o.prefix} ${a.adj} ${b.noun} Fries`,
+        `${rng.pick(FLAIRS)} ${o.prefix} ${b.noun} Fries`,
+        `${o.prefix} ${a.noun} & ${b.noun} Fries`,
+      ],
+      [o.id, ...ings.map((c) => c.id)],
+      blurb(),
+      'gen',
+    );
   }
 
   return { recipes, byKey };

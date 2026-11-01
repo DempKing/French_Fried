@@ -33,7 +33,8 @@ export function ufoSvg(cls = '') {
 /** Open the letter for a fighter who has won every home-world and food-world trophy. */
 export function openLetter(app, fry) {
   sfx('achievement');
-  const modal = openModal(`<div class="letter-modal">
+  const modal = openModal(
+    `<div class="letter-modal">
     ${envelopeSvg()}
     <div class="letter-paper">
       <p class="letter-head">To the honorable ${esc(fry.name)},</p>
@@ -43,11 +44,19 @@ export function openLetter(app, fry) {
       <p class="letter-sign">— The Galactic Fry Federation 🛸</p>
     </div>
     <div class="row center"><button class="btn" data-close>Not yet</button><button class="btn btn-primary" id="acceptLetter">Accept the invitation</button></div>
-  </div>`, { cls: 'center wide' });
-  $('[data-close]', modal).onclick = () => { closeModal(); toast('📜 The letter is saved in the Lab. Answer it any time.', 'info'); };
+  </div>`,
+    { cls: 'center wide' },
+  );
+  $('[data-close]', modal).onclick = () => {
+    closeModal();
+    toast('📜 The letter is saved in the Lab. Answer it any time.', 'info');
+  };
   $('#acceptLetter', modal).onclick = () => {
     const res = acceptLetter(app.state, fry.id);
-    if (!res.ok) { toast(res.reason, 'warn'); return; }
+    if (!res.ok) {
+      toast(res.reason, 'warn');
+      return;
+    }
     app.commit({ silentRender: true });
     abduction(app, fry);
   };
@@ -55,7 +64,8 @@ export function openLetter(app, fry) {
 
 /** A UFO beams the fighter up and flies off to the Alien Planet. */
 function abduction(app, fry) {
-  const modal = openModal(`<div class="abduction">
+  const modal = openModal(
+    `<div class="abduction">
     <div class="night">
       ${Array.from({ length: 30 }, (_, i) => `<i style="left:${(i * 37) % 100}%;top:${(i * 23) % 60}%"></i>`).join('')}
       <div class="ufo-wrap">${ufoSvg()}<div class="beam"></div></div>
@@ -64,16 +74,29 @@ function abduction(app, fry) {
     </div>
     <h2 id="abTitle">Something is landing...</h2>
     <div id="abDone"></div>
-  </div>`, { cls: 'center wide', dismissable: false });
+  </div>`,
+    { cls: 'center wide', dismissable: false },
+  );
   sfx('sizzle');
-  setTimeout(() => { $('#abTitle', modal).textContent = `${fry.name} is beamed aboard!`; sfx('heal'); }, 1600);
-  setTimeout(() => { $('#abTitle', modal).textContent = 'Next stop: the Alien Planet!'; sfx('win'); }, 3600);
+  setTimeout(() => {
+    $('#abTitle', modal).textContent = `${fry.name} is beamed aboard!`;
+    sfx('heal');
+  }, 1600);
+  setTimeout(() => {
+    $('#abTitle', modal).textContent = 'Next stop: the Alien Planet!';
+    sfx('win');
+  }, 3600);
   setTimeout(() => {
     $('.night', modal).remove();
-    $('#abDone', modal).innerHTML = `<div class="arrival space">${planet('alien')}<span>Welcome to the Alien Planet</span></div>
+    $('#abDone', modal).innerHTML =
+      `<div class="arrival space">${planet('alien')}<span>Welcome to the Alien Planet</span></div>
       <p>${esc(fry.name)} can now enter the <b>Champions of the Universe</b>. The Alien Planet is also open for exploring, so you can collect alien DNA.</p>
       <button class="btn btn-fry" id="goAlien">Go to the Alien Planet</button>`;
-    $('#goAlien', modal).onclick = () => { closeModal(); selectWorld('alien'); app.go('worlds'); };
+    $('#goAlien', modal).onclick = () => {
+      closeModal();
+      selectWorld('alien');
+      app.go('worlds');
+    };
   }, 4800);
 }
 
@@ -85,7 +108,9 @@ export function pendingLetters(state) {
 export function renderHall(app, root) {
   const s = app.state;
   const members = s.lab.fries.filter((f) => f.hof).sort((a, b) => (a.inducted || 0) - (b.inducted || 0));
-  const candidates = s.lab.fries.filter((f) => !f.hof && f.titles?.includes('universe') && s.fryer.run?.fryId !== f.id);
+  const candidates = s.lab.fries.filter(
+    (f) => !f.hof && f.titles?.includes('universe') && s.fryer.run?.fryId !== f.id,
+  );
   const plaque = (f) => `<div class="plaque">
     <div class="plaque-frame">${renderFryGuy(f, { mood: 'happy' })}</div>
     <h3>${esc(f.name)}</h3>
@@ -102,18 +127,27 @@ export function renderHall(app, root) {
     <div class="candidates">${candidates.map((f) => `<div class="candidate">${renderFryGuy(f)}<div><b>${esc(f.name)}</b><small>${kindLabel(f)} · ${f.titles.length} troph${f.titles.length > 1 ? 'ies' : 'y'} · Power ${power(f)}</small></div><button class="btn small" data-induct="${f.id}">Induct</button></div>`).join('') || '<p class="muted">Only a Champion of the Universe can be inducted. Win the Champions of the Universe tournament with a fighter to make them eligible.</p>'}</div>
   </section>`;
   $('#hallBreed', root).onclick = () => app.go('lab');
-  $$('[data-induct]', root).forEach((b) => (b.onclick = () => {
-    const f = getFry(s, +b.dataset.induct);
-    openModal(`<h2>🏛️ Induct ${esc(f.name)}?</h2>${statBlock(f)}<p>They'll retire from all arenas, exploring and treatments for good.</p><div class="row center"><button class="btn" data-close>Not yet</button><button class="btn btn-primary" data-yes>Induct</button></div>`, { cls: 'center' });
-    $('[data-close]').onclick = closeModal;
-    $('[data-yes]').onclick = () => {
-      const res = induct(s, f.id);
-      closeModal();
-      if (!res.ok) { sfx('error'); toast(res.reason, 'warn'); return; }
-      sfx('achievement');
-      toast(`🏛️ ${esc(f.name)} entered the Hall of Fame!`, 'achieve');
-      app.commit();
-    };
-  }));
+  $$('[data-induct]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        const f = getFry(s, +b.dataset.induct);
+        openModal(
+          `<h2>🏛️ Induct ${esc(f.name)}?</h2>${statBlock(f)}<p>They'll retire from all arenas, exploring and treatments for good.</p><div class="row center"><button class="btn" data-close>Not yet</button><button class="btn btn-primary" data-yes>Induct</button></div>`,
+          { cls: 'center' },
+        );
+        $('[data-close]').onclick = closeModal;
+        $('[data-yes]').onclick = () => {
+          const res = induct(s, f.id);
+          closeModal();
+          if (!res.ok) {
+            sfx('error');
+            toast(res.reason, 'warn');
+            return;
+          }
+          sfx('achievement');
+          toast(`🏛️ ${esc(f.name)} entered the Hall of Fame!`, 'achieve');
+          app.commit();
+        };
+      }),
+  );
 }
-

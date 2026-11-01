@@ -2,8 +2,15 @@
 // `anchor` says where the object sits on the fry boat illustration.
 
 const O = (id, name, prefix, rarity, anchor) => ({
-  id, name, prefix, rarity, anchor, kind: 'object', tier: 'object',
-  noun: name, adj: prefix,
+  id,
+  name,
+  prefix,
+  rarity,
+  anchor,
+  kind: 'object',
+  tier: 'object',
+  noun: name,
+  adj: prefix,
   value: rarity === 'legendary' ? 60 : rarity === 'rare' ? 40 : 25,
   price: rarity === 'legendary' ? 450 : rarity === 'rare' ? 220 : 110,
 });

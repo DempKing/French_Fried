@@ -14,36 +14,196 @@ export const COMPOST_VALUE = 40;
 export const TRAITS = [
   { id: 'crispy', name: 'Extra Crispy', cost: 220, desc: '+20% attack.', mods: { atk: 0.2 } },
   { id: 'thick', name: 'Thick Cut', cost: 220, desc: '+25% starch (HP).', mods: { hp: 0.25 } },
-  { id: 'curly', name: 'Curly', cost: 260, desc: '+12% dodge. Hard to pin down.', mods: { dodge: 0.12 }, shape: 'curly' },
-  { id: 'waffle', name: 'Waffle Lattice', cost: 260, desc: '+50% grease armor (defense).', mods: { def: 0.5 }, shape: 'waffle' },
-  { id: 'shoestring', name: 'Shoestring', cost: 200, desc: '+35% speed, -10% HP.', mods: { spd: 0.35, hp: -0.1 }, shape: 'shoestring' },
-  { id: 'spicy', name: 'Spicy Gene', cost: 320, desc: '30% chance to burn the foe for 3 turns.', effect: 'burn' },
-  { id: 'cheesy', name: 'Cheesy Armor', cost: 300, desc: 'The first hit taken is reduced by 70%.', effect: 'shield' },
+  {
+    id: 'curly',
+    name: 'Curly',
+    cost: 260,
+    desc: '+12% dodge. Hard to pin down.',
+    mods: { dodge: 0.12 },
+    shape: 'curly',
+  },
+  {
+    id: 'waffle',
+    name: 'Waffle Lattice',
+    cost: 260,
+    desc: '+50% grease armor (defense).',
+    mods: { def: 0.5 },
+    shape: 'waffle',
+  },
+  {
+    id: 'shoestring',
+    name: 'Shoestring',
+    cost: 200,
+    desc: '+35% speed, -10% HP.',
+    mods: { spd: 0.35, hp: -0.1 },
+    shape: 'shoestring',
+  },
+  {
+    id: 'spicy',
+    name: 'Spicy Gene',
+    cost: 320,
+    desc: '30% chance to burn the foe for 3 turns.',
+    effect: 'burn',
+  },
+  {
+    id: 'cheesy',
+    name: 'Cheesy Armor',
+    cost: 300,
+    desc: 'The first hit taken is reduced by 70%.',
+    effect: 'shield',
+  },
   { id: 'truffle', name: 'Truffle Aura', cost: 340, desc: '+15% critical chance.', mods: { crit: 0.15 } },
-  { id: 'glow', name: 'Glow-in-the-Dark', cost: 280, desc: 'Dazzles foes: they miss 15% more.', effect: 'blind' },
-  { id: 'regen', name: 'Regenerating Starch', cost: 360, desc: 'Heals 5% max HP each round.', effect: 'regen' },
-  { id: 'sweet', name: 'Sweet Potato', cost: 240, desc: '+35% HP, -10% speed.', mods: { hp: 0.35, spd: -0.1 }, color: '#e8823a' },
-  { id: 'double', name: 'Double Fried', cost: 380, desc: '+12% attack, +10% crit.', mods: { atk: 0.12, crit: 0.1 } },
+  {
+    id: 'glow',
+    name: 'Glow-in-the-Dark',
+    cost: 280,
+    desc: 'Dazzles foes: they miss 15% more.',
+    effect: 'blind',
+  },
+  {
+    id: 'regen',
+    name: 'Regenerating Starch',
+    cost: 360,
+    desc: 'Heals 5% max HP each round.',
+    effect: 'regen',
+  },
+  {
+    id: 'sweet',
+    name: 'Sweet Potato',
+    cost: 240,
+    desc: '+35% HP, -10% speed.',
+    mods: { hp: 0.35, spd: -0.1 },
+    color: '#e8823a',
+  },
+  {
+    id: 'double',
+    name: 'Double Fried',
+    cost: 380,
+    desc: '+12% attack, +10% crit.',
+    mods: { atk: 0.12, crit: 0.1 },
+  },
   { id: 'salted', name: 'Salted Edge', cost: 300, desc: '25% chance to cause bleeding.', effect: 'bleed' },
   { id: 'vampire', name: 'Vampire Spud', cost: 420, desc: 'Heals 30% of damage dealt.', effect: 'lifesteal' },
-  { id: 'tot', name: 'Tater Tot Form', cost: 400, desc: '15% chance to stun the foe.', effect: 'stun', shape: 'tot' },
-  { id: 'crinkle', name: 'Crinkle Cut', cost: 300, desc: 'Reflects 20% of damage taken.', effect: 'thorns', shape: 'crinkle' },
-  { id: 'golden', name: 'Golden Genes', cost: 500, desc: '+50% Fryer prize money.', effect: 'golden', color: '#f2c94c' },
-  { id: 'purple', name: 'Purple Majesty', cost: 260, desc: '+10% to all stats. Very regal.', mods: { hp: 0.1, atk: 0.1, def: 0.1, spd: 0.1 }, color: '#8e5bd6' },
+  {
+    id: 'tot',
+    name: 'Tater Tot Form',
+    cost: 400,
+    desc: '15% chance to stun the foe.',
+    effect: 'stun',
+    shape: 'tot',
+  },
+  {
+    id: 'crinkle',
+    name: 'Crinkle Cut',
+    cost: 300,
+    desc: 'Reflects 20% of damage taken.',
+    effect: 'thorns',
+    shape: 'crinkle',
+  },
+  {
+    id: 'golden',
+    name: 'Golden Genes',
+    cost: 500,
+    desc: '+50% Fryer prize money.',
+    effect: 'golden',
+    color: '#f2c94c',
+  },
+  {
+    id: 'purple',
+    name: 'Purple Majesty',
+    cost: 260,
+    desc: '+10% to all stats. Very regal.',
+    mods: { hp: 0.1, atk: 0.1, def: 0.1, spd: 0.1 },
+    color: '#8e5bd6',
+  },
   // World DNA traits: only obtainable from creature DNA.
-  { id: 'relish', name: 'Relish Rage', cost: 0, world: 'hotdog', desc: '+30% attack while below half HP.', effect: 'relish' },
-  { id: 'stack', name: 'Double Stack', cost: 0, world: 'burger', desc: '+30% HP and +25% defense.', mods: { hp: 0.3, def: 0.25 } },
-  { id: 'fizz', name: 'Fizz Burst', cost: 0, world: 'soda', desc: '25% chance to strike twice.', effect: 'fizz' },
-  { id: 'fluff', name: 'Sugar Fluff', cost: 0, world: 'cottoncandy', desc: '+15% dodge and heals 3% HP each round.', mods: { dodge: 0.15 }, effect: 'fluff' },
-  { id: 'xenoform', name: 'Xeno Physiology', cost: 0, world: 'alien', desc: '+15% to all stats.', mods: { hp: 0.15, atk: 0.15, def: 0.15, spd: 0.15 } },
+  {
+    id: 'relish',
+    name: 'Relish Rage',
+    cost: 0,
+    world: 'hotdog',
+    desc: '+30% attack while below half HP.',
+    effect: 'relish',
+  },
+  {
+    id: 'stack',
+    name: 'Double Stack',
+    cost: 0,
+    world: 'burger',
+    desc: '+30% HP and +25% defense.',
+    mods: { hp: 0.3, def: 0.25 },
+  },
+  {
+    id: 'fizz',
+    name: 'Fizz Burst',
+    cost: 0,
+    world: 'soda',
+    desc: '25% chance to strike twice.',
+    effect: 'fizz',
+  },
+  {
+    id: 'fluff',
+    name: 'Sugar Fluff',
+    cost: 0,
+    world: 'cottoncandy',
+    desc: '+15% dodge and heals 3% HP each round.',
+    mods: { dodge: 0.15 },
+    effect: 'fluff',
+  },
+  {
+    id: 'xenoform',
+    name: 'Xeno Physiology',
+    cost: 0,
+    world: 'alien',
+    desc: '+15% to all stats.',
+    mods: { hp: 0.15, atk: 0.15, def: 0.15, spd: 0.15 },
+  },
 ];
 /** Fry gene-splicing traits (world traits come from DNA; creatures have their own sets). */
 export const LAB_TRAITS = TRAITS.filter((t) => !t.world);
-for (const [species, list] of Object.entries(SPECIES_TRAITS)) for (const t of list) TRAITS.push({ ...t, species });
+for (const [species, list] of Object.entries(SPECIES_TRAITS))
+  for (const t of list) TRAITS.push({ ...t, species });
 export const TRAIT_MAP = Object.fromEntries(TRAITS.map((t) => [t.id, t]));
 
-const NAME_A = ['Spud', 'Tater', 'Frita', 'Crispin', 'Russet', 'Yukon', 'Wedgie', 'Sir Fry', 'Lady Crisp', 'Chip', 'Hashley', 'Tot', 'Fryan', 'Spudrick', 'Frydrich', 'Potatina', 'Ketchum', 'Starchy', 'Salty Pete', 'Greasy Gus'];
-const NAME_B = [' McFryface', ' the Crisp', ' Jr.', ' III', '-o-Matic', ' Supreme', 'zilla', ' Prime', ' the Bold', ' Deluxe', ' 9000', ' the Golden', ' von Fry', ' Maximus', ''];
+const NAME_A = [
+  'Spud',
+  'Tater',
+  'Frita',
+  'Crispin',
+  'Russet',
+  'Yukon',
+  'Wedgie',
+  'Sir Fry',
+  'Lady Crisp',
+  'Chip',
+  'Hashley',
+  'Tot',
+  'Fryan',
+  'Spudrick',
+  'Frydrich',
+  'Potatina',
+  'Ketchum',
+  'Starchy',
+  'Salty Pete',
+  'Greasy Gus',
+];
+const NAME_B = [
+  ' McFryface',
+  ' the Crisp',
+  ' Jr.',
+  ' III',
+  '-o-Matic',
+  ' Supreme',
+  'zilla',
+  ' Prime',
+  ' the Bold',
+  ' Deluxe',
+  ' 9000',
+  ' the Golden',
+  ' von Fry',
+  ' Maximus',
+  '',
+];
 
 export function fryName(rng) {
   return rng.pick(NAME_A) + rng.pick(NAME_B);
@@ -109,7 +269,10 @@ export const speciesOf = (fry) => (fry.species && fry.species !== 'fry' ? fry.sp
 /** Fighters taking up Lab vats (Hall of Famers have their own hall). */
 export const labCount = (state) => state.lab.fries.filter((f) => !f.hof).length;
 const labFull = (state) => labCount(state) >= LAB_CAPACITY;
-const retired = (f) => (f?.hof ? { ok: false, reason: `${f.name} is retired in the Hall of Fame and can only be used for breeding.` } : null);
+const retired = (f) =>
+  f?.hof
+    ? { ok: false, reason: `${f.name} is retired in the Hall of Fame and can only be used for breeding.` }
+    : null;
 
 /** Gene-splicing options for this fighter, with prices. */
 export function traitsFor(fry) {
@@ -124,7 +287,9 @@ export function traitsFor(fry) {
 export function trainingFor(fry) {
   const table = SPECIES_TRAINING[speciesOf(fry)] || SPECIES_TRAINING.fry;
   const label = { hp: 'HP', atk: 'ATK', def: 'DEF', spd: 'SPD' };
-  return Object.fromEntries(Object.entries(table).map(([k, t]) => [k, { ...t, label: `+${t.gain} ${label[k]}` }]));
+  return Object.fromEntries(
+    Object.entries(table).map(([k, t]) => [k, { ...t, label: `+${t.gain} ${label[k]}` }]),
+  );
 }
 
 export function growSpud(state, rng) {
@@ -200,9 +365,11 @@ function wildParent(rng) {
 export function breed(state, aId, bId, rng) {
   const a = aId === WILD_PARENT ? wildParent(rng) : getFry(state, aId);
   const b = bId === WILD_PARENT ? wildParent(rng) : getFry(state, bId);
-  if (!a || !b || (a === b && aId !== WILD_PARENT)) return { ok: false, reason: 'Pick two different parents.' };
+  if (!a || !b || (a === b && aId !== WILD_PARENT))
+    return { ok: false, reason: 'Pick two different parents.' };
   if (busy(state, aId) || busy(state, bId)) return { ok: false, reason: 'A parent is mid-tournament.' };
-  if (labFull(state)) return { ok: false, reason: `Lab is full (${LAB_CAPACITY} fighters max). Compost one to make room.` };
+  if (labFull(state))
+    return { ok: false, reason: `Lab is full (${LAB_CAPACITY} fighters max). Compost one to make room.` };
   if (state.money < BREED_COST) return { ok: false, reason: `Need $${BREED_COST}` };
   state.money -= BREED_COST;
   const base = {};
@@ -227,7 +394,12 @@ export function breed(state, aId, bId, rng) {
     base,
     traits: inherited.slice(0, 3),
     hue: Math.round((a.hue + b.hue) / 2 + rng.int(-4, 4)),
-    hybrid: a.hybrid || b.hybrid || (a.species && a.species !== 'fry' ? a.species : null) || (b.species && b.species !== 'fry' ? b.species : null) || undefined,
+    hybrid:
+      a.hybrid ||
+      b.hybrid ||
+      (a.species && a.species !== 'fry' ? a.species : null) ||
+      (b.species && b.species !== 'fry' ? b.species : null) ||
+      undefined,
   });
   if (!child.hybrid) delete child.hybrid;
   state.lab.fries.push(child);
@@ -252,16 +424,85 @@ export function compost(state, fryId) {
 // Bracket tournaments. Rounds = log2(entrants). Each round won pays `prize`
 // (growing 50% per round); winning the final pays the champion purse instead.
 export const LEAGUES = [
-  { id: 'rookie', name: 'Rookie Basket', rounds: 3, power: 0.72, prize: 300, champBonus: 1000, needs: null, entry: 0 },
-  { id: 'pro', name: 'Pro Fryer', rounds: 4, power: 1.25, prize: 800, champBonus: 4000, needs: 'rookie', entry: 250 },
-  { id: 'master', name: 'Master Deep-Fry', rounds: 4, power: 1.8, prize: 2000, champBonus: 10000, needs: 'pro', entry: 750 },
-  { id: 'legend', name: 'Legendary Vat', rounds: 5, power: 2.6, prize: 5000, champBonus: 30000, needs: 'master', entry: 2000 },
+  {
+    id: 'rookie',
+    name: 'Rookie Basket',
+    rounds: 3,
+    power: 0.72,
+    prize: 300,
+    champBonus: 1000,
+    needs: null,
+    entry: 0,
+  },
+  {
+    id: 'pro',
+    name: 'Pro Fryer',
+    rounds: 4,
+    power: 1.25,
+    prize: 800,
+    champBonus: 4000,
+    needs: 'rookie',
+    entry: 250,
+  },
+  {
+    id: 'master',
+    name: 'Master Deep-Fry',
+    rounds: 4,
+    power: 1.8,
+    prize: 2000,
+    champBonus: 10000,
+    needs: 'pro',
+    entry: 750,
+  },
+  {
+    id: 'legend',
+    name: 'Legendary Vat',
+    rounds: 5,
+    power: 2.6,
+    prize: 5000,
+    champBonus: 30000,
+    needs: 'master',
+    entry: 2000,
+  },
 ];
 export const ALL_LEAGUES = [...LEAGUES, ...WORLD_ARENAS];
 export const WORLD_ARENA_LIST = WORLD_ARENAS;
 export const LEAGUE_MAP = Object.fromEntries(ALL_LEAGUES.map((l) => [l.id, l]));
 
-const NPC_NAMES = ['Grease Lightning', 'The Soggy Bandit', 'Captain Crunch-ish', 'Fry Hard', 'Spud Vicious', 'Tater Ripper', 'Mash Mayhem', 'Hash Brown Hulk', 'Wedge Antonio', 'Curly Sue-preme', 'Count Frycula', 'Starch Wars', 'Deep Fried Dave', 'The Golden Crisp', 'Oil Baron', 'Salt Bae-by', 'Frytanic', 'Sir Mashalot', 'Sweet Pota-Toe-Kick', 'Crinkle Cutthroat', 'Frying Dutchman', 'Russet Crowe', 'Tot-alitarian', 'Waffle Wolverine', 'Spudzilla', 'Lord of the Fries', 'Mashter Chief', 'Hashtag Brown', 'Fry Guy Fieri', 'The Big Dipper', 'Crispy Kreme', 'Potato Pancake Pete'];
+const NPC_NAMES = [
+  'Grease Lightning',
+  'The Soggy Bandit',
+  'Captain Crunch-ish',
+  'Fry Hard',
+  'Spud Vicious',
+  'Tater Ripper',
+  'Mash Mayhem',
+  'Hash Brown Hulk',
+  'Wedge Antonio',
+  'Curly Sue-preme',
+  'Count Frycula',
+  'Starch Wars',
+  'Deep Fried Dave',
+  'The Golden Crisp',
+  'Oil Baron',
+  'Salt Bae-by',
+  'Frytanic',
+  'Sir Mashalot',
+  'Sweet Pota-Toe-Kick',
+  'Crinkle Cutthroat',
+  'Frying Dutchman',
+  'Russet Crowe',
+  'Tot-alitarian',
+  'Waffle Wolverine',
+  'Spudzilla',
+  'Lord of the Fries',
+  'Mashter Chief',
+  'Hashtag Brown',
+  'Fry Guy Fieri',
+  'The Big Dipper',
+  'Crispy Kreme',
+  'Potato Pancake Pete',
+];
 
 /** An NPC fry for a Fryer league. `strength` scales its stats around the league power. */
 export function npcFry(leagueId, strength, seed) {
@@ -270,13 +511,21 @@ export function npcFry(leagueId, strength, seed) {
   const rng = makeRng(seed);
   const scale = L.power * strength;
   const nTraits = Math.min(3, li + (strength > 1.05 ? 1 : 0));
-  const traits = rng.shuffle(LAB_TRAITS.filter((t) => t.id !== 'golden')).slice(0, nTraits).map((t) => t.id);
+  const traits = rng
+    .shuffle(LAB_TRAITS.filter((t) => t.id !== 'golden'))
+    .slice(0, nTraits)
+    .map((t) => t.id);
   return {
     id: -1,
     npc: true,
     name: rng.pick(NPC_NAMES),
     gen: 1 + li,
-    base: { hp: Math.round(rng.int(62, 78) * scale), atk: Math.round(rng.int(10, 13) * scale), def: Math.round(rng.int(3, 5) * scale), spd: Math.round(rng.int(6, 10) * scale) },
+    base: {
+      hp: Math.round(rng.int(62, 78) * scale),
+      atk: Math.round(rng.int(10, 13) * scale),
+      def: Math.round(rng.int(3, 5) * scale),
+      spd: Math.round(rng.int(6, 10) * scale),
+    },
     traits,
     trained: 0,
     wins: 0,
@@ -291,14 +540,25 @@ export function creatureEntity(creatureId, mult, rng, extra = {}) {
   const w = WORLD_MAP[c.world];
   const k = (v) => Math.max(1, Math.round(v * mult * rng.range(0.92, 1.08)));
   const extraTraits = c.rarity === 'legendary' ? 2 : c.rarity === 'rare' ? 1 : 0;
-  const traits = [w.trait, ...rng.shuffle(TRAITS.filter((t) => t.species === c.world)).slice(0, extraTraits).map((t) => t.id)];
+  const traits = [
+    w.trait,
+    ...rng
+      .shuffle(TRAITS.filter((t) => t.species === c.world))
+      .slice(0, extraTraits)
+      .map((t) => t.id),
+  ];
   return {
     id: -1,
     name: c.name,
     species: c.world,
     creature: c.id,
     gen: 1,
-    base: { hp: k(70 * w.bias.hp), atk: k(12 * w.bias.atk), def: k(4.5 * w.bias.def), spd: k(8 * w.bias.spd) },
+    base: {
+      hp: k(70 * w.bias.hp),
+      atk: k(12 * w.bias.atk),
+      def: k(4.5 * w.bias.def),
+      spd: k(8 * w.bias.spd),
+    },
     traits,
     trained: 0,
     wins: 0,
@@ -312,12 +572,14 @@ export function creatureEntity(creatureId, mult, rng, extra = {}) {
 function makeEntrant(L, strength, seed) {
   if (!L.world) return npcFry(L.id, strength, seed);
   const rng = makeRng(seed);
-  const pool = L.id === 'universe' && rng() < 0.4
-    ? rng.pick(Object.values(WORLD_MAP).filter((w) => !w.secret)).creatures
-    : WORLD_MAP[L.world].creatures;
+  const pool =
+    L.id === 'universe' && rng() < 0.4
+      ? rng.pick(Object.values(WORLD_MAP).filter((w) => !w.secret)).creatures
+      : WORLD_MAP[L.world].creatures;
   const c = rng.pick(strength > 1.12 ? pool.filter((x) => x.rarity !== 'common') : pool);
   const e = creatureEntity(c.id, L.power * strength, rng, { npc: true });
-  e.name = `${c.name} ${rng.pick(['the Bold', 'Jr.', 'the Swift', 'Prime', 'the Mighty', 'III', 'the Tough', 'the Sly', ''])}`.trim();
+  e.name =
+    `${c.name} ${rng.pick(['the Bold', 'Jr.', 'the Swift', 'Prime', 'the Mighty', 'III', 'the Tough', 'the Sly', ''])}`.trim();
   return e;
 }
 
@@ -334,7 +596,8 @@ export function simulateBattle(fa, fb, rng) {
     F.shield = F.effects.has('shield');
   }
   const events = [];
-  const snap = (e) => events.push({ ...e, hpA: Math.max(0, Math.round(A.cur)), hpB: Math.max(0, Math.round(B.cur)) });
+  const snap = (e) =>
+    events.push({ ...e, hpA: Math.max(0, Math.round(A.cur)), hpB: Math.max(0, Math.round(B.cur)) });
 
   const attack = (X, Y, bonus = false) => {
     if (X.stunned) {
@@ -357,7 +620,12 @@ export function simulateBattle(fa, fb, rng) {
     }
     dmg = Math.max(1, Math.round(dmg));
     Y.cur -= dmg;
-    snap({ who: X.side, kind: crit ? 'crit' : 'hit', amount: dmg, msg: crit ? `CRITICAL! ${X.name} deals ${dmg}!` : `${X.name} hits for ${dmg}.` });
+    snap({
+      who: X.side,
+      kind: crit ? 'crit' : 'hit',
+      amount: dmg,
+      msg: crit ? `CRITICAL! ${X.name} deals ${dmg}!` : `${X.name} hits for ${dmg}.`,
+    });
     if (X.effects.has('lifesteal')) {
       const h = Math.round(dmg * 0.3);
       X.cur = Math.min(X.max, X.cur + h);
@@ -368,9 +636,18 @@ export function simulateBattle(fa, fb, rng) {
       X.cur -= r;
       snap({ who: Y.side, kind: 'thorns', amount: r, msg: `Crinkle spikes reflect ${r}!` });
     }
-    if (X.effects.has('burn') && rng() < 0.3) { Y.burn = 3; snap({ who: X.side, kind: 'status', msg: `${Y.name} is set on fire!` }); }
-    if (X.effects.has('bleed') && rng() < 0.25) { Y.bleed = 3; snap({ who: X.side, kind: 'status', msg: `${Y.name} is bleeding salt!` }); }
-    if (X.effects.has('stun') && rng() < 0.15) { Y.stunned = true; snap({ who: X.side, kind: 'status', msg: `${Y.name} is dazed by a tot-slam!` }); }
+    if (X.effects.has('burn') && rng() < 0.3) {
+      Y.burn = 3;
+      snap({ who: X.side, kind: 'status', msg: `${Y.name} is set on fire!` });
+    }
+    if (X.effects.has('bleed') && rng() < 0.25) {
+      Y.bleed = 3;
+      snap({ who: X.side, kind: 'status', msg: `${Y.name} is bleeding salt!` });
+    }
+    if (X.effects.has('stun') && rng() < 0.15) {
+      Y.stunned = true;
+      snap({ who: X.side, kind: 'status', msg: `${Y.name} is dazed by a tot-slam!` });
+    }
     if (!bonus && X.effects.has('fizz') && Y.cur > 0 && X.cur > 0 && rng() < 0.25) {
       snap({ who: X.side, kind: 'status', msg: `Fizz burst! ${X.name} strikes again!` });
       attack(X, Y, true);
@@ -378,10 +655,28 @@ export function simulateBattle(fa, fb, rng) {
   };
 
   const tick = (F) => {
-    if (F.burn > 0) { const d = Math.max(1, Math.round(F.max * 0.04)); F.cur -= d; F.burn--; snap({ who: F.side === 'a' ? 'b' : 'a', kind: 'dot', amount: d, msg: `${F.name} burns for ${d}.` }); }
-    if (F.bleed > 0) { const d = Math.max(1, Math.round(F.max * 0.035)); F.cur -= d; F.bleed--; snap({ who: F.side === 'a' ? 'b' : 'a', kind: 'dot', amount: d, msg: `${F.name} bleeds for ${d}.` }); }
-    if (F.effects.has('fluff') && F.cur > 0 && F.cur < F.max) { const h = Math.max(1, Math.round(F.max * 0.03)); F.cur = Math.min(F.max, F.cur + h); snap({ who: F.side, kind: 'heal', amount: h, msg: `${F.name} fluffs up for ${h}.` }); }
-    if (F.effects.has('regen') && F.cur > 0 && F.cur < F.max) { const h = Math.max(1, Math.round(F.max * 0.05)); F.cur = Math.min(F.max, F.cur + h); snap({ who: F.side, kind: 'heal', amount: h, msg: `${F.name} regenerates ${h}.` }); }
+    if (F.burn > 0) {
+      const d = Math.max(1, Math.round(F.max * 0.04));
+      F.cur -= d;
+      F.burn--;
+      snap({ who: F.side === 'a' ? 'b' : 'a', kind: 'dot', amount: d, msg: `${F.name} burns for ${d}.` });
+    }
+    if (F.bleed > 0) {
+      const d = Math.max(1, Math.round(F.max * 0.035));
+      F.cur -= d;
+      F.bleed--;
+      snap({ who: F.side === 'a' ? 'b' : 'a', kind: 'dot', amount: d, msg: `${F.name} bleeds for ${d}.` });
+    }
+    if (F.effects.has('fluff') && F.cur > 0 && F.cur < F.max) {
+      const h = Math.max(1, Math.round(F.max * 0.03));
+      F.cur = Math.min(F.max, F.cur + h);
+      snap({ who: F.side, kind: 'heal', amount: h, msg: `${F.name} fluffs up for ${h}.` });
+    }
+    if (F.effects.has('regen') && F.cur > 0 && F.cur < F.max) {
+      const h = Math.max(1, Math.round(F.max * 0.05));
+      F.cur = Math.min(F.max, F.cur + h);
+      snap({ who: F.side, kind: 'heal', amount: h, msg: `${F.name} regenerates ${h}.` });
+    }
   };
 
   let round = 0;
@@ -392,7 +687,10 @@ export function simulateBattle(fa, fb, rng) {
       if (X.cur <= 0 || Y.cur <= 0) break;
       attack(X, Y);
     }
-    if (A.cur > 0 && B.cur > 0) { tick(A); tick(B); }
+    if (A.cur > 0 && B.cur > 0) {
+      tick(A);
+      tick(B);
+    }
   }
   let winner;
   if (A.cur <= 0 && B.cur <= 0) winner = A.cur >= B.cur ? 'a' : 'b';
@@ -403,7 +701,8 @@ export function simulateBattle(fa, fb, rng) {
   return { winner, events, maxA: A.max, maxB: B.max };
 }
 
-export const worldOwned = (state, id) => (id === 'alien' ? !!state.worlds?.alien : !!state.worlds?.owned?.includes(id));
+export const worldOwned = (state, id) =>
+  id === 'alien' ? !!state.worlds?.alien : !!state.worlds?.owned?.includes(id);
 
 // Difficulty (unlocked by winning the Champions of the Universe): tougher foes, bigger purses.
 export const DIFFICULTY = {
@@ -414,7 +713,10 @@ export const DIFFICULTY = {
 };
 export const difficultyUnlocked = (state) => (state.universe?.champions || 0) > 0;
 export function difficultyKey(state) {
-  return (difficultyUnlocked(state) && DIFFICULTY[state.settings?.difficulty] && state.settings.difficulty) || 'normal';
+  return (
+    (difficultyUnlocked(state) && DIFFICULTY[state.settings?.difficulty] && state.settings.difficulty) ||
+    'normal'
+  );
 }
 
 export function getDifficulty(state) {
@@ -432,7 +734,10 @@ function prerequisite(L) {
 export function enterReason(state, leagueId, fry) {
   const L = LEAGUE_MAP[leagueId];
   if (!L) return 'Unknown tournament.';
-  if (L.world && !worldOwned(state, L.world)) return L.world === 'alien' ? 'Reach the Alien Planet first.' : `Travel to ${WORLD_MAP[L.world].name} first.`;
+  if (L.world && !worldOwned(state, L.world))
+    return L.world === 'alien'
+      ? 'Reach the Alien Planet first.'
+      : `Travel to ${WORLD_MAP[L.world].name} first.`;
   if (!fry) return 'Pick a fighter.';
   if (fry.hof) return `${fry.name} is retired in the Hall of Fame.`;
   if (L.invite && !fry.invited) return `Only fighters invited by the mysterious letter may enter.`;
@@ -471,17 +776,27 @@ export function acceptLetter(state, fryId) {
 export function induct(state, fryId) {
   const f = getFry(state, fryId);
   if (!f) return { ok: false, reason: 'Pick a fighter.' };
-  if (!(state.universe?.champions > 0)) return { ok: false, reason: 'Win the Champions of the Universe to open the Hall of Fame.' };
+  if (!(state.universe?.champions > 0))
+    return { ok: false, reason: 'Win the Champions of the Universe to open the Hall of Fame.' };
   if (f.hof) return { ok: false, reason: 'Already in the Hall of Fame.' };
   if (busy(state, fryId)) return { ok: false, reason: 'That fighter is mid-tournament.' };
-  if (!f.titles?.includes('universe')) return { ok: false, reason: 'Only a Champion of the Universe can enter the Hall of Fame.' };
+  if (!f.titles?.includes('universe'))
+    return { ok: false, reason: 'Only a Champion of the Universe can enter the Hall of Fame.' };
   f.hof = true;
   f.inducted = Date.now();
   state.stats.inducted = (state.stats.inducted || 0) + 1;
   return { ok: true };
 }
 
-export const ROUND_NAMES = ['Round of 128', 'Round of 64', 'Round of 32', 'Round of 16', 'Quarterfinal', 'Semifinal', 'Final'];
+export const ROUND_NAMES = [
+  'Round of 128',
+  'Round of 64',
+  'Round of 32',
+  'Round of 16',
+  'Quarterfinal',
+  'Semifinal',
+  'Final',
+];
 export function roundName(L, round) {
   return ROUND_NAMES[ROUND_NAMES.length - (L.rounds - round)];
 }
@@ -501,14 +816,16 @@ export function startRun(state, fryId, leagueId, now = Date.now()) {
   // Slot 0 is the player. NPC strengths spread from 0.8x to 1.2x league power.
   const slots = [{ player: true }];
   const diff = getDifficulty(state).power;
-  for (let i = 1; i < size; i++) slots.push(makeEntrant(L, (0.8 + (0.4 * (i - 1)) / Math.max(1, size - 2)) * diff, `${seed}-e${i}`));
+  for (let i = 1; i < size; i++)
+    slots.push(makeEntrant(L, (0.8 + (0.4 * (i - 1)) / Math.max(1, size - 2)) * diff, `${seed}-e${i}`));
   // Every entrant gets a unique name.
   const pool = rng.shuffle(NPC_NAMES);
   const used = new Set();
   slots.slice(1).forEach((e, i) => {
     if (!L.world) e.name = pool[i % pool.length];
     let name = e.name;
-    for (let n = 2; used.has(name); n++) name = `${e.name} ${['', '', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'][n] || n}`;
+    for (let n = 2; used.has(name); n++)
+      name = `${e.name} ${['', '', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'][n] || n}`;
     e.name = name;
     used.add(name);
   });
@@ -539,7 +856,10 @@ export function fightRound(state, rng) {
   const run = state.fryer.run;
   if (!run) return { ok: false, reason: 'No tournament running.' };
   const fry = getFry(state, run.fryId);
-  if (!fry) { state.fryer.run = null; return { ok: false, reason: 'Your fighter vanished!' }; }
+  if (!fry) {
+    state.fryer.run = null;
+    return { ok: false, reason: 'Your fighter vanished!' };
+  }
   const L = LEAGUE_MAP[run.league];
   const { opp } = currentMatch(run);
   const battle = simulateBattle(fry, opp, rng);
@@ -574,7 +894,10 @@ export function fightRound(state, rng) {
         state.universe.champions++;
         // Remember the difficulty it was won on (for the Hard / Brutal / Impossible achievements).
         const dk = difficultyKey(state);
-        state.universe.wins = { ...(state.universe.wins || {}), [dk]: ((state.universe.wins || {})[dk] || 0) + 1 };
+        state.universe.wins = {
+          ...(state.universe.wins || {}),
+          [dk]: ((state.universe.wins || {})[dk] || 0) + 1,
+        };
         out.universe = true;
       }
       if (letterEligible(state, fry)) {

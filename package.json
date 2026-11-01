@@ -17,15 +17,22 @@
     "dist": "npm run build && electron-builder --publish never",
     "dist:win": "npm run build && electron-builder --win --publish never",
     "dist:mac": "npm run build && electron-builder --mac --publish never",
-    "dist:linux": "npm run build && electron-builder --linux --publish never"
+    "dist:linux": "npm run build && electron-builder --linux --publish never",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
+    "@eslint/js": "9.14.0",
     "@fontsource/lilita-one": "5.2.5",
     "@fontsource/nunito": "5.2.5",
     "electron": "33.4.11",
     "electron-builder": "25.1.8",
     "esbuild": "0.24.2",
-    "http-server": "14.1.1"
+    "eslint": "9.14.0",
+    "globals": "15.12.0",
+    "http-server": "14.1.1",
+    "prettier": "3.4.2"
   },
   "optionalDependencies": {
     "steamworks.js": "0.4.0"
@@ -33,11 +40,39 @@
   "build": {
     "appId": "com.frenchfried.game",
     "productName": "French Fried!",
-    "directories": { "output": "release" },
-    "files": ["electron/**", "dist/**", "package.json"],
-    "asarUnpack": ["node_modules/steamworks.js/**"],
-    "win": { "target": ["dir", "nsis"], "icon": "build/icon.png" },
-    "mac": { "target": ["dir", "dmg"], "category": "public.app-category.card-games", "icon": "build/icon.png" },
-    "linux": { "target": ["dir", "AppImage"], "category": "Game", "icon": "build/icon.png" }
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**",
+      "dist/**",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/steamworks.js/**"
+    ],
+    "win": {
+      "target": [
+        "dir",
+        "nsis"
+      ],
+      "icon": "build/icon.png"
+    },
+    "mac": {
+      "target": [
+        "dir",
+        "dmg"
+      ],
+      "category": "public.app-category.card-games",
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": [
+        "dir",
+        "AppImage"
+      ],
+      "category": "Game",
+      "icon": "build/icon.png"
+    }
   }
 }

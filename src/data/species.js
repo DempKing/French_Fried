@@ -47,9 +47,14 @@ export const SPECIES_TRAITS = {
     T('sugarspikes', 'Sugar Spikes', 300, 'Reflects 20% of damage taken.', { effect: 'thorns' }),
   ],
   alien: [
-    T('cosmicaura', 'Cosmic Aura', 600, '+12% to all stats.', { mods: { hp: 0.12, atk: 0.12, def: 0.12, spd: 0.12 } }),
+    T('cosmicaura', 'Cosmic Aura', 600, '+12% to all stats.', {
+      mods: { hp: 0.12, atk: 0.12, def: 0.12, spd: 0.12 },
+    }),
     T('raygun', 'Ray Gun', 560, '+20% attack, +10% crit.', { mods: { atk: 0.2, crit: 0.1 } }),
-    T('forcefield', 'Force Field', 560, '+20% defense and the first hit is reduced by 70%.', { mods: { def: 0.2 }, effect: 'shield' }),
+    T('forcefield', 'Force Field', 560, '+20% defense and the first hit is reduced by 70%.', {
+      mods: { def: 0.2 },
+      effect: 'shield',
+    }),
     T('telepathy', 'Telepathy', 520, '+18% dodge.', { mods: { dodge: 0.18 } }),
     T('tractorbeam', 'Tractor Beam', 600, '15% chance to stun the foe.', { effect: 'stun' }),
     T('mindmeld', 'Mind Meld', 640, 'Heals 30% of damage dealt.', { effect: 'lifesteal' }),
@@ -61,14 +66,58 @@ export const SPECIES_TRAITS = {
 // Treatments: each species has its own names, and its signature stat gains more.
 const TR = (hp, atk, def, spd) => ({ hp, atk, def, spd });
 export const SPECIES_TRAINING = {
-  fry: TR({ name: 'Starch Injection', gain: 9 }, { name: 'Crisp Ray', gain: 1 }, { name: 'Grease Coat', gain: 1 }, { name: 'Hot Oil Sprints', gain: 1 }),
-  hotdog: TR({ name: 'Bun Bulk', gain: 7 }, { name: 'Grill Sear', gain: 1 }, { name: 'Casing Toughener', gain: 1 }, { name: 'Boardwalk Dash', gain: 1 }),
-  burger: TR({ name: 'Extra Patty', gain: 6 }, { name: 'Flame Broil', gain: 1 }, { name: 'Sesame Plating', gain: 2 }, { name: 'Drive-Thru Laps', gain: 1 }),
-  soda: TR({ name: 'Super Size', gain: 6 }, { name: 'Syrup Concentrate', gain: 2 }, { name: 'Ice Armor', gain: 1 }, { name: 'Fizz Sprints', gain: 1 }),
-  cottoncandy: TR({ name: 'Extra Fluff', gain: 6 }, { name: 'Sugar Sharpening', gain: 1 }, { name: 'Candy Shell', gain: 1 }, { name: 'Spin Cycle Laps', gain: 2 }),
-  alien: TR({ name: 'Gamma Infusion', gain: 8 }, { name: 'Plasma Calibration', gain: 2 }, { name: 'Exoskeleton Hardening', gain: 2 }, { name: 'Warp Drills', gain: 2 }),
+  fry: TR(
+    { name: 'Starch Injection', gain: 9 },
+    { name: 'Crisp Ray', gain: 1 },
+    { name: 'Grease Coat', gain: 1 },
+    { name: 'Hot Oil Sprints', gain: 1 },
+  ),
+  hotdog: TR(
+    { name: 'Bun Bulk', gain: 7 },
+    { name: 'Grill Sear', gain: 1 },
+    { name: 'Casing Toughener', gain: 1 },
+    { name: 'Boardwalk Dash', gain: 1 },
+  ),
+  burger: TR(
+    { name: 'Extra Patty', gain: 6 },
+    { name: 'Flame Broil', gain: 1 },
+    { name: 'Sesame Plating', gain: 2 },
+    { name: 'Drive-Thru Laps', gain: 1 },
+  ),
+  soda: TR(
+    { name: 'Super Size', gain: 6 },
+    { name: 'Syrup Concentrate', gain: 2 },
+    { name: 'Ice Armor', gain: 1 },
+    { name: 'Fizz Sprints', gain: 1 },
+  ),
+  cottoncandy: TR(
+    { name: 'Extra Fluff', gain: 6 },
+    { name: 'Sugar Sharpening', gain: 1 },
+    { name: 'Candy Shell', gain: 1 },
+    { name: 'Spin Cycle Laps', gain: 2 },
+  ),
+  alien: TR(
+    { name: 'Gamma Infusion', gain: 8 },
+    { name: 'Plasma Calibration', gain: 2 },
+    { name: 'Exoskeleton Hardening', gain: 2 },
+    { name: 'Warp Drills', gain: 2 },
+  ),
 };
 export const TRAINING_COST_MULT = { alien: 1.5 };
 
-export const SPECIES_LABEL = { fry: 'Fry', hotdog: 'Hotdog', burger: 'Burger', soda: 'Soda', cottoncandy: 'Cotton Candy', alien: 'Alien' };
-export const SPECIES_STRENGTH = { fry: 'HP', hotdog: 'critical hits', burger: 'defense', soda: 'attack', cottoncandy: 'speed', alien: 'all-round' };
+export const SPECIES_LABEL = {
+  fry: 'Fry',
+  hotdog: 'Hotdog',
+  burger: 'Burger',
+  soda: 'Soda',
+  cottoncandy: 'Cotton Candy',
+  alien: 'Alien',
+};
+export const SPECIES_STRENGTH = {
+  fry: 'HP',
+  hotdog: 'critical hits',
+  burger: 'defense',
+  soda: 'attack',
+  cottoncandy: 'speed',
+  alien: 'all-round',
+};

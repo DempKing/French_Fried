@@ -6,7 +6,8 @@ import { makeRng } from '../game/rng.js';
 
 const K = '#2b1d14'; // outline ink
 const W = 'stroke="#2b1d14" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"';
-const shine = (x, y, w = 4, h = 10, r = -20) => `<ellipse cx="${x}" cy="${y}" rx="${w}" ry="${h}" fill="#fff" opacity=".45" transform="rotate(${r} ${x} ${y})"/>`;
+const shine = (x, y, w = 4, h = 10, r = -20) =>
+  `<ellipse cx="${x}" cy="${y}" rx="${w}" ry="${h}" fill="#fff" opacity=".45" transform="rotate(${r} ${x} ${y})"/>`;
 
 // ---------- Objects (each one hand-drawn) ----------
 const OBJ = {
@@ -125,7 +126,16 @@ const OBJ = {
     <path d="M22 78 H78 L84 94 H16Z" fill="#7a5230" ${W}/>
     <circle cx="50" cy="46" r="34" fill="#cdeeff" opacity=".85" ${W}/>
     <path d="M50 30 L36 64 H64Z" fill="#3aa655" ${W}/><rect x="46" y="64" width="8" height="8" fill="#7a5230"/>
-    ${[[30, 30], [66, 26], [70, 52], [28, 56], [56, 18], [40, 20]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.5" fill="#fff"/>`).join('')}${shine(32, 34, 4, 10)}`,
+    ${[
+      [30, 30],
+      [66, 26],
+      [70, 52],
+      [28, 56],
+      [56, 18],
+      [40, 20],
+    ]
+      .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.5" fill="#fff"/>`)
+      .join('')}${shine(32, 34, 4, 10)}`,
   cactus: () => `
     <path d="M24 70 H76 L70 94 H30Z" fill="#d9734a" ${W}/><rect x="20" y="64" width="60" height="10" rx="3" fill="#c25e38" ${W}/>
     <path d="M40 64 V20 Q40 10 50 10 Q60 10 60 20 V64Z" fill="#4f9a3a" ${W}/>
@@ -160,7 +170,13 @@ const OBJ = {
     <circle cx="42" cy="28" r="2.5" fill="${K}"/><circle cx="58" cy="28" r="2.5" fill="${K}"/>
     <path d="M38 56 L50 62 L62 56 L58 68 L50 64 L42 68Z" fill="#d6283b" ${W}/>`,
   lei: () => `
-    ${Array.from({ length: 11 }, (_, i) => { const a = Math.PI * (0.05 + 0.9 * i / 10); const x = 50 - 40 * Math.cos(a); const y = 20 + 50 * Math.sin(a); const col = ['#ff5fa2', '#ffd93b', '#ff8c42', '#b38cff'][i % 4]; return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})">${[0, 72, 144, 216, 288].map((r) => `<ellipse cx="0" cy="-5" rx="4" ry="6" fill="${col}" stroke="#2b1d14" stroke-width="1.5" transform="rotate(${r})"/>`).join('')}<circle r="2.5" fill="#fff3b0"/></g>`; }).join('')}`,
+    ${Array.from({ length: 11 }, (_, i) => {
+      const a = Math.PI * (0.05 + (0.9 * i) / 10);
+      const x = 50 - 40 * Math.cos(a);
+      const y = 20 + 50 * Math.sin(a);
+      const col = ['#ff5fa2', '#ffd93b', '#ff8c42', '#b38cff'][i % 4];
+      return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})">${[0, 72, 144, 216, 288].map((r) => `<ellipse cx="0" cy="-5" rx="4" ry="6" fill="${col}" stroke="#2b1d14" stroke-width="1.5" transform="rotate(${r})"/>`).join('')}<circle r="2.5" fill="#fff3b0"/></g>`;
+    }).join('')}`,
   bowlingball: () => `
     <circle cx="50" cy="52" r="38" fill="#3b37b8" ${W}/><path d="M24 40 Q40 50 30 74 M60 20 Q80 40 70 80" stroke="#7b5cff" stroke-width="3" fill="none" opacity=".7"/>
     <circle cx="44" cy="34" r="5" fill="${K}"/><circle cx="58" cy="32" r="5" fill="${K}"/><circle cx="52" cy="46" r="5" fill="${K}"/>${shine(34, 36, 5, 10)}`,
@@ -177,9 +193,12 @@ const OBJ = {
 };
 
 export function cardArtInner(card) {
-  if (card.kind === 'object') return (OBJ[card.id] || (() => `<text x="50" y="60" text-anchor="middle" font-size="40">?</text>`))();
+  if (card.kind === 'object')
+    return (OBJ[card.id] || (() => `<text x="50" y="60" text-anchor="middle" font-size="40">?</text>`))();
   const fn = ING[card.art.t];
-  return fn ? fn(card.art, makeRng(`card-${card.id}`)) : `<circle cx="50" cy="50" r="30" fill="${card.art.c}" ${W}/>`;
+  return fn
+    ? fn(card.art, makeRng(`card-${card.id}`))
+    : `<circle cx="50" cy="50" r="30" fill="${card.art.c}" ${W}/>`;
 }
 
 export function cardArtSvg(card, cls = '') {

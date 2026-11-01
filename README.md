@@ -72,14 +72,14 @@ npm run electron     # run the desktop build locally
 
 The code has no runtime dependencies. It is plain ES modules:
 
-| Path | What |
-| --- | --- |
-| `src/data/` | ingredients, objects, recipe book + generator |
-| `src/art/` | SVG card art, fry boat renderer, GMO fry characters |
+| Path        | What                                                                      |
+| ----------- | ------------------------------------------------------------------------- |
+| `src/data/` | ingredients, objects, recipe book + generator                             |
+| `src/art/`  | SVG card art, fry boat renderer, GMO fry characters                       |
 | `src/game/` | state/saves, kitchen (deck/hand/frying), shops, lab & fryer, achievements |
-| `src/ui/` | screens |
-| `electron/` | desktop shell + preload (fullscreen, quit, Steam achievements) |
-| `steam/` | SteamPipe build template, achievement list and achievement icons |
+| `src/ui/`   | screens                                                                   |
+| `electron/` | desktop shell + preload (fullscreen, quit, Steam achievements)            |
+| `steam/`    | SteamPipe build template, achievement list and achievement icons          |
 
 ## Shipping on Steam
 

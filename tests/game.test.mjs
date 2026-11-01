@@ -7,10 +7,38 @@ import { ALL_INGREDIENTS } from '../src/data/ingredients.js';
 import { OBJECTS } from '../src/data/objects.js';
 import { cardArtSvg, ART_TYPES, OBJECT_ART } from '../src/art/cards.js';
 import { renderBoat, TOPPING_TYPES } from '../src/art/fries.js';
-import { defaultState, discoveredCount, unlock, migrate, exportSave, importSave, sellCard } from '../src/game/state.js';
-import { createKitchen, playCard, fry, redraw, HAND_SIZE, nearMiss, buyRumor, activeDeckList } from '../src/game/kitchen.js';
+import {
+  defaultState,
+  discoveredCount,
+  unlock,
+  migrate,
+  exportSave,
+  importSave,
+  sellCard,
+} from '../src/game/state.js';
+import {
+  createKitchen,
+  playCard,
+  fry,
+  redraw,
+  HAND_SIZE,
+  nearMiss,
+  buyRumor,
+  activeDeckList,
+} from '../src/game/kitchen.js';
 import { openPack, tickThrift, buyThrift, paidRefresh, THRIFT_REFRESH_MS } from '../src/game/shop.js';
-import { growSpud, splice, breed, train, startRun, fightRound, simulateBattle, newFry, npcFry, LEAGUES } from '../src/game/lab.js';
+import {
+  growSpud,
+  splice,
+  breed,
+  train,
+  startRun,
+  fightRound,
+  simulateBattle,
+  newFry,
+  npcFry,
+  LEAGUES,
+} from '../src/game/lab.js';
 import { checkAchievements } from '../src/game/achievements.js';
 import { makeRng } from '../src/game/rng.js';
 
@@ -39,7 +67,10 @@ test('signature recipes exist', () => {
 
 test('recipe generation is deterministic across loads', async () => {
   const again = await import('../src/data/recipes.js?again');
-  assert.deepEqual(again.RECIPES.map((r) => r.key), RECIPES.map((r) => r.key));
+  assert.deepEqual(
+    again.RECIPES.map((r) => r.key),
+    RECIPES.map((r) => r.key),
+  );
 });
 
 test('every card has unique id and art; every art/topping type renders', () => {
@@ -79,7 +110,10 @@ test('kitchen: play, fry, discover, earn', () => {
   assert.equal(k.hand.length, HAND_SIZE);
   for (const id of ['salt', 'vinegar']) {
     const c = k.hand.find((x) => x.id === id) || k.draw.find((x) => x.id === id);
-    if (!k.hand.includes(c)) { k.draw.splice(k.draw.indexOf(c), 1); k.hand.push(c); }
+    if (!k.hand.includes(c)) {
+      k.draw.splice(k.draw.indexOf(c), 1);
+      k.hand.push(c);
+    }
     assert.ok(playCard(k, c.uid).ok);
   }
   const money = s.money;
@@ -219,7 +253,8 @@ test('auto-cook picks the best known recipe in hand and fries it', () => {
   s.deck = { salt: 1, vinegar: 1, curds: 1, gravy: 1, bacon: 1, pepper: 1, ketchup: 1, mayo: 1 };
   const k = createKitchen(s, makeRng(4));
   assert.equal(bestKnownInHand(s, k), null, 'nothing discovered yet');
-  for (const ids of [['salt'], ['salt', 'vinegar'], ['curds', 'gravy'], ['bacon', 'curds', 'gravy']]) s.discovered[recipeKey(ids)] = 1;
+  for (const ids of [['salt'], ['salt', 'vinegar'], ['curds', 'gravy'], ['bacon', 'curds', 'gravy']])
+    s.discovered[recipeKey(ids)] = 1;
   const best = bestKnownInHand(s, k);
   assert.equal(best.name, 'Bacon Poutine');
   assert.ok(loadRecipe(k, best));
@@ -258,7 +293,15 @@ test('fryer brackets: 8-fighter rookie bracket, $300 first win, $1,000 champion'
 });
 
 // ---------- Worlds ----------
-import { worldsUnlocked, worldCost, unlockWorld, explore, spliceDNA, growFromDNA, wildCreature } from '../src/game/worlds.js';
+import {
+  worldsUnlocked,
+  worldCost,
+  unlockWorld,
+  explore,
+  spliceDNA,
+  growFromDNA,
+  wildCreature,
+} from '../src/game/worlds.js';
 import { WORLDS, WORLD_COST, CREATURE_MAP } from '../src/data/worlds.js';
 import { renderFryGuy } from '../src/art/fryguy.js';
 
@@ -287,9 +330,16 @@ test('explore collects DNA; DNA splices into fries or grows creatures; arenas us
   hero.base = { hp: 2000, atk: 300, def: 120, spd: 150 };
   hero.titles = ['legend'];
   let wins = 0;
-  for (let i = 0; i < 12; i++) { const r = explore(s, 'hotdog', hero.id, rng); assert.ok(r.ok); if (r.won) wins++; }
+  for (let i = 0; i < 12; i++) {
+    const r = explore(s, 'hotdog', hero.id, rng);
+    assert.ok(r.ok);
+    if (r.won) wins++;
+  }
   assert.equal(wins, 12);
-  assert.equal(Object.values(s.worlds.dna).reduce((a, b) => a + b, 0), 12);
+  assert.equal(
+    Object.values(s.worlds.dna).reduce((a, b) => a + b, 0),
+    12,
+  );
   const [cid] = Object.entries(s.worlds.dna).sort((a, b) => b[1] - a[1])[0];
   const before = { ...hero.base };
   assert.ok(spliceDNA(s, hero.id, cid).ok);
@@ -304,11 +354,12 @@ test('explore collects DNA; DNA splices into fries or grows creatures; arenas us
   assert.ok(startRun(s, hero.id, 'hd1', 9).ok);
   assert.equal(s.fryer.run.slots.length, 16);
   assert.ok(s.fryer.run.slots.slice(1).every((e) => e.species === 'hotdog'));
-  for (const w of WORLDS) for (const c of w.creatures) {
-    const svg = renderFryGuy(wildCreature(c.id, rng));
-    assert.ok(!svg.includes('NaN') && !svg.includes('undefined'), c.id);
-    assert.equal(CREATURE_MAP[c.id].world, w.id);
-  }
+  for (const w of WORLDS)
+    for (const c of w.creatures) {
+      const svg = renderFryGuy(wildCreature(c.id, rng));
+      assert.ok(!svg.includes('NaN') && !svg.includes('undefined'), c.id);
+      assert.equal(CREATURE_MAP[c.id].world, w.id);
+    }
 });
 
 import { worldScene } from '../src/art/worldScenes.js';
@@ -355,7 +406,17 @@ test('breeding works with a single fighter via a wild spud; traits can be remove
 });
 
 // ---------- Species, per-fighter progression, the letter, the Universe, Hall of Fame ----------
-import { traitsFor, trainingFor, enterReason, letterEligible, acceptLetter, induct, getDifficulty, DIFFICULTY, LEAGUES as ALL_LEAGUES_BASE } from '../src/game/lab.js';
+import {
+  traitsFor,
+  trainingFor,
+  enterReason,
+  letterEligible,
+  acceptLetter,
+  induct,
+  getDifficulty,
+  DIFFICULTY,
+  LEAGUES as ALL_LEAGUES_BASE,
+} from '../src/game/lab.js';
 import { SPECIES_TRAITS } from '../src/data/species.js';
 
 test('each species has its own splicing traits and treatments built around its strength', () => {
@@ -364,11 +425,17 @@ test('each species has its own splicing traits and treatments built around its s
   for (const sp of ['hotdog', 'burger', 'soda', 'cottoncandy', 'alien']) {
     const list = traitsFor({ species: sp });
     assert.ok(list.length >= 8, sp);
-    assert.ok(list.every((t) => !SPECIES_TRAITS.fry), 'no fry list in species data');
+    assert.ok(
+      list.every((t) => !SPECIES_TRAITS.fry),
+      'no fry list in species data',
+    );
   }
   assert.ok(traitsFor({}).some((t) => t.id === 'crispy'));
   assert.ok(!traitsFor({ species: 'soda' }).some((t) => t.id === 'crispy'));
-  const best = (sp) => Object.entries(trainingFor({ species: sp })).sort((a, b) => b[1].gain / (a[0] === 'hp' ? 1 : 1) - a[1].gain)[0][0];
+  const best = (sp) =>
+    Object.entries(trainingFor({ species: sp })).sort(
+      (a, b) => b[1].gain / (a[0] === 'hp' ? 1 : 1) - a[1].gain,
+    )[0][0];
   assert.equal(trainingFor({ species: 'burger' }).def.gain, 2);
   assert.equal(trainingFor({ species: 'soda' }).atk.gain, 2);
   assert.equal(trainingFor({ species: 'cottoncandy' }).spd.gain, 2);
@@ -475,7 +542,12 @@ test('Master Chef highlights the most valuable new recipe in hand', async () => 
   const { chefPick } = await import('../src/game/kitchen.js');
   const s = defaultState(0);
   const card = (id, uid) => ({ id, uid });
-  const k = { hand: [card('salt', 1), card('vinegar', 2), card('ketchup', 3), card('gravy', 4), card('curds', 5)], boat: [], draw: [], discard: [] };
+  const k = {
+    hand: [card('salt', 1), card('vinegar', 2), card('ketchup', 3), card('gravy', 4), card('curds', 5)],
+    boat: [],
+    draw: [],
+    discard: [],
+  };
   assert.equal(chefPick(s, k), null, 'not hired yet');
   assert.equal(unlock(s, 'masterchef').ok, false, 'costs $10,000,000');
   s.money = 10000000;
@@ -485,7 +557,10 @@ test('Master Chef highlights the most valuable new recipe in hand', async () => 
   const have = new Set(k.hand.map((c) => c.id));
   const best = Math.max(...RECIPES.filter((r) => r.ids.every((id) => have.has(id))).map(discoveryReward));
   assert.equal(pick.reward, best);
-  assert.deepEqual(pick.uids.map((u) => k.hand.find((c) => c.uid === u).id).sort(), [...pick.recipe.ids].sort());
+  assert.deepEqual(
+    pick.uids.map((u) => k.hand.find((c) => c.uid === u).id).sort(),
+    [...pick.recipe.ids].sort(),
+  );
   // Once it is discovered, the chef moves on to the next best one.
   s.discovered[pick.recipe.key] = 1;
   const next = chefPick(s, k);
@@ -500,7 +575,9 @@ test('new achievements: millionaire, Universe on Impossible, icons for every ach
   assert.equal(new Set(ACHIEVEMENTS.map((a) => a.id)).size, ACHIEVEMENTS.length);
   for (const a of ACHIEVEMENTS) {
     assert.match(a.id, /^[a-z0-9_]+$/, 'usable as a Steam API name');
-    assert.ok(achievementIcon(a).startsWith('<svg') && achievementIcon(a, { locked: true }).includes('filter='));
+    assert.ok(
+      achievementIcon(a).startsWith('<svg') && achievementIcon(a, { locked: true }).includes('filter='),
+    );
   }
   const s = defaultState(0);
   s.lifetime = 1000000;

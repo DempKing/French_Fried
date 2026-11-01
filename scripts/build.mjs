@@ -21,7 +21,9 @@ async function fontCss() {
   for (const [family, weight, file] of fonts) {
     try {
       const b64 = (await readFile(r('node_modules', file))).toString('base64');
-      out.push(`@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};font-display:swap;src:url(data:font/woff2;base64,${b64}) format('woff2');}`);
+      out.push(
+        `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};font-display:swap;src:url(data:font/woff2;base64,${b64}) format('woff2');}`,
+      );
     } catch {
       console.warn(`! font missing (${file}); falling back to system fonts`);
     }
@@ -45,8 +47,11 @@ let html = await readFile(r('index.html'), 'utf8');
 html = html
   .replace(/\s*<link rel="preconnect"[^>]*>/g, '')
   .replace(/\s*<link href="https:\/\/fonts\.googleapis[^>]*>/, '')
-  .replace('<link rel="stylesheet" href="styles.css">', () => `<style>\n${css}\n</style>`)
-  .replace('<script type="module" src="src/main.js"></script>', () => `<script>\n${script}\n</script>`);
+  // Inline the stylesheet and the script (the tags may be written with or without a closing slash).
+  .replace(/<link rel="stylesheet" href="styles\.css"\s*\/?>/, () => `<style>\n${css}\n</style>`)
+  .replace(/<script type="module" src="src\/main\.js"><\/script>/, () => `<script>\n${script}\n</script>`);
+if (html.includes('href="styles.css"') || html.includes('src="src/main.js"'))
+  throw new Error('styles.css or main.js was not inlined');
 
 await mkdir(r('dist'), { recursive: true });
 await writeFile(r('dist/index.html'), html);

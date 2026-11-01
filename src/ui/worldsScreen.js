@@ -19,7 +19,14 @@ export function selectWorld(id) {
   ui.world = id;
 }
 
-const proto = (c, world) => ({ name: c.name, species: world, creature: c.id, traits: [], titles: [], base: {} });
+const proto = (c, world) => ({
+  name: c.name,
+  species: world,
+  creature: c.id,
+  traits: [],
+  titles: [],
+  base: {},
+});
 
 // A world is shown as its planet, spinning in space.
 function worldCard(w, s, first) {
@@ -35,7 +42,8 @@ function worldCard(w, s, first) {
 export function renderWorlds(app, root) {
   const s = app.state;
   if (!worldsUnlocked(s)) {
-    root.innerHTML = '<section class="worlds"><h1>🌍 Worlds</h1><p>Win the <b>Legendary Vat</b> in The Fryer to discover new Worlds.</p></section>';
+    root.innerHTML =
+      '<section class="worlds"><h1>🌍 Worlds</h1><p>Win the <b>Legendary Vat</b> in The Fryer to discover new Worlds.</p></section>';
     return;
   }
   if (!s.worlds.owned.length) {
@@ -53,34 +61,49 @@ export function renderWorlds(app, root) {
   const xCost = exploreCost(w.id);
   if (!fries.some((f) => f.id === ui.fry)) ui.fry = fries[0]?.id ?? null;
 
-  const tabs = WORLDS.filter((x) => !x.secret || worldOwned(s, x.id)).map((x) => {
-    const owned = worldOwned(s, x.id);
-    return `<button class="planet-tab ${x.id === ui.world ? 'on' : ''} ${owned ? '' : 'locked'}" style="--wc:${x.color}" data-world="${x.id}" title="${owned ? x.name : `Unlock ${x.name} for ${fmt(worldCost(s))}`}">
+  const tabs = WORLDS.filter((x) => !x.secret || worldOwned(s, x.id))
+    .map((x) => {
+      const owned = worldOwned(s, x.id);
+      return `<button class="planet-tab ${x.id === ui.world ? 'on' : ''} ${owned ? '' : 'locked'}" style="--wc:${x.color}" data-world="${x.id}" title="${owned ? x.name : `Unlock ${x.name} for ${fmt(worldCost(s))}`}">
       ${planet(x.id)}${owned ? '' : `<em class="thumb-price">🔒 ${fmt(worldCost(s))}</em>`}<b>${x.name.replace(' World', '')}</b></button>`;
-  }).join('');
+    })
+    .join('');
 
-  const fighters = fries.map((f) => `<button class="mini-fry ${f.id === ui.fry ? 'sel' : ''}" data-pick="${f.id}">${renderFryGuy(f)}<span>${esc(f.name)}</span><small>${kindLabel(f)}</small></button>`).join('') || '<p class="muted">No fighters available. Grow one in the Lab.</p>';
+  const fighters =
+    fries
+      .map(
+        (f) =>
+          `<button class="mini-fry ${f.id === ui.fry ? 'sel' : ''}" data-pick="${f.id}">${renderFryGuy(f)}<span>${esc(f.name)}</span><small>${kindLabel(f)}</small></button>`,
+      )
+      .join('') || '<p class="muted">No fighters available. Grow one in the Lab.</p>';
 
-  const arenas = w.arenas.map((a) => {
-    const L = LEAGUE_MAP[a.id];
-    const why = s.fryer.run ? 'Finish your current tournament first.' : enterReason(s, a.id, getFry(s, ui.fry));
-    const open = !why;
-    const champs = s.fryer.champions[a.id] || 0;
-    return `<div class="arena-card ${open ? '' : 'locked'}">
+  const arenas = w.arenas
+    .map((a) => {
+      const L = LEAGUE_MAP[a.id];
+      const why = s.fryer.run
+        ? 'Finish your current tournament first.'
+        : enterReason(s, a.id, getFry(s, ui.fry));
+      const open = !why;
+      const champs = s.fryer.champions[a.id] || 0;
+      return `<div class="arena-card ${open ? '' : 'locked'}">
       <b>${open ? '' : '🔒 '}${L.name}</b>
-      <span>${2 ** L.rounds}-fighter bracket${L.invite ? ' of the galaxy\'s greatest' : ` of ${w.name} creatures`} · ${fmt(L.prize)}+ per win · Champion ${fmt(L.champBonus)}</span>
+      <span>${2 ** L.rounds}-fighter bracket${L.invite ? " of the galaxy's greatest" : ` of ${w.name} creatures`} · ${fmt(L.prize)}+ per win · Champion ${fmt(L.champBonus)}</span>
       <span class="muted">Entry ${L.entry ? fmt(L.entry) : 'free'}${champs ? ` · 👑 ${champs}× champion` : ''}${open ? '' : ` · ${esc(why)}`}</span>
       <button class="btn small" data-arena="${a.id}" ${open ? '' : 'disabled'}>Enter with selected fighter</button>
     </div>`;
-  }).join('');
+    })
+    .join('');
 
-  const guide = w.creatures.map((c) => {
-    const seen = s.worlds.seen[c.id];
-    const dna = s.worlds.dna[c.id] || 0;
-    if (!seen) return `<div class="guide-entry unknown"><div class="mystery">?</div><b>???</b><small>${RARITY[c.rarity].label}</small></div>`;
-    return `<div class="guide-entry rarity-${c.rarity}">${renderFryGuy(proto(c, w.id))}<b>${esc(c.name)}</b><small>${RARITY[c.rarity].label} · seen ${seen}×</small><small>${esc(c.blurb)}</small>
+  const guide = w.creatures
+    .map((c) => {
+      const seen = s.worlds.seen[c.id];
+      const dna = s.worlds.dna[c.id] || 0;
+      if (!seen)
+        return `<div class="guide-entry unknown"><div class="mystery">?</div><b>???</b><small>${RARITY[c.rarity].label}</small></div>`;
+      return `<div class="guide-entry rarity-${c.rarity}">${renderFryGuy(proto(c, w.id))}<b>${esc(c.name)}</b><small>${RARITY[c.rarity].label} · seen ${seen}×</small><small>${esc(c.blurb)}</small>
       <span class="dna-count">🧬 ${dna} DNA${dna >= GROW_DNA_SAMPLES ? ' · ready to grow!' : ''}</span></div>`;
-  }).join('');
+    })
+    .join('');
 
   root.innerHTML = `<section class="worlds">
     <div class="world-thumbs planets space">${tabs}</div>
@@ -100,20 +123,43 @@ export function renderWorlds(app, root) {
   </section>`;
 
   bindTravel(app, root);
-  $$('[data-world]', root).forEach((b) => (b.onclick = () => {
-    const id = b.dataset.world;
-    if (worldOwned(s, id)) { ui.world = id; sfx('click'); app.render(); $('#screen').scrollTop = 0; return; }
-    confirmTravel(app, id);
-  }));
-  $$('[data-pick]', root).forEach((b) => (b.onclick = () => { ui.fry = +b.dataset.pick; sfx('click'); app.render(); }));
-  $$('[data-arena]', root).forEach((b) => (b.onclick = () => {
-    const res = startRun(s, ui.fry, b.dataset.arena);
-    if (!res.ok) { sfx('error'); toast(res.reason, 'warn'); return; }
-    selectLeague(b.dataset.arena);
-    sfx('sizzle');
-    app.commit({ silentRender: true });
-    app.go('fryer');
-  }));
+  $$('[data-world]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        const id = b.dataset.world;
+        if (worldOwned(s, id)) {
+          ui.world = id;
+          sfx('click');
+          app.render();
+          $('#screen').scrollTop = 0;
+          return;
+        }
+        confirmTravel(app, id);
+      }),
+  );
+  $$('[data-pick]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        ui.fry = +b.dataset.pick;
+        sfx('click');
+        app.render();
+      }),
+  );
+  $$('[data-arena]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        const res = startRun(s, ui.fry, b.dataset.arena);
+        if (!res.ok) {
+          sfx('error');
+          toast(res.reason, 'warn');
+          return;
+        }
+        selectLeague(b.dataset.arena);
+        sfx('sizzle');
+        app.commit({ silentRender: true });
+        app.go('fryer');
+      }),
+  );
   $('#exploreBtn', root).onclick = () => doExplore(app, w);
 }
 
@@ -125,13 +171,20 @@ function confirmTravel(app, id) {
   const s = app.state;
   const w = WORLD_MAP[id];
   const cost = worldCost(s);
-  openModal(`<h2>Travel to ${w.name}?</h2><p>${w.desc}</p>
+  openModal(
+    `<h2>Travel to ${w.name}?</h2><p>${w.desc}</p>
     <p>${cost ? `Unlocking costs <b>${fmt(cost)}</b>.` : 'Your first world is <b>free</b>. Choose wisely: the others cost money to unlock later.'}</p>
-    <div class="row center"><button class="btn" data-close>Not yet</button><button class="btn btn-primary" id="goWorld" ${s.money >= cost ? '' : 'disabled'}>${cost ? `Unlock · ${fmt(cost)}` : 'Travel (free)'}</button></div>`, { cls: 'center' });
+    <div class="row center"><button class="btn" data-close>Not yet</button><button class="btn btn-primary" id="goWorld" ${s.money >= cost ? '' : 'disabled'}>${cost ? `Unlock · ${fmt(cost)}` : 'Travel (free)'}</button></div>`,
+    { cls: 'center' },
+  );
   $('[data-close]').onclick = closeModal;
   $('#goWorld').onclick = () => {
     const res = unlockWorld(s, id);
-    if (!res.ok) { sfx('error'); toast(res.reason, 'warn'); return; }
+    if (!res.ok) {
+      sfx('error');
+      toast(res.reason, 'warn');
+      return;
+    }
     ui.world = id;
     sfx('achievement');
     closeModal();
@@ -144,17 +197,24 @@ function confirmTravel(app, id) {
 function doExplore(app, w) {
   const s = app.state;
   const res = explore(s, w.id, ui.fry, app.rng);
-  if (!res.ok) { sfx('error'); toast(res.reason, 'warn'); return; }
+  if (!res.ok) {
+    sfx('error');
+    toast(res.reason, 'warn');
+    return;
+  }
   sfx('pack');
   // The explore fee shows right away; the reward waits until the battle has played out.
   app.commit({ silentRender: true, hold: { money: s.money - (res.won ? res.reward : 0) } });
   const c = res.creature;
-  const modal = openModal(`<div class="explore-modal">
+  const modal = openModal(
+    `<div class="explore-modal">
     <h2>A wild ${esc(c.name)} appears!</h2>
     <p class="muted">${RARITY[c.rarity].label} · ${esc(c.blurb)}</p>
     ${ringHtml(res.fry, res.wild, { theme: `world-${w.id}` })}
     <div class="battle-log" id="xlog"></div>
-    <div id="xresult"></div></div>`, { cls: 'wide center', dismissable: false });
+    <div id="xresult"></div></div>`,
+    { cls: 'wide center', dismissable: false },
+  );
   animateBattle(modal, res.battle, {
     log: $('#xlog', modal),
     onDone: () => {
@@ -164,7 +224,10 @@ function doExplore(app, w) {
         ? `<div class="verdict win"><h2>🧬 DNA collected!</h2><p>${esc(res.fry.name)} defeated the ${esc(c.name)}. +1 ${esc(c.name)} DNA and +${fmt(res.reward)}. You now have ${s.worlds.dna[c.id]}.</p><button class="btn btn-primary" id="xok">Back to camp</button></div>`
         : `<div class="verdict lose"><h2>It got away!</h2><p>The ${esc(c.name)} was too strong this time. ${esc(res.fry.name)} limps home to train.</p><button class="btn" id="xok">Back to camp</button></div>`;
       $('#xresult', modal).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      $('#xok', modal).onclick = () => { closeModal(); app.render(); };
+      $('#xok', modal).onclick = () => {
+        closeModal();
+        app.render();
+      };
     },
   });
 }

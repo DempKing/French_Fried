@@ -36,7 +36,10 @@ export function drawCards(k, n) {
     // Prefer cards whose ingredient isn't already in hand, so hands stay varied.
     let idx = k.draw.length - 1;
     for (let j = k.draw.length - 1; j >= Math.max(0, k.draw.length - 6); j--) {
-      if (!k.hand.some((h) => h.id === k.draw[j].id)) { idx = j; break; }
+      if (!k.hand.some((h) => h.id === k.draw[j].id)) {
+        idx = j;
+        break;
+      }
     }
     const [c] = k.draw.splice(idx, 1);
     k.hand.push(c);
@@ -59,7 +62,8 @@ export function playCard(k, uid) {
   if (i < 0) return { ok: false, reason: 'missing' };
   const card = k.hand[i];
   if (k.boat.length >= MAX_BOAT) return { ok: false, reason: 'The boat is full! (5 cards max)' };
-  if (k.boat.some((c) => c.id === card.id)) return { ok: false, reason: `Already added ${CARDS[card.id].name}.` };
+  if (k.boat.some((c) => c.id === card.id))
+    return { ok: false, reason: `Already added ${CARDS[card.id].name}.` };
   k.hand.splice(i, 1);
   k.boat.push(card);
   return { ok: true, card };
@@ -195,7 +199,9 @@ export function rumorCost(state) {
 /** Reveal an undiscovered recipe that can be built from cards the player owns. */
 export function buyRumor(state, rng) {
   const owned = new Set(ownedIds(state));
-  const pool = RECIPES.filter((r) => !state.discovered[r.key] && !state.rumors[r.key] && r.ids.every((id) => owned.has(id)));
+  const pool = RECIPES.filter(
+    (r) => !state.discovered[r.key] && !state.rumors[r.key] && r.ids.every((id) => owned.has(id)),
+  );
   if (!pool.length) return { ok: false, reason: 'No new rumors — get more cards first!' };
   const cost = rumorCost(state);
   if (state.money < cost) return { ok: false, reason: `Need $${cost}` };

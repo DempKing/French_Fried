@@ -7,7 +7,9 @@ let steam = null;
 function initSteam() {
   try {
     const appIdFile = path.join(process.cwd(), 'steam_appid.txt');
-    const appId = Number(process.env.STEAM_APP_ID || (fs.existsSync(appIdFile) ? fs.readFileSync(appIdFile, 'utf8').trim() : 0));
+    const appId = Number(
+      process.env.STEAM_APP_ID || (fs.existsSync(appIdFile) ? fs.readFileSync(appIdFile, 'utf8').trim() : 0),
+    );
     if (!appId) return;
     // Optional dependency: only present in Steam builds.
     steam = require('steamworks.js').init(appId);

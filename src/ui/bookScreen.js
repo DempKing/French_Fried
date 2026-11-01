@@ -29,29 +29,32 @@ export function renderBook(app, root) {
   if (view.filter === 'found') list = list.filter((r) => s.discovered[r.key]);
   if (view.filter === 'rumor') list = list.filter((r) => s.rumors[r.key]);
   if (view.filter === 'missing') list = list.filter((r) => !s.discovered[r.key]);
-  if (q) list = list.filter((r) => (s.discovered[r.key] || s.rumors[r.key]) && r.name.toLowerCase().includes(q));
+  if (q)
+    list = list.filter((r) => (s.discovered[r.key] || s.rumors[r.key]) && r.name.toLowerCase().includes(q));
   const pages = Math.max(1, Math.ceil(list.length / PAGE));
   view.page = Math.min(view.page, pages - 1);
   const slice = list.slice(view.page * PAGE, view.page * PAGE + PAGE);
 
-  const entries = slice.map((r) => {
-    const found = s.discovered[r.key];
-    const rumor = s.rumors[r.key];
-    if (found) {
-      return `<button class="entry found tier-${r.tier}" data-key="${r.key}">
+  const entries = slice
+    .map((r) => {
+      const found = s.discovered[r.key];
+      const rumor = s.rumors[r.key];
+      if (found) {
+        return `<button class="entry found tier-${r.tier}" data-key="${r.key}">
         <span class="num">#${r.id + 1}</span>${renderBoat(r.ids, { cls: 'thumb' })}
         <span class="ename">${esc(r.name)}</span>
         <span class="chips">${r.ids.map((id) => chipHtml(id)).join('')}</span></button>`;
-    }
-    if (rumor) {
-      return `<div class="entry rumor tier-${r.tier}"><span class="num">#${r.id + 1}</span>
+      }
+      if (rumor) {
+        return `<div class="entry rumor tier-${r.tier}"><span class="num">#${r.id + 1}</span>
         <div class="mystery">🕵️</div><span class="ename">${esc(r.name)}</span>
         <span class="chips">${r.ids.map((id, i) => chipHtml(id, { unknown: i > 0 })).join('')}</span></div>`;
-    }
-    return `<div class="entry locked tier-${r.tier}"><span class="num">#${r.id + 1}</span>
+      }
+      return `<div class="entry locked tier-${r.tier}"><span class="num">#${r.id + 1}</span>
       <div class="mystery">?</div><span class="ename">???</span>
       <span class="chips">${r.ids.map(() => chipHtml(null, { unknown: true })).join('')}</span></div>`;
-  }).join('');
+    })
+    .join('');
 
   const tierBar = TIERS.map((t) => {
     const p = tierProgress(s, t.id);
@@ -65,7 +68,17 @@ export function renderBook(app, root) {
       <div class="progress big"><div style="width:${(discoveredCount(s) / TOTAL_RECIPES) * 100}%"></div></div>
       <div class="tabs">${tierBar}</div>
       <div class="filters">
-        ${[['all', 'Everything'], ['found', 'Discovered'], ['rumor', 'Rumors'], ['missing', 'Undiscovered']].map(([id, l]) => `<button class="pill ${view.filter === id ? 'on' : ''}" data-filter="${id}">${l}</button>`).join('')}
+        ${[
+          ['all', 'Everything'],
+          ['found', 'Discovered'],
+          ['rumor', 'Rumors'],
+          ['missing', 'Undiscovered'],
+        ]
+          .map(
+            ([id, l]) =>
+              `<button class="pill ${view.filter === id ? 'on' : ''}" data-filter="${id}">${l}</button>`,
+          )
+          .join('')}
         <input type="search" id="bookSearch" placeholder="Search discovered…" value="${esc(view.q)}">
       </div>
     </div>
@@ -77,10 +90,30 @@ export function renderBook(app, root) {
     </div>
   </section>`;
 
-  $$('[data-tier]', root).forEach((b) => (b.onclick = () => { view.tier = b.dataset.tier; view.page = 0; app.render(); }));
-  $$('[data-filter]', root).forEach((b) => (b.onclick = () => { view.filter = b.dataset.filter; view.page = 0; app.render(); }));
-  $('#prevPg', root).onclick = () => { view.page--; app.render(); };
-  $('#nextPg', root).onclick = () => { view.page++; app.render(); };
+  $$('[data-tier]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        view.tier = b.dataset.tier;
+        view.page = 0;
+        app.render();
+      }),
+  );
+  $$('[data-filter]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        view.filter = b.dataset.filter;
+        view.page = 0;
+        app.render();
+      }),
+  );
+  $('#prevPg', root).onclick = () => {
+    view.page--;
+    app.render();
+  };
+  $('#nextPg', root).onclick = () => {
+    view.page++;
+    app.render();
+  };
   const search = $('#bookSearch', root);
   search.oninput = () => {
     view.q = search.value;
@@ -90,12 +123,18 @@ export function renderBook(app, root) {
     el.focus();
     el.setSelectionRange(el.value.length, el.value.length);
   };
-  $$('.entry.found', root).forEach((el) => (el.onclick = () => {
-    const r = RECIPES.find((x) => x.key === el.dataset.key);
-    const when = new Date(s.discovered[r.key]);
-    openModal(`<div class="result">${renderBoat(r.ids, { cls: 'result-boat' })}
+  $$('.entry.found', root).forEach(
+    (el) =>
+      (el.onclick = () => {
+        const r = RECIPES.find((x) => x.key === el.dataset.key);
+        const when = new Date(s.discovered[r.key]);
+        openModal(
+          `<div class="result">${renderBoat(r.ids, { cls: 'result-boat' })}
       <h2>${esc(r.name)}</h2><p class="desc">${esc(r.desc)}</p>
       <div class="chips big">${r.ids.map((id) => chipHtml(id)).join('')}</div>
-      <p class="muted">Recipe #${r.id + 1} · Sells for $${knownReward(r)} a boat · Discovered ${when.toLocaleDateString()}</p></div>`, { cls: 'center result-modal' });
-  }));
+      <p class="muted">Recipe #${r.id + 1} · Sells for $${knownReward(r)} a boat · Discovered ${when.toLocaleDateString()}</p></div>`,
+          { cls: 'center result-modal' },
+        );
+      }),
+  );
 }

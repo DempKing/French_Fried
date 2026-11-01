@@ -10,14 +10,22 @@ export const CARD_TYPES = [
 ];
 
 export function collectionCounts(state) {
-  return CARD_TYPES.map((t) => ({ ...t, owned: t.list.filter((c) => state.deck[c.id] > 0).length, total: t.list.length }));
+  return CARD_TYPES.map((t) => ({
+    ...t,
+    owned: t.list.filter((c) => state.deck[c.id] > 0).length,
+    total: t.list.length,
+  }));
 }
 
 export function collectionBar(state) {
-  return `<div class="collection-bar" aria-label="Cards collected">${collectionCounts(state).map((t) => `
+  return `<div class="collection-bar" aria-label="Cards collected">${collectionCounts(state)
+    .map(
+      (t) => `
     <div class="collection-tile type-${t.key} ${t.owned === t.total ? 'complete' : ''}" title="You own ${t.owned} of the ${t.total} ${t.label.toLowerCase()} cards">
       <span class="ct-label">${t.icon} ${t.label}</span>
       <span class="ct-count"><b>${t.owned}</b>/${t.total}${t.owned === t.total ? ' ✓' : ''}</span>
       <span class="ct-meter"><i style="width:${(t.owned / t.total) * 100}%"></i></span>
-    </div>`).join('')}</div>`;
+    </div>`,
+    )
+    .join('')}</div>`;
 }

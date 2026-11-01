@@ -44,7 +44,9 @@ function boatFront() {
   const stripes = [];
   for (let i = 0; i < 9; i++) {
     const x1 = 56 + i * 23.5;
-    stripes.push(`<path d="M${f(x1)} 150 L${f(x1 + 11.75)} 150 L${f(88 + i * 16.3 + 8.15)} 246 L${f(88 + i * 16.3)} 246Z" fill="#fff"/>`);
+    stripes.push(
+      `<path d="M${f(x1)} 150 L${f(x1 + 11.75)} 150 L${f(88 + i * 16.3 + 8.15)} 246 L${f(88 + i * 16.3)} 246Z" fill="#fff"/>`,
+    );
   }
   return `
     <defs><clipPath id="${cid}"><path d="M52 150 Q160 166 268 150 L234 246 Q160 254 86 246Z"/></clipPath></defs>
@@ -58,15 +60,26 @@ function boatFront() {
 // ---------- Object placement ----------
 function objectLayer(card, slotIndex, anchor) {
   const art = cardArtInner(card);
-  const place = (x, y, s, rot = 0) => `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot}) scale(${s}) translate(-50 -50)">${art}</g>`;
+  const place = (x, y, s, rot = 0) =>
+    `<g transform="translate(${f(x)} ${f(y)}) rotate(${rot}) scale(${s}) translate(-50 -50)">${art}</g>`;
   switch (anchor) {
     case 'top': {
-      const stacks = [[160, 40, 1.05, -4], [160, 14, 0.85, 6], [160, -8, 0.7, -8]];
+      const stacks = [
+        [160, 40, 1.05, -4],
+        [160, 14, 0.85, 6],
+        [160, -8, 0.7, -8],
+      ];
       const [x, y, s, r] = stacks[Math.min(slotIndex, 2)];
       return place(x, y, s, r);
     }
     case 'face': {
-      const pos = { sunglasses: [160, 186, 0.9], googlyeyes: [160, 184, 0.75], mustache: [160, 214, 0.8], clownnose: [160, 202, 0.38], monocle: [182, 188, 0.6] }[card.id] || [160, 196, 0.6];
+      const pos = {
+        sunglasses: [160, 186, 0.9],
+        googlyeyes: [160, 184, 0.75],
+        mustache: [160, 214, 0.8],
+        clownnose: [160, 202, 0.38],
+        monocle: [182, 188, 0.6],
+      }[card.id] || [160, 196, 0.6];
       return place(pos[0], pos[1], pos[2]);
     }
     case 'front': {
@@ -74,13 +87,25 @@ function objectLayer(card, slotIndex, anchor) {
       return place(160, 232, 0.6);
     }
     case 'stick': {
-      const xs = [[106, 30, -16], [214, 30, 16], [160, 18, 0], [130, 24, -6], [190, 24, 6]];
+      const xs = [
+        [106, 30, -16],
+        [214, 30, 16],
+        [160, 18, 0],
+        [130, 24, -6],
+        [190, 24, 6],
+      ];
       const [x, y, r] = xs[slotIndex % xs.length];
       return place(x, y, 0.62, r);
     }
     case 'side':
     default: {
-      const sides = [[40, 214, 0.72, -8], [282, 214, 0.72, 8], [26, 150, 0.6, -12], [296, 150, 0.6, 12], [160, 262, 0.5, 0]];
+      const sides = [
+        [40, 214, 0.72, -8],
+        [282, 214, 0.72, 8],
+        [26, 150, 0.6, -12],
+        [296, 150, 0.6, 12],
+        [160, 262, 0.5, 0],
+      ];
       const [x, y, s, r] = sides[slotIndex % sides.length];
       return place(x, y, s, r);
     }
@@ -98,17 +123,21 @@ export function renderBoat(ids, opts = {}) {
   const objects = cards.filter((c) => c.kind === 'object');
 
   const BIG = new Set(['egg', 'scoop', 'item']);
-  const layer = (sauce) => ingredients
-    .filter((c) => SAUCE_TYPES.has(c.top.t) === sauce)
-    .sort((a, b) => BIG.has(a.top.t) - BIG.has(b.top.t))
-    .map((card) => {
-      const fn = TOP[card.top.t] || TOP.diced;
-      const rng = makeRng(`top-${card.id}`);
-      return `<g class="topping${opts.fresh === card.id ? ' fresh' : ''}">${fn(card.top, rng, card)}</g>`;
-    }).join('');
+  const layer = (sauce) =>
+    ingredients
+      .filter((c) => SAUCE_TYPES.has(c.top.t) === sauce)
+      .sort((a, b) => BIG.has(a.top.t) - BIG.has(b.top.t))
+      .map((card) => {
+        const fn = TOP[card.top.t] || TOP.diced;
+        const rng = makeRng(`top-${card.id}`);
+        return `<g class="topping${opts.fresh === card.id ? ' fresh' : ''}">${fn(card.top, rng, card)}</g>`;
+      })
+      .join('');
   const fid = `ds${++clipSeq}`;
   const shadowDef = `<filter id="${fid}" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="2.4" stdDeviation="1.3" flood-color="#2b1d14" flood-opacity=".38"/></filter>`;
-  const toppingSvg = ingredients.length ? `<defs>${shadowDef}</defs><g filter="url(#${fid})">${layer(true)}</g><g filter="url(#${fid})">${layer(false)}</g>` : '';
+  const toppingSvg = ingredients.length
+    ? `<defs>${shadowDef}</defs><g filter="url(#${fid})">${layer(true)}</g><g filter="url(#${fid})">${layer(false)}</g>`
+    : '';
 
   const counts = {};
   const behind = [];
@@ -121,9 +150,11 @@ export function renderBoat(ids, opts = {}) {
     (anchor === 'stick' ? behind : front).push(g);
   }
 
-  const steam = ids.length ? `<g class="steam" opacity=".55">
+  const steam = ids.length
+    ? `<g class="steam" opacity=".55">
       <path d="M120 40 q-8 -12 0 -22 t0 -22" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-      <path d="M200 40 q8 -12 0 -22 t0 -22" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g>` : '';
+      <path d="M200 40 q8 -12 0 -22 t0 -22" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></g>`
+    : '';
 
   return `<svg class="boat ${opts.cls || ''}" viewBox="0 -40 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fry boat">
     <ellipse cx="160" cy="252" rx="110" ry="14" fill="#000" opacity=".18"/>

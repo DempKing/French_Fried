@@ -5,11 +5,23 @@ export const f = (n) => (Math.round(n * 10) / 10).toString();
 
 function toRgb(hex) {
   let h = hex.replace('#', '');
-  if (h.length === 3) h = h.split('').map((c) => c + c).join('');
+  if (h.length === 3)
+    h = h
+      .split('')
+      .map((c) => c + c)
+      .join('');
   const n = parseInt(h, 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
-const toHex = (r, g, b) => '#' + [r, g, b].map((v) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+const toHex = (r, g, b) =>
+  '#' +
+  [r, g, b]
+    .map((v) =>
+      Math.max(0, Math.min(255, Math.round(v)))
+        .toString(16)
+        .padStart(2, '0'),
+    )
+    .join('');
 
 /** Darken (amt < 0) or lighten (amt > 0) a hex colour. */
 export function shade(hex, amt) {
@@ -62,7 +74,8 @@ export function blobPts(rng, cx, cy, rx, ry, n = 8, jitter = 0.22, rot = 0) {
   });
 }
 
-export const blob = (rng, cx, cy, rx, ry, n, jitter, rot) => smoothClosed(blobPts(rng, cx, cy, rx, ry, n, jitter, rot));
+export const blob = (rng, cx, cy, rx, ry, n, jitter, rot) =>
+  smoothClosed(blobPts(rng, cx, cy, rx, ry, n, jitter, rot));
 
 /** Angular chunk (diced / crumbled pieces). */
 export function chunkPath(rng, cx, cy, r, n = 5, rot = rng() * 6) {
@@ -74,19 +87,28 @@ export function chunkPath(rng, cx, cy, r, n = 5, rot = rng() * 6) {
   return `M${pts.join(' L')}Z`;
 }
 
-export const circle = (cx, cy, r) => `M${f(cx - r)} ${f(cy)}a${f(r)} ${f(r)} 0 1 0 ${f(2 * r)} 0a${f(r)} ${f(r)} 0 1 0 ${f(-2 * r)} 0Z`;
-export const ellipse = (cx, cy, rx, ry) => `M${f(cx - rx)} ${f(cy)}a${f(rx)} ${f(ry)} 0 1 0 ${f(2 * rx)} 0a${f(rx)} ${f(ry)} 0 1 0 ${f(-2 * rx)} 0Z`;
-export const rrect = (x, y, w, h, r) => `M${f(x + r)} ${f(y)}H${f(x + w - r)}Q${f(x + w)} ${f(y)} ${f(x + w)} ${f(y + r)}V${f(y + h - r)}Q${f(x + w)} ${f(y + h)} ${f(x + w - r)} ${f(y + h)}H${f(x + r)}Q${f(x)} ${f(y + h)} ${f(x)} ${f(y + h - r)}V${f(y + r)}Q${f(x)} ${f(y)} ${f(x + r)} ${f(y)}Z`;
+export const circle = (cx, cy, r) =>
+  `M${f(cx - r)} ${f(cy)}a${f(r)} ${f(r)} 0 1 0 ${f(2 * r)} 0a${f(r)} ${f(r)} 0 1 0 ${f(-2 * r)} 0Z`;
+export const ellipse = (cx, cy, rx, ry) =>
+  `M${f(cx - rx)} ${f(cy)}a${f(rx)} ${f(ry)} 0 1 0 ${f(2 * rx)} 0a${f(rx)} ${f(ry)} 0 1 0 ${f(-2 * rx)} 0Z`;
+export const rrect = (x, y, w, h, r) =>
+  `M${f(x + r)} ${f(y)}H${f(x + w - r)}Q${f(x + w)} ${f(y)} ${f(x + w)} ${f(y + r)}V${f(y + h - r)}Q${f(x + w)} ${f(y + h)} ${f(x + w - r)} ${f(y + h)}H${f(x + r)}Q${f(x)} ${f(y + h)} ${f(x)} ${f(y + h - r)}V${f(y + r)}Q${f(x)} ${f(y)} ${f(x + r)} ${f(y)}Z`;
 
 let seq = 0;
 /**
  * Cel-shaded shape: base fill, a darker crescent toward the bottom-right,
  * a soft highlight toward the top-left, then the ink outline on top.
  */
-export function cel(d, color, { sw = 2.5, depth = 5, dark = -0.24, light = 0.55, hl = null, ink = INK } = {}) {
+export function cel(
+  d,
+  color,
+  { sw = 2.5, depth = 5, dark = -0.24, light = 0.55, hl = null, ink = INK } = {},
+) {
   const id = `cl${(++seq).toString(36)}`;
   const dk = shade(color, dark);
-  const h = hl ? `<ellipse cx="${f(hl[0])}" cy="${f(hl[1])}" rx="${f(hl[2])}" ry="${f(hl[3])}" fill="#fff" opacity="${light}" transform="rotate(${hl[4] ?? -25} ${f(hl[0])} ${f(hl[1])})"/>` : '';
+  const h = hl
+    ? `<ellipse cx="${f(hl[0])}" cy="${f(hl[1])}" rx="${f(hl[2])}" ry="${f(hl[3])}" fill="#fff" opacity="${light}" transform="rotate(${hl[4] ?? -25} ${f(hl[0])} ${f(hl[1])})"/>`
+    : '';
   return `<clipPath id="${id}"><path d="${d}"/></clipPath><path d="${d}" fill="${dk}"/><g clip-path="url(#${id})"><path d="${d}" fill="${color}" transform="translate(${f(-depth * 0.7)} ${f(-depth)})"/>${h}</g>${sw ? `<path d="${d}" fill="none" stroke="${ink}" stroke-width="${sw}" stroke-linejoin="round" stroke-linecap="round"/>` : ''}`;
 }
 
@@ -95,7 +117,10 @@ export function cel(d, color, { sw = 2.5, depth = 5, dark = -0.24, light = 0.55,
  * outline, then a lighter inset nudged up-left.
  */
 export function bit(d, color, { sw = 1.4, dark = -0.28, cx, cy, inset = 0.78, hi = true } = {}) {
-  const t = cx != null ? `translate(${f(cx * (1 - inset) - 0.9)} ${f(cy * (1 - inset) - 1.1)}) scale(${inset})` : 'translate(-1 -1)';
+  const t =
+    cx != null
+      ? `translate(${f(cx * (1 - inset) - 0.9)} ${f(cy * (1 - inset) - 1.1)}) scale(${inset})`
+      : 'translate(-1 -1)';
   return `<path d="${d}" fill="${shade(color, dark)}" stroke="${INK}" stroke-width="${sw}" stroke-linejoin="round"/>
     <path d="${d}" fill="${color}" transform="${t}"/>
     ${hi && cx != null ? `<circle cx="${f(cx - 1.6)}" cy="${f(cy - 1.8)}" r="1.1" fill="#fff" opacity=".7"/>` : ''}`;

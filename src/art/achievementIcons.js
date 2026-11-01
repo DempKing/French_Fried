@@ -23,17 +23,27 @@ const S = `stroke="${INK}" stroke-width="5" stroke-linejoin="round" stroke-linec
 
 /** Place any of our <svg> drawings into the badge's art box. */
 function place(svg, x, y, w, h) {
-  return svg.replace(/^\s*<svg\b/, `<svg x="${x}" y="${y}" width="${w}" height="${h}"`).replace(/class="[^"]*"/, '');
+  return svg
+    .replace(/^\s*<svg\b/, `<svg x="${x}" y="${y}" width="${w}" height="${h}"`)
+    .replace(/class="[^"]*"/, '');
 }
 
 function dnaSymbol() {
-  const pts = (sign) => Array.from({ length: 41 }, (_, i) => `${(50 + sign * 24 * Math.sin((i / 40) * Math.PI * 3)).toFixed(1)} ${(10 + i * 2).toFixed(1)}`).join('L');
+  const pts = (sign) =>
+    Array.from(
+      { length: 41 },
+      (_, i) =>
+        `${(50 + sign * 24 * Math.sin((i / 40) * Math.PI * 3)).toFixed(1)} ${(10 + i * 2).toFixed(1)}`,
+    ).join('L');
   const rungs = Array.from({ length: 9 }, (_, i) => {
     const y = 14 + i * 9;
     const dx = 24 * Math.sin(((y - 10) / 80) * Math.PI * 3);
-    return Math.abs(dx) > 6 ? `<path d="M${(50 - dx).toFixed(1)} ${y}H${(50 + dx).toFixed(1)}" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>` : '';
+    return Math.abs(dx) > 6
+      ? `<path d="M${(50 - dx).toFixed(1)} ${y}H${(50 + dx).toFixed(1)}" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>`
+      : '';
   }).join('');
-  const strand = (sign, col) => `<path d="M${pts(sign)}" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="M${pts(sign)}" fill="none" stroke="${col}" stroke-width="6.5" stroke-linecap="round"/>`;
+  const strand = (sign, col) =>
+    `<path d="M${pts(sign)}" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="M${pts(sign)}" fill="none" stroke="${col}" stroke-width="6.5" stroke-linecap="round"/>`;
   return rungs + strand(1, '#5cc8ff') + strand(-1, '#ff7ab8');
 }
 
@@ -57,7 +67,15 @@ const SYMBOLS = {
   skull: `<path d="M50 14c-20 0 -32 14 -32 32c0 10 5 17 12 21v13h40v-13c7 -4 12 -11 12 -21c0 -18 -12 -32 -32 -32Z" fill="#f4efe6" ${S}/><circle cx="38" cy="48" r="8" fill="${INK}"/><circle cx="62" cy="48" r="8" fill="${INK}"/><path d="M50 58l-5 9h10Z" fill="${INK}"/><path d="M40 80v-8M50 80v-8M60 80v-8" stroke="${INK}" stroke-width="3"/>`,
   gear: `<path d="M50 12l7 10l12 -4l2 12l12 3l-5 11l9 9l-11 6l2 12l-12 0l-4 11l-10 -7l-10 7l-4 -11l-12 0l2 -12l-11 -6l9 -9l-5 -11l12 -3l2 -12l12 4Z" fill="#c9d4df" ${S}/><circle cx="50" cy="52" r="13" fill="#7d8b99" ${S}/>`,
   galaxy: `<circle cx="50" cy="50" r="40" fill="#1b1145" ${S}/><path d="M50 50m-28 0a28 12 -20 1 0 56 0a28 12 -20 1 0 -56 0" fill="none" stroke="#b49bff" stroke-width="5" transform="rotate(-20 50 50)"/><circle cx="50" cy="50" r="9" fill="#ffe36d" ${S}/>
-    ${[[28, 30], [72, 28], [70, 72], [30, 70], [50, 20]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.5" fill="#fff"/>`).join('')}`,
+    ${[
+      [28, 30],
+      [72, 28],
+      [70, 72],
+      [30, 70],
+      [50, 20],
+    ]
+      .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.5" fill="#fff"/>`)
+      .join('')}`,
   hand: `${[0, 1, 2, 3, 4].map((i) => `<rect x="${18 + i * 11}" y="${30 - Math.abs(i - 2) * 3}" width="26" height="40" rx="4" fill="${['#fff3d6', '#ffe0a8', '#fff3d6', '#ffe0a8', '#fff3d6'][i]}" ${S} transform="rotate(${(i - 2) * 12} 50 90)"/>`).join('')}`,
   bolt: `<path d="M58 8L22 56h22l-6 36l38 -50H52Z" fill="#ffd84a" ${S}/>`,
   medal: `<path d="M34 8h14l6 26h-14ZM66 8h-14l-6 26h14Z" fill="#e2533b" ${S}/><circle cx="50" cy="62" r="26" fill="#f2c94c" ${S}/><circle cx="50" cy="62" r="17" fill="#ffe27a" ${S}/>`,
@@ -67,12 +85,37 @@ const SYMBOLS = {
 function art(icon) {
   const [x, y, w] = [48, 40, 160];
   switch (icon.kind) {
-    case 'card': return place(cardArtSvg(CARDS[icon.id]), x + 4, y + 4, w - 8, w - 8);
-    case 'cards': return icon.ids.map((id, i) => place(cardArtSvg(CARDS[id]), x - 22 + i * 52, y + 20 + (i % 2) * 14, 110, 110)).join('');
-    case 'boat': return place(renderBoat(icon.ids), x - 4, y - 6, w + 8, w + 8);
-    case 'fry': return place(renderFryGuy({ name: '', hue: icon.hue ?? 42, traits: icon.traits || [], titles: icon.crown ? ['x'] : [], species: icon.species, creature: icon.creature, hybrid: icon.hybrid }, { mood: icon.mood || 'happy' }), x - 26, y - 30, w + 52, w + 52);
-    case 'planet': return planetSvg(icon.id, { x: x + 22, y: y + 22, size: w - 44 });
-    default: return `<svg x="${x + 10}" y="${y + 10}" width="${w - 20}" height="${w - 20}" viewBox="0 0 100 100">${SYMBOLS[icon.kind] || SYMBOLS.medal}</svg>`;
+    case 'card':
+      return place(cardArtSvg(CARDS[icon.id]), x + 4, y + 4, w - 8, w - 8);
+    case 'cards':
+      return icon.ids
+        .map((id, i) => place(cardArtSvg(CARDS[id]), x - 22 + i * 52, y + 20 + (i % 2) * 14, 110, 110))
+        .join('');
+    case 'boat':
+      return place(renderBoat(icon.ids), x - 4, y - 6, w + 8, w + 8);
+    case 'fry':
+      return place(
+        renderFryGuy(
+          {
+            name: '',
+            hue: icon.hue ?? 42,
+            traits: icon.traits || [],
+            titles: icon.crown ? ['x'] : [],
+            species: icon.species,
+            creature: icon.creature,
+            hybrid: icon.hybrid,
+          },
+          { mood: icon.mood || 'happy' },
+        ),
+        x - 26,
+        y - 30,
+        w + 52,
+        w + 52,
+      );
+    case 'planet':
+      return planetSvg(icon.id, { x: x + 22, y: y + 22, size: w - 44 });
+    default:
+      return `<svg x="${x + 10}" y="${y + 10}" width="${w - 20}" height="${w - 20}" viewBox="0 0 100 100">${SYMBOLS[icon.kind] || SYMBOLS.medal}</svg>`;
   }
 }
 
@@ -82,12 +125,18 @@ let uid = 0;
 export function achievementIcon(a, { locked = false, size, square = false } = {}) {
   const k = `ach${++uid}`;
   const col = CATEGORY[a.cat]?.color || '#c9a227';
-  const rays = Array.from({ length: 16 }, (_, i) => `<path d="M128 128L${128 + 190 * Math.cos((i / 16) * Math.PI * 2)} ${128 + 190 * Math.sin((i / 16) * Math.PI * 2)}L${128 + 190 * Math.cos(((i + 0.5) / 16) * Math.PI * 2)} ${128 + 190 * Math.sin(((i + 0.5) / 16) * Math.PI * 2)}Z" fill="#fff" opacity=".09"/>`).join('');
+  const rays = Array.from(
+    { length: 16 },
+    (_, i) =>
+      `<path d="M128 128L${128 + 190 * Math.cos((i / 16) * Math.PI * 2)} ${128 + 190 * Math.sin((i / 16) * Math.PI * 2)}L${128 + 190 * Math.cos(((i + 0.5) / 16) * Math.PI * 2)} ${128 + 190 * Math.sin(((i + 0.5) / 16) * Math.PI * 2)}Z" fill="#fff" opacity=".09"/>`,
+  ).join('');
   // Badge text shrinks to fit long words like IMPOSSIBLE.
   const fs = a.badge ? Math.min(34, 290 / Math.max(a.badge.length, 1)) : 0;
   const bw = a.badge ? Math.min(216, a.badge.length * fs * 0.66 + 30) : 0;
-  const badge = a.badge ? `<g><rect x="${128 - bw / 2}" y="196" width="${bw}" height="44" rx="22" fill="#fff8e6" stroke="${INK}" stroke-width="6"/>
-    <text x="128" y="${218 + fs * 0.36}" text-anchor="middle" font-family="Lilita One, Arial Black, sans-serif" font-size="${fs}" fill="${INK}">${a.badge}</text></g>` : '';
+  const badge = a.badge
+    ? `<g><rect x="${128 - bw / 2}" y="196" width="${bw}" height="44" rx="22" fill="#fff8e6" stroke="${INK}" stroke-width="6"/>
+    <text x="128" y="${218 + fs * 0.36}" text-anchor="middle" font-family="Lilita One, Arial Black, sans-serif" font-size="${fs}" fill="${INK}">${a.badge}</text></g>`
+    : '';
   const dim = size ? `width="${size}" height="${size}"` : '';
   return `<svg class="ach-icon" viewBox="0 0 256 256" ${dim} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>

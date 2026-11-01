@@ -1,8 +1,29 @@
 // Worlds: unlocked after winning every Fryer league. Explore to battle wild
 // creatures for their DNA, splice it into fries, or grow creatures from raw DNA.
 
-import { WORLDS, WORLD_MAP, CREATURE_MAP, RARITY, WORLD_COST, EXPLORE_COST, SPLICE_COST, GROW_DNA_COST, GROW_DNA_SAMPLES, MAX_DNA_SPLICES } from '../data/worlds.js';
-import { LEAGUES, LAB_CAPACITY, getFry, simulateBattle, creatureEntity, TRAIT_MAP, worldOwned, labCount, getDifficulty } from './lab.js';
+import {
+  WORLDS,
+  WORLD_MAP,
+  CREATURE_MAP,
+  RARITY,
+  WORLD_COST,
+  EXPLORE_COST,
+  SPLICE_COST,
+  GROW_DNA_COST,
+  GROW_DNA_SAMPLES,
+  MAX_DNA_SPLICES,
+} from '../data/worlds.js';
+import {
+  LEAGUES,
+  LAB_CAPACITY,
+  getFry,
+  simulateBattle,
+  creatureEntity,
+  TRAIT_MAP,
+  worldOwned,
+  labCount,
+  getDifficulty,
+} from './lab.js';
 
 export const worldsUnlocked = (s) => !!s.fryer.champions[LEAGUES[LEAGUES.length - 1].id];
 
@@ -75,10 +96,12 @@ export function spliceDNA(s, fryId, creatureId) {
   if (fry.hof) return { ok: false, reason: `${fry.name} is retired in the Hall of Fame.` };
   if (s.fryer.run?.fryId === fryId) return { ok: false, reason: 'That fighter is mid-tournament.' };
   if (!(s.worlds.dna[creatureId] > 0)) return { ok: false, reason: `No ${c.name} DNA left.` };
-  if ((fry.dnaSplices || 0) >= MAX_DNA_SPLICES) return { ok: false, reason: `Max ${MAX_DNA_SPLICES} DNA splices per fighter.` };
+  if ((fry.dnaSplices || 0) >= MAX_DNA_SPLICES)
+    return { ok: false, reason: `Max ${MAX_DNA_SPLICES} DNA splices per fighter.` };
   const trait = WORLD_MAP[c.world].trait;
   const addTrait = !fry.traits.includes(trait);
-  if (addTrait && fry.traits.length >= 3) return { ok: false, reason: `Purge a trait first to make room for ${TRAIT_MAP[trait].name}.` };
+  if (addTrait && fry.traits.length >= 3)
+    return { ok: false, reason: `Purge a trait first to make room for ${TRAIT_MAP[trait].name}.` };
   if (s.money < SPLICE_COST) return { ok: false, reason: `Need $${SPLICE_COST}` };
   s.money -= SPLICE_COST;
   s.worlds.dna[creatureId]--;
@@ -95,8 +118,10 @@ export function spliceDNA(s, fryId, creatureId) {
 export function growFromDNA(s, creatureId, rng) {
   const c = CREATURE_MAP[creatureId];
   if (!c) return { ok: false, reason: 'Nope' };
-  if ((s.worlds.dna[creatureId] || 0) < GROW_DNA_SAMPLES) return { ok: false, reason: `Need ${GROW_DNA_SAMPLES} ${c.name} DNA samples.` };
-  if (labCount(s) >= LAB_CAPACITY) return { ok: false, reason: `Lab is full (${LAB_CAPACITY} fighters max).` };
+  if ((s.worlds.dna[creatureId] || 0) < GROW_DNA_SAMPLES)
+    return { ok: false, reason: `Need ${GROW_DNA_SAMPLES} ${c.name} DNA samples.` };
+  if (labCount(s) >= LAB_CAPACITY)
+    return { ok: false, reason: `Lab is full (${LAB_CAPACITY} fighters max).` };
   if (s.money < GROW_DNA_COST) return { ok: false, reason: `Need $${GROW_DNA_COST}` };
   s.money -= GROW_DNA_COST;
   s.worlds.dna[creatureId] -= GROW_DNA_SAMPLES;

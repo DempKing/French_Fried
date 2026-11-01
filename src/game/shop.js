@@ -5,8 +5,22 @@ import { OBJECTS } from '../data/objects.js';
 import { addCard } from './state.js';
 
 export const PACKS = {
-  basic: { id: 'basic', name: 'Basic Pack', cost: 30, count: 3, desc: '3 everyday ingredients.', needs: null },
-  premium: { id: 'premium', name: 'Premium Pack', cost: 150, count: 4, desc: '3 premium ingredients + 1 basic.', needs: 'premium' },
+  basic: {
+    id: 'basic',
+    name: 'Basic Pack',
+    cost: 30,
+    count: 3,
+    desc: '3 everyday ingredients.',
+    needs: null,
+  },
+  premium: {
+    id: 'premium',
+    name: 'Premium Pack',
+    cost: 150,
+    count: 4,
+    desc: '3 premium ingredients + 1 basic.',
+    needs: 'premium',
+  },
 };
 
 function weightedPick(rng, items, weightFn) {
@@ -56,7 +70,11 @@ export function rollThrift(state, rng, now = Date.now()) {
   const slots = [];
   const pool = OBJECTS.slice();
   for (let i = 0; i < THRIFT_SLOTS; i++) {
-    const o = weightedPick(rng, pool.filter((p) => !slots.includes(p.id)), (p) => RARITY_WEIGHT[p.rarity] * (state.deck[p.id] ? 1 : 2.5));
+    const o = weightedPick(
+      rng,
+      pool.filter((p) => !slots.includes(p.id)),
+      (p) => RARITY_WEIGHT[p.rarity] * (state.deck[p.id] ? 1 : 2.5),
+    );
     slots.push(o.id);
   }
   state.thrift.slots = slots;

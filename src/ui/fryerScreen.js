@@ -1,6 +1,21 @@
 // The Fryer: bracket tournaments for lab fighters. Losers get fried.
 
-import { LEAGUES, LEAGUE_MAP, WORLD_ARENA_LIST, canEnter, enterReason, worldOwned, startRun, fightRound, withdraw, getFry, roundPrize, champPrize, currentMatch, roundName } from '../game/lab.js';
+import {
+  LEAGUES,
+  LEAGUE_MAP,
+  WORLD_ARENA_LIST,
+  canEnter,
+  enterReason,
+  worldOwned,
+  startRun,
+  fightRound,
+  withdraw,
+  getFry,
+  roundPrize,
+  champPrize,
+  currentMatch,
+  roundName,
+} from '../game/lab.js';
 import { WORLD_MAP } from '../data/worlds.js';
 import { fmt } from '../game/state.js';
 import { sfx } from '../audio.js';
@@ -36,13 +51,18 @@ export function renderFryer(app, root) {
   const s = app.state;
   if (ui.result) return renderArena(app, root, ui.result);
   if (s.fryer.run) {
-    if (!getFry(s, s.fryer.run.fryId)) { s.fryer.run = null; app.commit(); return; }
+    if (!getFry(s, s.fryer.run.fryId)) {
+      s.fryer.run = null;
+      app.commit();
+      return;
+    }
     return renderArena(app, root, null);
   }
   const fries = s.lab.fries.filter((f) => !f.hof);
   if (!fries.some((f) => f.id === ui.fry)) ui.fry = fries[0]?.id ?? null;
   const fry = getFry(s, ui.fry);
-  if (!canEnter(s, ui.league, fry)) ui.league = [...LEAGUES, ...WORLD_ARENA_LIST].find((L) => canEnter(s, L.id, fry))?.id || 'rookie';
+  if (!canEnter(s, ui.league, fry))
+    ui.league = [...LEAGUES, ...WORLD_ARENA_LIST].find((L) => canEnter(s, L.id, fry))?.id || 'rookie';
   const worldArenas = WORLD_ARENA_LIST.filter((L) => worldOwned(s, L.world) && L.world !== 'alien');
   const universe = WORLD_ARENA_LIST.filter((L) => L.world === 'alien' && worldOwned(s, 'alien'));
   root.innerHTML = `<section class="fryer">
@@ -57,11 +77,29 @@ export function renderFryer(app, root) {
         <button class="btn btn-fry" id="enterBtn" ${fry && canEnter(s, ui.league, fry) ? '' : 'disabled'}>Enter the bracket</button></div>
     </div>
   </section>`;
-  $$('[data-fry]', root).forEach((b) => (b.onclick = () => { ui.fry = +b.dataset.fry; sfx('click'); app.render(); }));
-  $$('[data-league]', root).forEach((b) => (b.onclick = () => { ui.league = b.dataset.league; sfx('click'); app.render(); }));
+  $$('[data-fry]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        ui.fry = +b.dataset.fry;
+        sfx('click');
+        app.render();
+      }),
+  );
+  $$('[data-league]', root).forEach(
+    (b) =>
+      (b.onclick = () => {
+        ui.league = b.dataset.league;
+        sfx('click');
+        app.render();
+      }),
+  );
   $('#enterBtn', root).onclick = () => {
     const res = startRun(s, ui.fry, ui.league);
-    if (!res.ok) { sfx('error'); toast(res.reason, 'warn'); return; }
+    if (!res.ok) {
+      sfx('error');
+      toast(res.reason, 'warn');
+      return;
+    }
     sfx('sizzle');
     app.commit();
   };
@@ -75,15 +113,20 @@ export function bracketHtml(slots, rounds, L, playerName) {
     const title = r === L.rounds ? '👑 Champion' : roundName(L, r);
     if (!alive) {
       const n = 2 ** (L.rounds - r);
-      cols.push(`<div class="bcol"><h4>${title}</h4>${Array.from({ length: n / (r === L.rounds ? 1 : 2) }, () => `<div class="bmatch">${(r === L.rounds ? ['?'] : ['?', '?']).map(() => '<div class="bent tbd">?</div>').join('')}</div>`).join('')}</div>`);
+      cols.push(
+        `<div class="bcol"><h4>${title}</h4>${Array.from({ length: n / (r === L.rounds ? 1 : 2) }, () => `<div class="bmatch">${(r === L.rounds ? ['?'] : ['?', '?']).map(() => '<div class="bent tbd">?</div>').join('')}</div>`).join('')}</div>`,
+      );
       continue;
     }
     const next = rounds[r + 1];
     const name = (i) => (i === 0 ? playerName : slots[i].name);
-    const ent = (i) => `<div class="bent ${i === 0 ? 'you' : ''} ${next ? (next.includes(i) ? 'won' : 'lost') : ''}" title="${esc(name(i))}">${i === 0 ? '🍟 ' : ''}${esc(name(i))}</div>`;
+    const ent = (i) =>
+      `<div class="bent ${i === 0 ? 'you' : ''} ${next ? (next.includes(i) ? 'won' : 'lost') : ''}" title="${esc(name(i))}">${i === 0 ? '🍟 ' : ''}${esc(name(i))}</div>`;
     const groups = [];
     if (r === L.rounds) groups.push(`<div class="bmatch">${ent(alive[0])}</div>`);
-    else for (let i = 0; i < alive.length; i += 2) groups.push(`<div class="bmatch">${ent(alive[i])}${ent(alive[i + 1])}</div>`);
+    else
+      for (let i = 0; i < alive.length; i += 2)
+        groups.push(`<div class="bmatch">${ent(alive[i])}${ent(alive[i + 1])}</div>`);
     cols.push(`<div class="bcol"><h4>${title}</h4>${groups.join('')}</div>`);
   }
   return `<div class="bracket-wrap"><div class="bracket ${L.rounds >= 6 ? 'huge' : ''}">${cols.join('')}</div></div>`;
@@ -98,14 +141,20 @@ function renderArena(app, root, result) {
   const round = result ? result.round : run.round;
   const bracket = result ? result.bracket : { slots: run.slots, rounds: run.rounds };
   const isFinal = round === L.rounds - 1;
-  const stake = isFinal ? `Win the final to be crowned champion: ${fmt(champPrize(s, fry, L))}` : `Win this round for ${fmt(roundPrize(s, fry, L, round))}`;
+  const stake = isFinal
+    ? `Win the final to be crowned champion: ${fmt(champPrize(s, fry, L))}`
+    : `Win this round for ${fmt(roundPrize(s, fry, L, round))}`;
   const theme = L.world ? `world-${L.world}` : '';
   let verdict = '';
   if (result && !ui.animating) {
-    if (result.fried) verdict = `<div class="verdict lose"><h2>🔥 FRIED! 🔥</h2><p>${esc(fry.name)} lost in the ${roundName(L, round)} and was dunked in the deep fryer. Goodbye, brave fighter.</p><button class="btn" id="okBtn">Pour one out</button></div>`;
-    else if (result.universe) verdict = `<div class="verdict win universe"><h2>🌌 CHAMPION OF THE UNIVERSE 🌌</h2><p>${esc(fry.name)} defeated 127 of the galaxy's fiercest fighters! +${fmt(result.bonus)}.</p><p><b>🏛️ The Hall of Fame is open</b> and <b>difficulty settings</b> are unlocked in Settings.</p><button class="btn btn-primary" id="okBtn">Legendary!</button></div>`;
-    else if (result.champion) verdict = `<div class="verdict win"><h2>👑 CHAMPION! 👑</h2><p>${esc(fry.name)} won the ${L.name} bracket! +${fmt(result.bonus)} champion purse.</p>${L.id === 'legend' ? '<p><b>🌍 New Worlds discovered!</b> Visit the Worlds tab to choose your first destination for free.</p>' : ''}${result.letter ? '<p><b>📜 A mysterious letter has arrived for your champion...</b></p><button class="btn btn-primary" id="letterOpen">Open the letter</button> ' : ''}<button class="btn ${result.letter ? '' : 'btn-primary'}" id="okBtn">Glory!</button></div>`;
-    else verdict = `<div class="verdict win"><h2>${roundName(L, round)} won!</h2><p>+${fmt(result.prize)}. Next up: the ${roundName(L, round + 1)}.</p><button class="btn btn-primary" id="okBtn">Continue</button></div>`;
+    if (result.fried)
+      verdict = `<div class="verdict lose"><h2>🔥 FRIED! 🔥</h2><p>${esc(fry.name)} lost in the ${roundName(L, round)} and was dunked in the deep fryer. Goodbye, brave fighter.</p><button class="btn" id="okBtn">Pour one out</button></div>`;
+    else if (result.universe)
+      verdict = `<div class="verdict win universe"><h2>🌌 CHAMPION OF THE UNIVERSE 🌌</h2><p>${esc(fry.name)} defeated 127 of the galaxy's fiercest fighters! +${fmt(result.bonus)}.</p><p><b>🏛️ The Hall of Fame is open</b> and <b>difficulty settings</b> are unlocked in Settings.</p><button class="btn btn-primary" id="okBtn">Legendary!</button></div>`;
+    else if (result.champion)
+      verdict = `<div class="verdict win"><h2>👑 CHAMPION! 👑</h2><p>${esc(fry.name)} won the ${L.name} bracket! +${fmt(result.bonus)} champion purse.</p>${L.id === 'legend' ? '<p><b>🌍 New Worlds discovered!</b> Visit the Worlds tab to choose your first destination for free.</p>' : ''}${result.letter ? '<p><b>📜 A mysterious letter has arrived for your champion...</b></p><button class="btn btn-primary" id="letterOpen">Open the letter</button> ' : ''}<button class="btn ${result.letter ? '' : 'btn-primary'}" id="okBtn">Glory!</button></div>`;
+    else
+      verdict = `<div class="verdict win"><h2>${roundName(L, round)} won!</h2><p>+${fmt(result.prize)}. Next up: the ${roundName(L, round + 1)}.</p><button class="btn btn-primary" id="okBtn">Continue</button></div>`;
   }
   const done = result && !ui.animating;
   const last = result?.battle.events.at(-1);
@@ -114,29 +163,48 @@ function renderArena(app, root, result) {
     ${ringHtml(fry, opp, { theme, hp: done ? [last.hpA, last.hpB] : null, moodA: done && result.fried ? 'dead' : 'idle', moodB: done && !result.fried ? 'dead' : 'idle' })}
     ${verdict}
     <div class="battle-log" id="blog">${done ? logHtml(result.battle.events) : result ? '' : '<p class="muted">Scout your opponent, then fight. You can withdraw between rounds and keep your fighter (and your winnings).</p>'}</div>
-    ${!result ? `<div class="row center"><button class="btn btn-fry" id="fightBtn">⚔️ FIGHT!</button><button class="btn" id="withdrawBtn">Withdraw (keep fighter)</button></div>
-      <details class="scout"><summary>Scout the opponent</summary>${statBlock(opp)}</details>` : ''}
+    ${
+      !result
+        ? `<div class="row center"><button class="btn btn-fry" id="fightBtn">⚔️ FIGHT!</button><button class="btn" id="withdrawBtn">Withdraw (keep fighter)</button></div>
+      <details class="scout"><summary>Scout the opponent</summary>${statBlock(opp)}</details>`
+        : ''
+    }
     <h2 class="center">Bracket</h2>
     ${bracketHtml(bracket.slots, done ? bracket.rounds : bracket.rounds.slice(0, round + 1), L, fry.name)}
   </section>`;
 
   if (done) {
     if (result.fried) $('#fa', root).classList.add('fried');
-    $('#okBtn', root).onclick = () => { ui.result = null; app.render(); };
+    $('#okBtn', root).onclick = () => {
+      ui.result = null;
+      app.render();
+    };
     const lo = $('#letterOpen', root);
-    if (lo) lo.onclick = () => { ui.result = null; app.render(); openLetter(app, fry); };
+    if (lo)
+      lo.onclick = () => {
+        ui.result = null;
+        app.render();
+        openLetter(app, fry);
+      };
     return;
   }
   if (result) return;
   $('#fightBtn', root).onclick = () => fight(app);
-  $('#withdrawBtn', root).onclick = () => { withdraw(s); toast(`You withdrew with ${fmt(run.earned)} in winnings. Your fighter lives on.`, 'info'); app.commit(); };
+  $('#withdrawBtn', root).onclick = () => {
+    withdraw(s);
+    toast(`You withdrew with ${fmt(run.earned)} in winnings. Your fighter lives on.`, 'info');
+    app.commit();
+  };
 }
 
 function fight(app) {
   if (ui.animating) return;
   const before = app.state.money;
   const res = fightRound(app.state, app.rng);
-  if (!res.ok) { toast(res.reason, 'warn'); return; }
+  if (!res.ok) {
+    toast(res.reason, 'warn');
+    return;
+  }
   ui.result = res;
   ui.animating = true;
   // Prize money and achievements stay hidden until the fight has played out.
@@ -146,7 +214,10 @@ function fight(app) {
     log: $('#blog', root),
     onDone: (left) => {
       ui.animating = false;
-      if (left) { app.reveal(); return; }
+      if (left) {
+        app.reveal();
+        return;
+      }
       sfx(res.fried ? 'lose' : 'win');
       app.render();
       app.reveal();

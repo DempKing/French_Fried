@@ -22,7 +22,11 @@ export function ringHtml(a, b, { hp = null, moodA = 'idle', moodB = 'idle', them
 }
 
 export function logHtml(events, n = 6) {
-  return events.slice(-n).reverse().map((e) => `<p class="ev ${e.kind}">${esc(e.msg)}</p>`).join('');
+  return events
+    .slice(-n)
+    .reverse()
+    .map((e) => `<p class="ev ${e.kind}">${esc(e.msg)}</p>`)
+    .join('');
 }
 
 function floater(el, text, kind) {

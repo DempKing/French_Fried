@@ -26,8 +26,25 @@ export const WORLDS = [
     desc: 'A sizzling boardwalk where bun-dwelling beasts roam the grill grates.',
     bias: { hp: 1.1, atk: 1.1, def: 1, spd: 1 },
     arenas: [
-      { id: 'hd1', name: 'The Relish Ring', rounds: 4, power: 2.8, prize: 8000, champBonus: 40000, entry: 3000 },
-      { id: 'hd2', name: 'Mustard Coliseum', rounds: 5, power: 3.4, prize: 15000, champBonus: 80000, entry: 6000, needs: 'hd1' },
+      {
+        id: 'hd1',
+        name: 'The Relish Ring',
+        rounds: 4,
+        power: 2.8,
+        prize: 8000,
+        champBonus: 40000,
+        entry: 3000,
+      },
+      {
+        id: 'hd2',
+        name: 'Mustard Coliseum',
+        rounds: 5,
+        power: 3.4,
+        prize: 15000,
+        champBonus: 80000,
+        entry: 6000,
+        needs: 'hd1',
+      },
     ],
     creatures: [
       C('wienerwhelp', 'Wiener Whelp', 'common', 'classic', 'Yaps at seagulls. Mustard-scented.'),
@@ -46,15 +63,38 @@ export const WORLDS = [
     desc: 'Rolling sesame hills where stacked brutes guard the Great Grill.',
     bias: { hp: 1.1, atk: 0.9, def: 1.6, spd: 0.8 },
     arenas: [
-      { id: 'bg1', name: 'The Patty Pit', rounds: 4, power: 2.8, prize: 8000, champBonus: 40000, entry: 3000 },
-      { id: 'bg2', name: 'Big Bun Bowl', rounds: 5, power: 3.4, prize: 15000, champBonus: 80000, entry: 6000, needs: 'bg1' },
+      {
+        id: 'bg1',
+        name: 'The Patty Pit',
+        rounds: 4,
+        power: 2.8,
+        prize: 8000,
+        champBonus: 40000,
+        entry: 3000,
+      },
+      {
+        id: 'bg2',
+        name: 'Big Bun Bowl',
+        rounds: 5,
+        power: 3.4,
+        prize: 15000,
+        champBonus: 80000,
+        entry: 6000,
+        needs: 'bg1',
+      },
     ],
     creatures: [
       C('sliderling', 'Sliderling', 'common', 'slider', 'Small, round, and surprisingly bitey.'),
       C('cheesebruiser', 'Cheese Bruiser', 'common', 'classic', 'Its cheese never stops dripping.'),
       C('baconbehemoth', 'Bacon Behemoth', 'rare', 'bacon', 'Wrapped in a crispy bacon cape.'),
       C('doubledecker', 'Double Decker', 'rare', 'double', 'Two patties. Twice the trouble.'),
-      C('megastack', 'The Mega Stack', 'legendary', 'mega', 'Taller than the clouds. Held together by one toothpick.'),
+      C(
+        'megastack',
+        'The Mega Stack',
+        'legendary',
+        'mega',
+        'Taller than the clouds. Held together by one toothpick.',
+      ),
     ],
   },
   {
@@ -66,8 +106,25 @@ export const WORLDS = [
     desc: 'Fizzing lakes and sugar geysers, home to hyperactive cup critters.',
     bias: { hp: 0.9, atk: 1.4, def: 0.85, spd: 1.05 },
     arenas: [
-      { id: 'sd1', name: 'Fizzy Falls Arena', rounds: 4, power: 2.8, prize: 8000, champBonus: 40000, entry: 3000 },
-      { id: 'sd2', name: 'The Geyser Dome', rounds: 5, power: 3.4, prize: 15000, champBonus: 80000, entry: 6000, needs: 'sd1' },
+      {
+        id: 'sd1',
+        name: 'Fizzy Falls Arena',
+        rounds: 4,
+        power: 2.8,
+        prize: 8000,
+        champBonus: 40000,
+        entry: 3000,
+      },
+      {
+        id: 'sd2',
+        name: 'The Geyser Dome',
+        rounds: 5,
+        power: 3.4,
+        prize: 15000,
+        champBonus: 80000,
+        entry: 6000,
+        needs: 'sd1',
+      },
     ],
     creatures: [
       C('colacub', 'Cola Cub', 'common', 'cola', 'Bounces off the walls. Literally.'),
@@ -86,8 +143,25 @@ export const WORLDS = [
     desc: 'A pastel carnival in the sky, drifting with fluffy sugar spirits.',
     bias: { hp: 0.95, atk: 0.95, def: 0.9, spd: 1.5 },
     arenas: [
-      { id: 'cc1', name: 'The Carnival Cloud', rounds: 4, power: 2.8, prize: 8000, champBonus: 40000, entry: 3000 },
-      { id: 'cc2', name: 'Sugar Storm Stadium', rounds: 5, power: 3.4, prize: 15000, champBonus: 80000, entry: 6000, needs: 'cc1' },
+      {
+        id: 'cc1',
+        name: 'The Carnival Cloud',
+        rounds: 4,
+        power: 2.8,
+        prize: 8000,
+        champBonus: 40000,
+        entry: 3000,
+      },
+      {
+        id: 'cc2',
+        name: 'Sugar Storm Stadium',
+        rounds: 5,
+        power: 3.4,
+        prize: 15000,
+        champBonus: 80000,
+        entry: 6000,
+        needs: 'cc1',
+      },
     ],
     creatures: [
       C('pinkpuff', 'Pink Puff', 'common', 'pink', 'Giggles when poked. Then poke back.'),
@@ -112,7 +186,16 @@ export const WORLDS = [
     wildMult: 1.45,
     grownMult: 1.3,
     arenas: [
-      { id: 'universe', name: 'Champions of the Universe', rounds: 7, power: 5.0, prize: 25000, champBonus: 1000000, entry: 0, invite: true },
+      {
+        id: 'universe',
+        name: 'Champions of the Universe',
+        rounds: 7,
+        power: 5.0,
+        prize: 25000,
+        champBonus: 1000000,
+        entry: 0,
+        invite: true,
+      },
     ],
     creatures: [
       C('greyling', 'Greyling', 'common', 'grey', 'Big head, bigger questions. Probes everything.'),
@@ -128,5 +211,9 @@ export const WORLDS = [
 export const TRAVEL_WORLDS = WORLDS.filter((w) => !w.secret);
 
 export const WORLD_MAP = Object.fromEntries(WORLDS.map((w) => [w.id, w]));
-export const CREATURE_MAP = Object.fromEntries(WORLDS.flatMap((w) => w.creatures.map((c) => [c.id, { ...c, world: w.id }])));
-export const WORLD_ARENAS = WORLDS.flatMap((w) => w.arenas.map((a) => ({ ...a, world: w.id, needs: a.needs || null })));
+export const CREATURE_MAP = Object.fromEntries(
+  WORLDS.flatMap((w) => w.creatures.map((c) => [c.id, { ...c, world: w.id }])),
+);
+export const WORLD_ARENAS = WORLDS.flatMap((w) =>
+  w.arenas.map((a) => ({ ...a, world: w.id, needs: a.needs || null })),
+);
