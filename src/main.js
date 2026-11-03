@@ -2,7 +2,7 @@
 
 import { achievementIcon, CATEGORY } from './art/achievementIcons.js';
 import { renderBoat } from './art/fries.js';
-import { configureAudio, sfx, unlockAudio } from './audio.js';
+import { configureAudio, setMusicScene, sfx, unlockAudio } from './audio.js';
 import { TOTAL_RECIPES } from './data/recipes.js';
 import { ACHIEVEMENTS, checkAchievements } from './game/achievements.js';
 import { addToKitchen, createKitchen } from './game/kitchen.js';
@@ -53,6 +53,9 @@ const SCREENS = {
   hall: { label: 'Hall', icon: '🏛️', render: renderHall, lock: 'hall', hidden: true },
 };
 
+/** The music each screen plays (see src/music/): the Kitchen theme unless listed. */
+const MUSIC = { lab: 'lab', fryer: 'fryer', worlds: 'cosmos', hall: 'cosmos' };
+
 /** Is a screen still locked? */
 const isLocked = (scr) => {
   if (!scr.lock) return false;
@@ -70,6 +73,7 @@ const app = {
   newDrawn: new Set(),
 
   render() {
+    setMusicScene(MUSIC[app.screen] || 'kitchen');
     if (app.screen === 'title') return renderTitle();
     const scr = SCREENS[app.screen];
     renderTopbar();

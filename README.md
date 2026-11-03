@@ -48,7 +48,7 @@ whether you've invented something new. Discover them all to win.
   card type (basic, premium, objects) at once.
 - **Master Chef** ($10,000,000 in the Shop): makes the cards in your hand glow when they make a new recipe,
   picking the most valuable one when there are several. One tap plays them into the boat.
-- 74 achievements across every feature, each with its own badge drawn from the game's art, plus generated sound effects and music, keyboard shortcuts, autosave, and save
+- 74 achievements across every feature, each with its own badge drawn from the game's art, plus generated sound effects and four original music themes (Kitchen, Lab, Fryer and Cosmos, made live in `src/music/`), keyboard shortcuts, autosave, and save
   export/import.
 
 ## Play

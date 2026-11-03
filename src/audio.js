@@ -1,10 +1,19 @@
-// Tiny WebAudio synth: sound effects and a looping kitchen jingle. No assets needed.
+// Sound: synthesized sound effects and the game's own music, all made live with Web Audio (no audio files).
+// Each part of the game has its own piece (src/music/); moving between parts crossfades to it.
+import { playCosmos } from './music/cosmos.js';
+import { playFryer } from './music/fryer.js';
+import { playKitchen } from './music/kitchen.js';
+import { playLab } from './music/lab.js';
 
 let ctx = null;
 let master = null;
 let musicGain = null;
-let musicTimer = null;
 const settings = { sfx: true, music: true, volume: 0.6 };
+
+/** The pieces, by name. */
+const PIECES = { kitchen: playKitchen, lab: playLab, fryer: playFryer, cosmos: playCosmos };
+let scene = 'kitchen'; // the piece the current screen wants
+let playing = null; // { name, piece } now playing
 
 /** The shared AudioContext (created on first use). */
 function ensure() {
@@ -16,24 +25,82 @@ function ensure() {
   master.gain.value = settings.volume;
   master.connect(ctx.destination);
   musicGain = ctx.createGain();
-  musicGain.gain.value = 0.12;
+  musicGain.gain.value = 0.8; // the music sits under the sound effects
   musicGain.connect(master);
   return ctx;
+}
+
+/**
+ * iPhone and iPad mute Web Audio when the ring/silent switch is on silent. Asking for media playback,
+ * or playing a silent media element, lets the game be heard like a video. Needs a tap, so it runs on unlock.
+ */
+let unmuted = false;
+function unmuteIOS() {
+  if (unmuted) return;
+  unmuted = true;
+  try {
+    if (navigator.audioSession) navigator.audioSession.type = 'playback';
+  } catch {
+    // Not supported: the silent clip below does the job.
+  }
+  // A tenth of a second of silence (8 kHz, 8-bit WAV), looping quietly in the background.
+  const samples = 800;
+  const bytes = new Uint8Array(44 + samples);
+  const view = new DataView(bytes.buffer);
+  const text = (at, str) => [...str].forEach((c, i) => view.setUint8(at + i, c.charCodeAt(0)));
+  text(0, 'RIFF');
+  view.setUint32(4, 36 + samples, true);
+  text(8, 'WAVEfmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true); // PCM
+  view.setUint16(22, 1, true); // mono
+  view.setUint32(24, 8000, true);
+  view.setUint32(28, 8000, true);
+  view.setUint16(32, 1, true);
+  view.setUint16(34, 8, true);
+  text(36, 'data');
+  view.setUint32(40, samples, true);
+  bytes.fill(128, 44); // 8-bit silence is the middle value
+  try {
+    const el = new Audio(URL.createObjectURL(new Blob([bytes], { type: 'audio/wav' })));
+    el.loop = true;
+    el.setAttribute('playsinline', '');
+    void el.play().catch(() => {});
+  } catch {
+    // No media playback here (tests, old browsers): nothing to unmute.
+  }
 }
 
 /** Applies the sound settings. */
 export function configureAudio(s) {
   Object.assign(settings, s);
   if (master) master.gain.value = settings.volume;
-  if (settings.music) startMusic();
-  else stopMusic();
+  updateMusic();
 }
 
 /** Starts audio after the first click (browsers require it). */
 export function unlockAudio() {
+  unmuteIOS();
   const c = ensure();
   if (c && c.state === 'suspended') c.resume();
-  if (settings.music) startMusic();
+  updateMusic();
+}
+
+/** Which piece should play: 'kitchen', 'lab', 'fryer' or 'cosmos' (the screen changed). */
+export function setMusicScene(name) {
+  scene = PIECES[name] ? name : 'kitchen';
+  updateMusic();
+}
+
+/** Starts, switches or stops the music to match the scene and the Music setting. */
+function updateMusic() {
+  const want = settings.music && ensure() ? scene : null;
+  if (playing?.name === want) return;
+  if (playing) {
+    playing.piece.stop(1.2);
+    playing = null;
+  }
+  if (want) playing = { name: want, piece: PIECES[want](ctx, musicGain, ctx.currentTime + 0.05) };
 }
 
 /** A simple synth tone. */
@@ -133,44 +200,4 @@ export function sfx(name) {
   } catch {
     /* audio is best-effort */
   }
-}
-
-// A bouncy little diner loop: bass + melody, scheduled a bar at a time.
-const BPM = 112;
-/** The background music notes. */
-const MELODY = [
-  72, 0, 76, 79, 77, 0, 76, 72, 74, 0, 77, 81, 79, 77, 76, 74, 72, 0, 76, 79, 81, 79, 77, 76, 74, 77, 76, 74,
-  72, 0, 0, 0,
-];
-const BASS = [48, 55, 52, 55, 53, 57, 55, 59, 48, 55, 52, 55, 50, 53, 55, 43];
-const midi = (n) => 440 * Math.pow(2, (n - 69) / 12);
-
-/** Starts the background music. */
-function startMusic() {
-  if (musicTimer || !ensure()) return;
-  let step = 0;
-  const eighth = 60 / BPM / 2;
-  const scheduleBar = () => {
-    if (!ctx || ctx.state !== 'running') return;
-    for (let i = 0; i < 8; i++) {
-      const m = MELODY[(step + i) % MELODY.length];
-      if (m) tone(midi(m), eighth * 0.9, { type: 'triangle', vol: 0.5, delay: i * eighth, dest: musicGain });
-      if (i % 2 === 0)
-        tone(midi(BASS[((step + i) / 2) % BASS.length | 0]), eighth * 1.6, {
-          type: 'sine',
-          vol: 0.7,
-          delay: i * eighth,
-          dest: musicGain,
-        });
-    }
-    step = (step + 8) % MELODY.length;
-  };
-  scheduleBar();
-  musicTimer = setInterval(scheduleBar, eighth * 8 * 1000);
-}
-
-/** Stops the background music. */
-function stopMusic() {
-  clearInterval(musicTimer);
-  musicTimer = null;
 }
