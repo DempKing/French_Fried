@@ -1,6 +1,6 @@
 // Takes the Steam store screenshots (1920x1080) from the real game: builds a late-game save with the game's
 // own rules, loads the built game (dist/index.html) in Playwright's Chromium, and photographs each part of it
-// into steam/screenshots/. Run with `npm run steam:screenshots` (it builds the game first).
+// into steam-images/screenshots/. Run with `npm run steam:screenshots` (it builds the game first).
 import { createRequire } from 'node:module';
 import { mkdirSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -14,7 +14,7 @@ import { makeRng } from '../src/game/rng.js';
 import { defaultState, SAVE_KEY } from '../src/game/state.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const out = join(root, 'steam/screenshots');
+const out = join(root, 'steam-images/screenshots');
 const { chromium } = createRequire(import.meta.url)('playwright');
 
 /** A late-game save: everything unlocked, a full Lab, lots of recipes found, two worlds visited. */

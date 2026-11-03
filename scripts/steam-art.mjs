@@ -1,5 +1,5 @@
 // Renders every Steam store, library, community and event image from the game's own art, at Steam's sizes,
-// into steam/store/. Run with `npm run steam:art` (after `npm install`); it uses Playwright's Chromium.
+// into steam-images/ (store/, library/, community/, events/). Run with `npm run steam:art` (after `npm install`); it uses Playwright's Chromium.
 // The pictures are made from the same drawings as the game (fry boats, fighters, creatures, planets, cards),
 // so they always match it. Gameplay screenshots are made separately by scripts/steam-screenshots.mjs.
 import { createRequire } from 'node:module';
@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import * as esbuild from 'esbuild';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const out = join(root, 'steam/store');
+const out = join(root, 'steam-images');
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
@@ -140,7 +140,7 @@ function stage(w, h, pieces, { burst = [0.5, 0.45], counter = 0, transparent = f
 const ART = [
   // The capsules: logo big and legible, the boat and a few of the cast around it.
   {
-    file: 'header_capsule.png',
+    file: 'store/header_capsule.png',
     w: 920,
     h: 430,
     pieces: [
@@ -153,7 +153,7 @@ const ART = [
     opts: { burst: [0.72, 0.5], counter: 0.12 },
   },
   {
-    file: 'small_capsule.png',
+    file: 'store/small_capsule.png',
     w: 462,
     h: 174,
     pieces: [
@@ -163,7 +163,7 @@ const ART = [
     opts: { burst: [0.8, 0.5] },
   },
   {
-    file: 'main_capsule.png',
+    file: 'store/main_capsule.png',
     w: 1232,
     h: 706,
     pieces: [
@@ -183,7 +183,7 @@ const ART = [
     opts: { burst: [0.5, 0.55], counter: 0.1 },
   },
   {
-    file: 'vertical_capsule.png',
+    file: 'store/vertical_capsule.png',
     w: 748,
     h: 896,
     pieces: [
@@ -200,7 +200,7 @@ const ART = [
   },
   // The page background: the sunburst and planets, no text (Steam darkens and fades it).
   {
-    file: 'page_background.png',
+    file: 'store/page_background.png',
     w: 1438,
     h: 810,
     pieces: [
@@ -213,7 +213,7 @@ const ART = [
   },
   // The library: a tall capsule, a wide header, a hero with no text, and the logo on its own.
   {
-    file: 'library_capsule.png',
+    file: 'library/library_capsule.png',
     w: 600,
     h: 900,
     pieces: [
@@ -229,7 +229,7 @@ const ART = [
     opts: { burst: [0.5, 0.6], counter: 0.08 },
   },
   {
-    file: 'library_header.png',
+    file: 'library/library_header.png',
     w: 920,
     h: 430,
     pieces: [
@@ -243,7 +243,7 @@ const ART = [
   },
   {
     // No text: Steam puts the library logo over it. The main content stays in the middle.
-    file: 'library_hero.png',
+    file: 'library/library_hero.png',
     w: 3840,
     h: 1240,
     pieces: [
@@ -266,7 +266,7 @@ const ART = [
     opts: { burst: [0.5, 0.55], counter: 0.1 },
   },
   {
-    file: 'library_logo.png',
+    file: 'library/library_logo.png',
     w: 1280,
     h: 720,
     pieces: [{ logo: 0.38, x: 0.5, y: 0.5 }],
@@ -274,7 +274,7 @@ const ART = [
   },
   // News posts.
   {
-    file: 'event_cover.png',
+    file: 'events/event_cover.png',
     w: 800,
     h: 450,
     pieces: [
@@ -289,7 +289,7 @@ const ART = [
     opts: { burst: [0.5, 0.6], counter: 0.1 },
   },
   {
-    file: 'event_header.png',
+    file: 'events/event_header.png',
     w: 1920,
     h: 622,
     pieces: [
@@ -306,7 +306,7 @@ const ART = [
   },
   // Icons: the boat from the app icon, on ketchup red.
   {
-    file: 'community_icon.jpg',
+    file: 'community/community_icon.jpg',
     w: 184,
     h: 184,
     pieces: [{ boat: ['ketchup', 'salt', 'sunglasses'], x: 0.5, y: 0.54, size: 1.02, shadow: false }],
@@ -314,7 +314,7 @@ const ART = [
   },
   // The client icons: the same rounded icon at every size Windows and Linux ask for (packed into an .ico below).
   ...[16, 24, 32, 48, 64, 96, 128, 256].map((n) => ({
-    file: `icons/icon_${n}.png`,
+    file: `community/icons/icon_${n}.png`,
     w: n,
     h: n,
     pieces: [{ boat: ['ketchup', 'salt', 'sunglasses'], x: 0.5, y: 0.54, size: 1.02, shadow: false }],
@@ -345,8 +345,10 @@ function ico(pngs) {
 const html = (inner) =>
   `<!doctype html><html><head><meta charset="utf-8"><style>${css}</style></head><body>${inner}</body></html>`;
 
-rmSync(out, { recursive: true, force: true });
-mkdirSync(join(out, 'icons'), { recursive: true });
+// Start these folders afresh (the screenshots, made by the other script, are left alone).
+for (const dir of ['store', 'library', 'community', 'events'])
+  rmSync(join(out, dir), { recursive: true, force: true });
+for (const a of ART) mkdirSync(dirname(join(out, a.file)), { recursive: true });
 const browser = await chromium.launch();
 for (const a of ART) {
   const page = await browser.newPage({ viewport: { width: a.w, height: a.h } });
@@ -382,8 +384,8 @@ for (const a of ART) {
 await browser.close();
 const sizes = [16, 24, 32, 48, 64, 128, 256];
 writeFileSync(
-  join(out, 'icons/client_icon.ico'),
-  ico(sizes.map((size) => ({ size, data: readFileSync(join(out, `icons/icon_${size}.png`)) }))),
+  join(out, 'community/icons/client_icon.ico'),
+  ico(sizes.map((size) => ({ size, data: readFileSync(join(out, `community/icons/icon_${size}.png`)) }))),
 );
-console.log('  icons/client_icon.ico', sizes.join(', '));
+console.log('  community/icons/client_icon.ico', sizes.join(', '));
 console.log(`Steam art in ${out}`);

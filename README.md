@@ -72,14 +72,15 @@ npm run electron     # run the desktop build locally
 
 The code has no runtime dependencies. It is plain ES modules:
 
-| Path        | What                                                                      |
-| ----------- | ------------------------------------------------------------------------- |
-| `src/data/` | ingredients, objects, recipe book + generator                             |
-| `src/art/`  | SVG card art, fry boat renderer, GMO fry characters                       |
-| `src/game/` | state/saves, kitchen (deck/hand/frying), shops, lab & fryer, achievements |
-| `src/ui/`   | screens                                                                   |
-| `electron/` | desktop shell + preload (fullscreen, quit, Steam achievements)            |
-| `steam/`    | SteamPipe build template, achievement list and achievement icons          |
+| Path            | What                                                                      |
+| --------------- | ------------------------------------------------------------------------- |
+| `src/data/`     | ingredients, objects, recipe book + generator                             |
+| `src/art/`      | SVG card art, fry boat renderer, GMO fry characters                       |
+| `src/game/`     | state/saves, kitchen (deck/hand/frying), shops, lab & fryer, achievements |
+| `src/ui/`       | screens                                                                   |
+| `electron/`     | desktop shell + preload (fullscreen, quit, Steam achievements)            |
+| `steam/`        | SteamPipe build template, achievement list and achievement icons          |
+| `steam-images/` | Steam store, library, community and event images, and the screenshots     |
 
 ## Shipping on Steam
 
@@ -89,27 +90,10 @@ The code has no runtime dependencies. It is plain ES modules:
    `steam/achievements/index.html` previews them all. After adding or changing achievements in
    `src/game/achievements.js`, run `npm run steam:achievements` to regenerate the CSV and icons
    (rendering the PNGs needs Playwright: `npm i -D playwright`).
-2. Upload the store and library art. It's all in the repo, made from the game's own drawings at
-   Steam's sizes; `npm run steam:art` re-renders it and `npm run steam:screenshots` retakes the
-   screenshots from the real game (both need Playwright: `npm i -D playwright`).
-
-   | Steamworks slot            | File (in `steam/`)                                 | Size               |
-   | -------------------------- | -------------------------------------------------- | ------------------ |
-   | Header capsule             | `store/header_capsule.png`                         | 920x430            |
-   | Small capsule              | `store/small_capsule.png`                          | 462x174            |
-   | Main capsule               | `store/main_capsule.png`                           | 1232x706           |
-   | Vertical capsule           | `store/vertical_capsule.png`                       | 748x896            |
-   | Page background            | `store/page_background.png`                        | 1438x810           |
-   | Screenshots                | `screenshots/01_kitchen.png` ... `08_shop.png`     | 1920x1080          |
-   | Library capsule            | `store/library_capsule.png`                        | 600x900            |
-   | Library header             | `store/library_header.png`                         | 920x430            |
-   | Library hero (no text)     | `store/library_hero.png`                           | 3840x1240          |
-   | Library logo (transparent) | `store/library_logo.png`                           | 1280x720           |
-   | Community icon             | `store/community_icon.jpg`                         | 184x184            |
-   | Client icon (Windows)      | `store/icons/client_icon.ico`                      | 16 to 256          |
-   | Client icons (Linux)       | `store/icons/icon_<size>.png`                      | 16 to 256          |
-   | Event cover / header       | `store/event_cover.png` / `store/event_header.png` | 800x450 / 1920x622 |
-
+2. Upload the store and library art from [`steam-images/`](steam-images/README.md): its README lists which
+   file goes in which Steamworks slot. `npm run steam:art` re-renders it from the game's drawings and
+   `npm run steam:screenshots` retakes the screenshots from the real game (both need Playwright:
+   `npm i -D playwright`).
 3. `npm run dist:win` / `dist:mac` / `dist:linux` (or run the **Desktop builds** GitHub workflow) to
    produce the `release/*-unpacked` folders.
 4. Set your App ID and depot IDs in `steam/app_build.vdf`, then upload with SteamPipe:
