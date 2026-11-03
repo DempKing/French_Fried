@@ -89,9 +89,30 @@ The code has no runtime dependencies. It is plain ES modules:
    `steam/achievements/index.html` previews them all. After adding or changing achievements in
    `src/game/achievements.js`, run `npm run steam:achievements` to regenerate the CSV and icons
    (rendering the PNGs needs Playwright: `npm i -D playwright`).
-2. `npm run dist:win` / `dist:mac` / `dist:linux` (or run the **Desktop builds** GitHub workflow) to
+2. Upload the store and library art. It's all in the repo, made from the game's own drawings at
+   Steam's sizes; `npm run steam:art` re-renders it and `npm run steam:screenshots` retakes the
+   screenshots from the real game (both need Playwright: `npm i -D playwright`).
+
+   | Steamworks slot            | File (in `steam/`)                                 | Size               |
+   | -------------------------- | -------------------------------------------------- | ------------------ |
+   | Header capsule             | `store/header_capsule.png`                         | 920x430            |
+   | Small capsule              | `store/small_capsule.png`                          | 462x174            |
+   | Main capsule               | `store/main_capsule.png`                           | 1232x706           |
+   | Vertical capsule           | `store/vertical_capsule.png`                       | 748x896            |
+   | Page background            | `store/page_background.png`                        | 1438x810           |
+   | Screenshots                | `screenshots/01_kitchen.png` ... `08_shop.png`     | 1920x1080          |
+   | Library capsule            | `store/library_capsule.png`                        | 600x900            |
+   | Library header             | `store/library_header.png`                         | 920x430            |
+   | Library hero (no text)     | `store/library_hero.png`                           | 3840x1240          |
+   | Library logo (transparent) | `store/library_logo.png`                           | 1280x720           |
+   | Community icon             | `store/community_icon.jpg`                         | 184x184            |
+   | Client icon (Windows)      | `store/icons/client_icon.ico`                      | 16 to 256          |
+   | Client icons (Linux)       | `store/icons/icon_<size>.png`                      | 16 to 256          |
+   | Event cover / header       | `store/event_cover.png` / `store/event_header.png` | 800x450 / 1920x622 |
+
+3. `npm run dist:win` / `dist:mac` / `dist:linux` (or run the **Desktop builds** GitHub workflow) to
    produce the `release/*-unpacked` folders.
-3. Set your App ID and depot IDs in `steam/app_build.vdf`, then upload with SteamPipe:
+4. Set your App ID and depot IDs in `steam/app_build.vdf`, then upload with SteamPipe:
    `steamcmd +login <user> +run_app_build ../steam/app_build.vdf +quit`.
-4. Steam integration uses the optional `steamworks.js` dependency. The game reads the App ID from
+5. Steam integration uses the optional `steamworks.js` dependency. The game reads the App ID from
    `STEAM_APP_ID` or `steam_appid.txt`, and runs fine without Steam.
