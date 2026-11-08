@@ -1,15 +1,17 @@
-# Graph Report - french_fried  (2026-11-08)
+# Graph Report - French_Fried  (2026-11-08)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 56 files · ~179,840 words
+- Verdict: corpus is large enough that graph structure adds value.
+- Unclassified: 7 file(s) not represented in the graph (top: (none) 3, .ico 1, .csv 1)
 
 ## Summary
-- 642 nodes · 1915 edges · 17 communities (16 shown, 1 thin omitted)
+- 665 nodes · 1938 edges · 17 communities
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1eee3b89`
+- Built from commit: `0522202c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -21,7 +23,7 @@
 - Music & Sound
 - Build & Steam Art Scripts
 - Web Deploy Workflow
-- Fryer Tournaments
+- steps
 - Desktop Build Workflow
 - Desktop Packaging Config
 - Dev Dependencies
@@ -30,29 +32,29 @@
 - Electron Desktop Shell
 - Lint Setup
 - Prettier Settings
-- ../src/data/recipes.js?again
+- fryguy.js
 
 ## God Nodes (most connected - your core abstractions)
-1. `$` - 49 edges
+1. `$$` - 49 edges
 2. `esc()` - 34 edges
 3. `sfx()` - 33 edges
 4. `renderLab()` - 32 edges
-5. `f()` - 30 edges
-6. `makeRng()` - 29 edges
-7. `toast()` - 28 edges
-8. `fmt()` - 26 edges
-9. `getFry()` - 24 edges
-10. `renderKitchen()` - 24 edges
+5. `../src/data/recipes.js?again` - 31 edges
+6. `f()` - 30 edges
+7. `makeRng()` - 29 edges
+8. `toast()` - 28 edges
+9. `fmt()` - 26 edges
+10. `getFry()` - 24 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `showcaseSave()` --calls--> `makeRng()`  [EXTRACTED]
-  scripts/steam-screenshots.mjs → src/game/rng.js
 - `showcaseSave()` --calls--> `newFry()`  [EXTRACTED]
   scripts/steam-screenshots.mjs → src/game/lab/breeding.js
+- `showcaseSave()` --calls--> `makeRng()`  [EXTRACTED]
+  scripts/steam-screenshots.mjs → src/game/rng.js
 - `showcaseSave()` --calls--> `defaultState()`  [EXTRACTED]
   scripts/steam-screenshots.mjs → src/game/state.js
-- `showAchievements()` --calls--> `achievementIcon()`  [EXTRACTED]
-  src/main.js → src/art/achievementIcons.js
+- `art()` --calls--> `cardArtSvg()`  [EXTRACTED]
+  src/art/achievementIcons.js → src/art/cards.js
 - `art()` --calls--> `renderFryGuy()`  [EXTRACTED]
   src/art/achievementIcons.js → src/art/fryguy.js
 
@@ -62,39 +64,39 @@
 - 3-file cycle: `src/ui/cosmos.js -> src/ui/worldsScreen.js -> src/ui/fryerScreen.js -> src/ui/cosmos.js`
 - 4-file cycle: `src/ui/cosmos.js -> src/ui/worldsScreen.js -> src/ui/fryerScreen.js -> src/ui/labScreen.js -> src/ui/cosmos.js`
 
-## Communities (17 total, 1 thin omitted)
+## Communities (17 total, 0 thin omitted)
 
 ### Community 0 - "Vector Art & Drawing"
-Cohesion: 0.06
-Nodes (82): out, root, achievementIcon(), art(), CATEGORY, place(), SYMBOLS, ART_TYPES (+74 more)
+Cohesion: 0.07
+Nodes (76): achievementIcon(), art(), place(), SYMBOLS, ART_TYPES, cardArtInner(), OBJ, OBJECT_ART (+68 more)
 
 ### Community 1 - "Lab, Breeding & Worlds"
-Cohesion: 0.06
-Nodes (86): creatureBody(), body(), crinkleBody(), curlyBody(), face(), r1(), renderFryGuy(), run0() (+78 more)
+Cohesion: 0.05
+Nodes (108): planet(), worldScene(), SPECIES_LABEL, SPECIES_STRENGTH, SPECIES_TRAINING, SPECIES_TRAITS, TRAINING_COST_MULT, CREATURE_MAP (+100 more)
 
 ### Community 2 - "Kitchen, Recipes & Achievements"
-Cohesion: 0.06
-Nodes (64): SFX, ALL_INGREDIENTS, BASIC_INGREDIENTS, PREMIUM_INGREDIENTS, OBJECTS, BLURBS, buildRecipes(), byKey (+56 more)
+Cohesion: 0.05
+Nodes (78): ALL_INGREDIENTS, BASIC_INGREDIENTS, PREMIUM_INGREDIENTS, OBJECTS, ../src/data/recipes.js?again, BLURBS, buildRecipes(), byKey (+70 more)
 
 ### Community 3 - "App Shell, Saves & Shop"
-Cohesion: 0.08
-Nodes (73): configureAudio(), sfx(), acceptLetter(), difficultyUnlocked(), buyThrift(), freshness(), openPack(), PACKS (+65 more)
+Cohesion: 0.10
+Nodes (60): cardArtSvg(), configureAudio(), SFX, sfx(), recipes, found(), difficultyUnlocked(), PACKS (+52 more)
 
 ### Community 4 - "Music & Sound"
 Cohesion: 0.10
 Nodes (47): ensure(), noise(), PIECES, setMusicScene(), settings, tone(), unlockAudio(), unmuteIOS() (+39 more)
 
 ### Community 5 - "Build & Steam Art Scripts"
-Cohesion: 0.06
-Nodes (28): fontCss(), fonts, fragment, r(), root, script, ART, { chromium } (+20 more)
+Cohesion: 0.05
+Nodes (31): fontCss(), fonts, fragment, r(), root, script, out, root (+23 more)
 
 ### Community 6 - "Web Deploy Workflow"
 Cohesion: 0.05
 Nodes (39): env, outputs, runs-on, steps, concurrency, cancel-in-progress, group, environment (+31 more)
 
-### Community 7 - "Fryer Tournaments"
-Cohesion: 0.12
-Nodes (35): LAB_TRAITS, TRAITS, ALL_LEAGUES, canEnter(), champPrize(), currentMatch(), DIFFICULTY, difficultyKey() (+27 more)
+### Community 7 - "steps"
+Cohesion: 0.08
+Nodes (23): concurrency, cancel-in-progress, group, GRAPHIFY_BACKEND, GRAPHIFY_FORCE, runs-on, steps, jobs (+15 more)
 
 ### Community 8 - "Desktop Build Workflow"
 Cohesion: 0.08
@@ -128,25 +130,24 @@ Nodes (4): @eslint/js@9.14.0, globals@15.12.0, @eslint/js, globals
 Cohesion: 0.50
 Nodes (3): printWidth, singleQuote, trailingComma
 
-## Knowledge Gaps
-- **1 isolated node(s):** `../src/data/recipes.js?again`
-  These have ≤1 connection - possible missing edges. (Counts symbols only; 200 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+### Community 16 - "fryguy.js"
+Cohesion: 0.23
+Nodes (16): creatureBody(), body(), crinkleBody(), curlyBody(), face(), r1(), renderFryGuy(), run0() (+8 more)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `esbuild` connect `Dev Dependencies` to `Package Info & Steam`, `Build & Steam Art Scripts`?**
-  _High betweenness centrality (0.186) - this node is a cross-community bridge._
-- **What connects `../src/data/recipes.js?again` to the rest of the system?**
-  _1 weakly-connected nodes found - possible missing edges._
+  _High betweenness centrality (0.173) - this node is a cross-community bridge._
 - **Should `Vector Art & Drawing` be split into smaller, more focused modules?**
-  _Cohesion score 0.05919191919191919 - nodes in this community are weakly interconnected._
-- **Why does `makeRng()` connect `Vector Art & Drawing` to `Kitchen, Recipes & Achievements`, `App Shell, Saves & Shop`, `Build & Steam Art Scripts`, `Fryer Tournaments`?**
-  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+  _Cohesion score 0.06764346764346764 - nodes in this community are weakly interconnected._
+- **Why does `makeRng()` connect `Vector Art & Drawing` to `Lab, Breeding & Worlds`, `Kitchen, Recipes & Achievements`, `App Shell, Saves & Shop`, `Build & Steam Art Scripts`?**
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **Should `Lab, Breeding & Worlds` be split into smaller, more focused modules?**
-  _Cohesion score 0.059751735745844727 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05013530836063239 - nodes in this community are weakly interconnected._
 - **Why does `build` connect `Desktop Packaging Config` to `Package Info & Steam`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Should `Kitchen, Recipes & Achievements` be split into smaller, more focused modules?**
-  _Cohesion score 0.06330532212885154 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05232323232323232 - nodes in this community are weakly interconnected._
+- **Should `App Shell, Saves & Shop` be split into smaller, more focused modules?**
+  _Cohesion score 0.10396270396270396 - nodes in this community are weakly interconnected._

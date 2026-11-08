@@ -1,326 +1,1448 @@
 {
   ".github/workflows/deploy.yml": {
-    "mtime": 1793539060.3049788,
-    "seen": 1794098548.3067155,
+    "mtime": 1794100522.9491177,
+    "seen": 1794100562.9831784,
     "ast_hash": "43cc4a0383389bd76679fe0ecb45a64d",
     "semantic_hash": "43cc4a0383389bd76679fe0ecb45a64d"
   },
   ".github/workflows/desktop.yml": {
-    "mtime": 1793539060.3051474,
-    "seen": 1794098548.3067214,
+    "mtime": 1794100522.9491177,
+    "seen": 1794100562.9831815,
     "ast_hash": "fcad3a468fe782342db76ba6a26ba76f",
     "semantic_hash": "fcad3a468fe782342db76ba6a26ba76f"
   },
   ".prettierrc.json": {
-    "mtime": 1793542380.8743901,
-    "seen": 1794098548.306724,
+    "mtime": 1794100522.9491177,
+    "seen": 1794100562.9831836,
     "ast_hash": "6f1fab0433f94a579c44789dbc3242c5",
     "semantic_hash": "6f1fab0433f94a579c44789dbc3242c5"
   },
   "electron/main.cjs": {
-    "mtime": 1793542503.5193613,
-    "seen": 1794098548.3067253,
+    "mtime": 1794100522.9501846,
+    "seen": 1794100562.983185,
     "ast_hash": "8a738e61df5c476bc5a60277176de6e1",
     "semantic_hash": "8a738e61df5c476bc5a60277176de6e1"
   },
   "electron/preload.cjs": {
-    "mtime": 1793539060.307478,
-    "seen": 1794098548.3067267,
+    "mtime": 1794100522.951082,
+    "seen": 1794100562.9831867,
     "ast_hash": "f2746180edd77350ccd4285f648f102e",
     "semantic_hash": "f2746180edd77350ccd4285f648f102e"
   },
   "eslint.config.mjs": {
-    "mtime": 1793542380.8760035,
-    "seen": 1794098548.3067276,
+    "mtime": 1794100522.951082,
+    "seen": 1794100562.983188,
     "ast_hash": "7ba67e490b0fade22a7f63c07c1353b6",
     "semantic_hash": "7ba67e490b0fade22a7f63c07c1353b6"
   },
   "package.json": {
-    "mtime": 1793714272.9547663,
-    "seen": 1794098548.306729,
+    "mtime": 1794100522.9530017,
+    "seen": 1794100562.9831898,
     "ast_hash": "4762ba96db26f2107b2a9608731dc8a1",
     "semantic_hash": "4762ba96db26f2107b2a9608731dc8a1"
   },
   "scripts/build.mjs": {
-    "mtime": 1793542501.9827714,
-    "seen": 1794098548.3067298,
+    "mtime": 1794100522.9530017,
+    "seen": 1794100562.9831915,
     "ast_hash": "91b47abc7a91afde35337c59b8f79dcb",
     "semantic_hash": "91b47abc7a91afde35337c59b8f79dcb"
   },
   "scripts/steam-achievements.mjs": {
-    "mtime": 1793544487.162689,
-    "seen": 1794098548.3067307,
+    "mtime": 1794100522.954205,
+    "seen": 1794100562.983193,
     "ast_hash": "0eca29e0d5751b51677ee05eae1eefce",
     "semantic_hash": "0eca29e0d5751b51677ee05eae1eefce"
   },
   "scripts/steam-art.mjs": {
-    "mtime": 1793714604.102549,
-    "seen": 1794098548.3067315,
+    "mtime": 1794100522.954205,
+    "seen": 1794100562.9831944,
     "ast_hash": "7ba83bc3c9a506c16d98f28664c360df",
     "semantic_hash": "7ba83bc3c9a506c16d98f28664c360df"
   },
   "scripts/steam-screenshots.mjs": {
-    "mtime": 1793714584.5186589,
-    "seen": 1794098548.3067327,
+    "mtime": 1794100522.954205,
+    "seen": 1794100562.9831955,
     "ast_hash": "6597fa00b15cb727990ff0f208e440bb",
     "semantic_hash": "6597fa00b15cb727990ff0f208e440bb"
   },
   "src/art/achievementIcons.js": {
-    "mtime": 1793544487.1640418,
-    "seen": 1794098548.3067336,
+    "mtime": 1794100522.9544168,
+    "seen": 1794100562.983197,
     "ast_hash": "e0292f7c441ecd8cae6de78e3efd2db1",
     "semantic_hash": "e0292f7c441ecd8cae6de78e3efd2db1"
   },
   "src/art/cards.js": {
-    "mtime": 1793542657.0469,
-    "seen": 1794098548.3067346,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.9831984,
     "ast_hash": "37f1b01d474365214bd6918e451d363d",
     "semantic_hash": "37f1b01d474365214bd6918e451d363d"
   },
   "src/art/creatures.js": {
-    "mtime": 1793544487.1668515,
-    "seen": 1794098548.3067353,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.9831998,
     "ast_hash": "41e9b8c4cd6dcd47aebf3e3196afec2f",
     "semantic_hash": "41e9b8c4cd6dcd47aebf3e3196afec2f"
   },
   "src/art/fries.js": {
-    "mtime": 1793542657.0517545,
-    "seen": 1794098548.3067365,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.983201,
     "ast_hash": "965a0e01e794aaf4624563c6ceb55f7e",
     "semantic_hash": "965a0e01e794aaf4624563c6ceb55f7e"
   },
   "src/art/fryguy.js": {
-    "mtime": 1793542664.4589703,
-    "seen": 1794098548.3067374,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.9832022,
     "ast_hash": "0929645e19ffa2e778b3ffab41585ec1",
     "semantic_hash": "0929645e19ffa2e778b3ffab41585ec1"
   },
   "src/art/ingredientArt.js": {
-    "mtime": 1793544487.1707237,
-    "seen": 1794098548.3067381,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.9832036,
     "ast_hash": "720660af3bc0ec68bb0235965b29ddef",
     "semantic_hash": "720660af3bc0ec68bb0235965b29ddef"
   },
   "src/art/paint.js": {
-    "mtime": 1793544487.1716368,
-    "seen": 1794098548.306739,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.983205,
     "ast_hash": "2f76a52d92fe9c5c97f93bc2700e3921",
     "semantic_hash": "2f76a52d92fe9c5c97f93bc2700e3921"
   },
   "src/art/planets.js": {
-    "mtime": 1793544487.1727893,
-    "seen": 1794098548.3067403,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.9832065,
     "ast_hash": "ec9f9b3433b614035b54000e366119d1",
     "semantic_hash": "ec9f9b3433b614035b54000e366119d1"
   },
   "src/art/toppings.js": {
-    "mtime": 1793542664.4761753,
-    "seen": 1794098548.3067412,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.9832077,
     "ast_hash": "a00aa494a2f65a1acafeba12d21e5d98",
     "semantic_hash": "a00aa494a2f65a1acafeba12d21e5d98"
   },
   "src/art/worldScenes.js": {
-    "mtime": 1793542657.0592628,
-    "seen": 1794098548.306742,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.983209,
     "ast_hash": "f4a3c9a45bd7da8a745916d06019f8a0",
     "semantic_hash": "f4a3c9a45bd7da8a745916d06019f8a0"
   },
   "src/audio.js": {
-    "mtime": 1793714416.1095753,
-    "seen": 1794098548.3067431,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.9832106,
     "ast_hash": "f2990c26a07299d50123c305c44fa500",
     "semantic_hash": "f2990c26a07299d50123c305c44fa500"
   },
   "src/data/ingredients.js": {
-    "mtime": 1793542657.0689375,
-    "seen": 1794098548.306744,
+    "mtime": 1794100522.9544985,
+    "seen": 1794100562.983212,
     "ast_hash": "ede5fe88f64ef55273fceb85c2215c77",
     "semantic_hash": "ede5fe88f64ef55273fceb85c2215c77"
   },
   "src/data/objects.js": {
-    "mtime": 1793542679.5348344,
-    "seen": 1794098548.306745,
+    "mtime": 1794100522.9552584,
+    "seen": 1794100562.9832134,
     "ast_hash": "03258996ec77f9dff60e0f2dd102524e",
     "semantic_hash": "03258996ec77f9dff60e0f2dd102524e"
   },
   "src/data/recipes.js": {
-    "mtime": 1793542657.072007,
-    "seen": 1794098548.306746,
+    "mtime": 1794100522.9552584,
+    "seen": 1794100562.9832149,
     "ast_hash": "ce110de3e2c54919f7fe649fc9539ba8",
     "semantic_hash": "ce110de3e2c54919f7fe649fc9539ba8"
   },
   "src/data/species.js": {
-    "mtime": 1793544487.1809645,
-    "seen": 1794098548.306747,
+    "mtime": 1794100522.9552584,
+    "seen": 1794100562.983216,
     "ast_hash": "ce63b2c521d2452a6dc8bda7368ae5c5",
     "semantic_hash": "ce63b2c521d2452a6dc8bda7368ae5c5"
   },
   "src/data/worlds.js": {
-    "mtime": 1793544487.182492,
-    "seen": 1794098548.3067477,
+    "mtime": 1794100522.9552584,
+    "seen": 1794100562.9832175,
     "ast_hash": "ef83f8698e4ad72f796f0f50e82be037",
     "semantic_hash": "ef83f8698e4ad72f796f0f50e82be037"
   },
   "src/game/achievements.js": {
-    "mtime": 1793544487.1843195,
-    "seen": 1794098548.3067486,
+    "mtime": 1794100522.9552584,
+    "seen": 1794100562.983219,
     "ast_hash": "8c754d06c2f5eeafbb8c57ac0f704066",
     "semantic_hash": "8c754d06c2f5eeafbb8c57ac0f704066"
   },
   "src/game/kitchen.js": {
-    "mtime": 1793542657.1056077,
-    "seen": 1794098548.3067493,
+    "mtime": 1794100522.955593,
+    "seen": 1794100562.9832203,
     "ast_hash": "4640f10a4d66687360e109c269bf3175",
     "semantic_hash": "4640f10a4d66687360e109c269bf3175"
   },
   "src/game/lab.js": {
-    "mtime": 1793542604.8793566,
-    "seen": 1794098548.3067503,
+    "mtime": 1794100522.955593,
+    "seen": 1794100562.9832215,
     "ast_hash": "38705b43233ebf72dec3b5737c64d223",
     "semantic_hash": "38705b43233ebf72dec3b5737c64d223"
   },
   "src/game/lab/breeding.js": {
-    "mtime": 1793544487.1873994,
-    "seen": 1794098548.3067513,
+    "mtime": 1794100522.955593,
+    "seen": 1794100562.983223,
     "ast_hash": "74608d3e42b08aa1825aedd5df6f29ec",
     "semantic_hash": "74608d3e42b08aa1825aedd5df6f29ec"
   },
   "src/game/lab/fryer.js": {
-    "mtime": 1793542657.161428,
-    "seen": 1794098548.306752,
+    "mtime": 1794100522.955762,
+    "seen": 1794100562.9832244,
     "ast_hash": "851531353705aad5a88c66ed3490e0b5",
     "semantic_hash": "851531353705aad5a88c66ed3490e0b5"
   },
   "src/game/rng.js": {
-    "mtime": 1793542657.1616335,
-    "seen": 1794098548.3067527,
+    "mtime": 1794100522.955762,
+    "seen": 1794100562.9832253,
     "ast_hash": "59c80d46610f54b607ab24196af93cd6",
     "semantic_hash": "59c80d46610f54b607ab24196af93cd6"
   },
   "src/game/shop.js": {
-    "mtime": 1793542657.1696305,
-    "seen": 1794098548.3067539,
+    "mtime": 1794100522.955762,
+    "seen": 1794100562.9832265,
     "ast_hash": "7417e3cb924c2ec6660c93493ad3456f",
     "semantic_hash": "7417e3cb924c2ec6660c93493ad3456f"
   },
   "src/game/state.js": {
-    "mtime": 1793544506.936304,
-    "seen": 1794098548.3067546,
+    "mtime": 1794100522.955762,
+    "seen": 1794100562.9832284,
     "ast_hash": "cbc559b8965e8e2fe10e6d285e29ef48",
     "semantic_hash": "cbc559b8965e8e2fe10e6d285e29ef48"
   },
   "src/game/worlds.js": {
-    "mtime": 1793542657.2176323,
-    "seen": 1794098548.3067553,
+    "mtime": 1794100522.955762,
+    "seen": 1794100562.9832296,
     "ast_hash": "a2a4e0ef9dff448e7f3b5ab42171618d",
     "semantic_hash": "a2a4e0ef9dff448e7f3b5ab42171618d"
   },
   "src/main.js": {
-    "mtime": 1793714395.7597044,
-    "seen": 1794098548.306756,
+    "mtime": 1794100522.955762,
+    "seen": 1794100562.9832315,
     "ast_hash": "ca04dc34764fe21e05b07248f6785121",
     "semantic_hash": "ca04dc34764fe21e05b07248f6785121"
   },
   "src/music/cosmos.js": {
-    "mtime": 1793713416.457134,
-    "seen": 1794098548.306757,
+    "mtime": 1794100522.955762,
+    "seen": 1794100562.9832327,
     "ast_hash": "8c4d66280ba0b717c04fdd2c9fa88a46",
     "semantic_hash": "8c4d66280ba0b717c04fdd2c9fa88a46"
   },
   "src/music/fryer.js": {
-    "mtime": 1793713245.2641606,
-    "seen": 1794098548.306758,
+    "mtime": 1794100522.9561348,
+    "seen": 1794100562.9832344,
     "ast_hash": "5650694a34ef1cb2442f89fb6187f9dd",
     "semantic_hash": "5650694a34ef1cb2442f89fb6187f9dd"
   },
   "src/music/kitchen.js": {
-    "mtime": 1793713359.4382982,
-    "seen": 1794098548.3067589,
+    "mtime": 1794100522.9561348,
+    "seen": 1794100562.9832356,
     "ast_hash": "1d8a75ee63044d4b74b932102454729a",
     "semantic_hash": "1d8a75ee63044d4b74b932102454729a"
   },
   "src/music/lab.js": {
-    "mtime": 1793713245.2677634,
-    "seen": 1794098548.3067596,
+    "mtime": 1794100522.9561348,
+    "seen": 1794100562.9832368,
     "ast_hash": "98f4be8f7c8684129f7039a79e07d7bf",
     "semantic_hash": "98f4be8f7c8684129f7039a79e07d7bf"
   },
   "src/music/synth.js": {
-    "mtime": 1793712977.7332447,
-    "seen": 1794098548.3067608,
+    "mtime": 1794100522.9561348,
+    "seen": 1794100562.9832385,
     "ast_hash": "fca7e1cf8f2fd1a37b5ba6df5c3dc4b5",
     "semantic_hash": "fca7e1cf8f2fd1a37b5ba6df5c3dc4b5"
   },
   "src/ui/battleView.js": {
-    "mtime": 1793542657.243205,
-    "seen": 1794098548.3067617,
+    "mtime": 1794100522.9561348,
+    "seen": 1794100562.9832397,
     "ast_hash": "dd544508f71b80f057e423fb81bf9a76",
     "semantic_hash": "dd544508f71b80f057e423fb81bf9a76"
   },
   "src/ui/bookScreen.js": {
-    "mtime": 1793542657.2438207,
-    "seen": 1794098548.3067634,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832406,
     "ast_hash": "15b371f82b3cec1d9fae4d62b89eb962",
     "semantic_hash": "15b371f82b3cec1d9fae4d62b89eb962"
   },
   "src/ui/collection.js": {
-    "mtime": 1793542657.2442744,
-    "seen": 1794098548.3067644,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832423,
     "ast_hash": "c56c5a6e05263d61f29df826cd913599",
     "semantic_hash": "c56c5a6e05263d61f29df826cd913599"
   },
   "src/ui/cosmos.js": {
-    "mtime": 1793544487.1955285,
-    "seen": 1794098548.3067653,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832435,
     "ast_hash": "47f1553d70690d6c4b39e5cb3d8b4f33",
     "semantic_hash": "47f1553d70690d6c4b39e5cb3d8b4f33"
   },
   "src/ui/deckScreen.js": {
-    "mtime": 1793542657.2452245,
-    "seen": 1794098548.306766,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832454,
     "ast_hash": "8594088e1de3cd79012fce08703a3912",
     "semantic_hash": "8594088e1de3cd79012fce08703a3912"
   },
   "src/ui/dom.js": {
-    "mtime": 1793542657.2464,
-    "seen": 1794098548.3067667,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832466,
     "ast_hash": "cc7564d3a32922798f23068c97a2ae08",
     "semantic_hash": "cc7564d3a32922798f23068c97a2ae08"
   },
   "src/ui/fryerScreen.js": {
-    "mtime": 1793542657.2474475,
-    "seen": 1794098548.306768,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832478,
     "ast_hash": "e7ee6556ed7042e1fa52326794cf6889",
     "semantic_hash": "e7ee6556ed7042e1fa52326794cf6889"
   },
   "src/ui/kitchenScreen.js": {
-    "mtime": 1793544487.2000463,
-    "seen": 1794098548.3067687,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832494,
     "ast_hash": "9b4c70765336dce92e775fe664d57162",
     "semantic_hash": "9b4c70765336dce92e775fe664d57162"
   },
   "src/ui/labScreen.js": {
-    "mtime": 1793542657.251569,
-    "seen": 1794098548.3067696,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832504,
     "ast_hash": "e4ce3d2e36857b825b72de39346c7749",
     "semantic_hash": "e4ce3d2e36857b825b72de39346c7749"
   },
   "src/ui/shopScreen.js": {
-    "mtime": 1793542657.2521458,
-    "seen": 1794098548.3067708,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832518,
     "ast_hash": "72aef5cac02b536c307ea77b102bc3bc",
     "semantic_hash": "72aef5cac02b536c307ea77b102bc3bc"
   },
   "src/ui/worldsScreen.js": {
-    "mtime": 1793544487.2046149,
-    "seen": 1794098548.3067715,
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.983253,
     "ast_hash": "9f44f9da16041ed10969988faa8ae103",
     "semantic_hash": "9f44f9da16041ed10969988faa8ae103"
   },
   "tests/game.test.mjs": {
-    "mtime": 1793544506.936304,
-    "seen": 1794098548.3067722,
+    "mtime": 1794100522.987002,
+    "seen": 1794100562.983254,
     "ast_hash": "11fa2d24445add2f3d856e3a979eedc3",
     "semantic_hash": "11fa2d24445add2f3d856e3a979eedc3"
+  },
+  ".claude/settings.json": {
+    "mtime": 1794100522.9480016,
+    "seen": 1794100562.9831676,
+    "ast_hash": "a440882d3105da08f78f3368d5ac5555",
+    "semantic_hash": ""
+  },
+  ".github/workflows/code-graph.yml": {
+    "mtime": 1794100522.9490707,
+    "seen": 1794100562.983174,
+    "ast_hash": "f52157883248cc370f0174123f18f8d3",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1794100522.9491177,
+    "seen": 1794100562.9832556,
+    "ast_hash": "166d66e98620c4b6e56a9e9645d11555",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1794100522.9491177,
+    "seen": 1794100562.9832573,
+    "ast_hash": "56786ec9578ff84659f24163d71b0f41",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1794100522.9530017,
+    "seen": 1794100562.983259,
+    "ast_hash": "29c82f34e5eb123e345760a33ddd67a0",
+    "semantic_hash": ""
+  },
+  "steam-images/README.md": {
+    "mtime": 1794100522.956371,
+    "seen": 1794100562.9832602,
+    "ast_hash": "203a506fac044b809b6ea1a41c38496c",
+    "semantic_hash": ""
+  },
+  "steam/achievements/index.html": {
+    "mtime": 1794100522.987002,
+    "seen": 1794100562.9832616,
+    "ast_hash": "7bd961d08bbb331c598ac20b358c0f62",
+    "semantic_hash": ""
+  },
+  "docs/screenshots/mob375x667.png": {
+    "mtime": 1794100522.9498315,
+    "seen": 1794100562.983263,
+    "ast_hash": "a4b7a1d774820be9273cb9a2c601dc99",
+    "semantic_hash": ""
+  },
+  "docs/screenshots/mob390x844.png": {
+    "mtime": 1794100522.9501846,
+    "seen": 1794100562.9832642,
+    "ast_hash": "7ec6120b7885397f00b657834796ee0b",
+    "semantic_hash": ""
+  },
+  "docs/screenshots/mob414x896.png": {
+    "mtime": 1794100522.9501846,
+    "seen": 1794100562.9832656,
+    "ast_hash": "cfab7c927e4bc24a7defa4e4285909a5",
+    "semantic_hash": ""
+  },
+  "steam-images/community/community_icon.jpg": {
+    "mtime": 1794100522.9569778,
+    "seen": 1794100562.9832668,
+    "ast_hash": "8b2c29c23f6f5ceeaea9a15acc94a41c",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_128.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.9832678,
+    "ast_hash": "8910ad2b851980ffd5c69821660c6ddf",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_16.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.983269,
+    "ast_hash": "a8b48000471b691d2579de1aedb044bf",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_24.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.9832702,
+    "ast_hash": "3e2f5bce6efa769b86548692463f8b20",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_256.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.9832711,
+    "ast_hash": "304ccc27819c1dbfd4a14e8208978584",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_32.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.983272,
+    "ast_hash": "3826148221be0241187fc4e23708103c",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_48.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.9832735,
+    "ast_hash": "47c7d84445997e42bbe145da065537cb",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_64.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.9832747,
+    "ast_hash": "72e9397b4118ece0c4344959ad4eb0b1",
+    "semantic_hash": ""
+  },
+  "steam-images/community/icons/icon_96.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.983276,
+    "ast_hash": "bd2a3eb450722456250cefdba54c5fce",
+    "semantic_hash": ""
+  },
+  "steam-images/events/event_cover.png": {
+    "mtime": 1794100522.9572902,
+    "seen": 1794100562.983277,
+    "ast_hash": "607331cf188846abf1e1e339c208dffd",
+    "semantic_hash": ""
+  },
+  "steam-images/events/event_header.png": {
+    "mtime": 1794100522.9580019,
+    "seen": 1794100562.9832783,
+    "ast_hash": "3dac3b6355fc7e39fef059412aaa9e2f",
+    "semantic_hash": ""
+  },
+  "steam-images/library/library_capsule.png": {
+    "mtime": 1794100522.9580019,
+    "seen": 1794100562.9832795,
+    "ast_hash": "66f7cd0cc289a6c6280c2fc61f779261",
+    "semantic_hash": ""
+  },
+  "steam-images/library/library_header.png": {
+    "mtime": 1794100522.9590907,
+    "seen": 1794100562.9832804,
+    "ast_hash": "77fb5ad859b084dfa91b3bf201a3f5e5",
+    "semantic_hash": ""
+  },
+  "steam-images/library/library_hero.png": {
+    "mtime": 1794100522.9630017,
+    "seen": 1794100562.9832816,
+    "ast_hash": "d2766d28e3f24b1455b0d498b478ecc7",
+    "semantic_hash": ""
+  },
+  "steam-images/library/library_logo.png": {
+    "mtime": 1794100522.9630017,
+    "seen": 1794100562.9832833,
+    "ast_hash": "a00c5c1a29e44653051d1fbf918e7f58",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/01_kitchen.png": {
+    "mtime": 1794100522.9650018,
+    "seen": 1794100562.9832845,
+    "ast_hash": "2426e54106ff0d6329f1a08f273e1700",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/02_new_recipe.png": {
+    "mtime": 1794100522.9660017,
+    "seen": 1794100562.9832854,
+    "ast_hash": "91d553dda7a7664f542213770d533396",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/03_recipe_book.png": {
+    "mtime": 1794100522.967002,
+    "seen": 1794100562.9832869,
+    "ast_hash": "218d1e8ba0c36d80069e56fdfc583571",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/04_lab.png": {
+    "mtime": 1794100522.9680018,
+    "seen": 1794100562.983288,
+    "ast_hash": "63c4b2226edf372e95f320781c6801e1",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/05_fryer.png": {
+    "mtime": 1794100522.9690018,
+    "seen": 1794100562.9832892,
+    "ast_hash": "8fb3a3cfb8e55accd59d6a483c59f59a",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/06_battle.png": {
+    "mtime": 1794100522.9710019,
+    "seen": 1794100562.9832907,
+    "ast_hash": "9d7117748799834b466f8519cb5fbe2b",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/07_worlds.png": {
+    "mtime": 1794100522.9720018,
+    "seen": 1794100562.9832916,
+    "ast_hash": "063fa00e20cd372ca328d23d0e2cbda4",
+    "semantic_hash": ""
+  },
+  "steam-images/screenshots/08_shop.png": {
+    "mtime": 1794100522.973002,
+    "seen": 1794100562.9832945,
+    "ast_hash": "7cf13acda2d409fea14a3b12791c484a",
+    "semantic_hash": ""
+  },
+  "steam-images/store/header_capsule.png": {
+    "mtime": 1794100522.973002,
+    "seen": 1794100562.9832957,
+    "ast_hash": "77fb5ad859b084dfa91b3bf201a3f5e5",
+    "semantic_hash": ""
+  },
+  "steam-images/store/main_capsule.png": {
+    "mtime": 1794100522.974002,
+    "seen": 1794100562.983297,
+    "ast_hash": "c5feba97b6082180219026cdc3e01c69",
+    "semantic_hash": ""
+  },
+  "steam-images/store/page_background.png": {
+    "mtime": 1794100522.974002,
+    "seen": 1794100562.9832983,
+    "ast_hash": "88db09bb952954c61c23a823a51eba57",
+    "semantic_hash": ""
+  },
+  "steam-images/store/small_capsule.png": {
+    "mtime": 1794100522.974002,
+    "seen": 1794100562.9832993,
+    "ast_hash": "edb269fffc2b27bdf1af3dcddd39121a",
+    "semantic_hash": ""
+  },
+  "steam-images/store/vertical_capsule.png": {
+    "mtime": 1794100522.9750018,
+    "seen": 1794100562.9833007,
+    "ast_hash": "a96c9cb742c9e2ba743fbd645ad5fb1a",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ABDUCTED.png": {
+    "mtime": 1794100522.9757516,
+    "seen": 1794100562.9833019,
+    "ast_hash": "99f2ece4b95e189b58642990301071cb",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ABDUCTED_locked.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833028,
+    "ast_hash": "9cd189a1f8dd9c5cd01eb081f2451352",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALIVE.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833043,
+    "ast_hash": "c74e1b1c4c2f2b245b0d81f99963f5dc",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALIVE_locked.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833052,
+    "ast_hash": "479247ec82ee4799f80d45beca9cbb17",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALL.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833064,
+    "ast_hash": "0364084ace23bd747daa38d1cff5b268",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLBASIC.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.983308,
+    "ast_hash": "40d9be6a099094307cd5c8f4f4276a51",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLBASIC_locked.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.983309,
+    "ast_hash": "2980545f8b2ab11589522f0065e84f26",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLCARDS.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833102,
+    "ast_hash": "68951bd00f4c99a101cd1ef0bf33e399",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLCARDS_locked.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833114,
+    "ast_hash": "717bf85000847d8ab93adc8b25a0278f",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLOBJECTS.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833126,
+    "ast_hash": "8193dbd3795ed1fb562a425f39e49852",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLOBJECTS_locked.png": {
+    "mtime": 1794100522.975824,
+    "seen": 1794100562.9833136,
+    "ast_hash": "42c3e166ef3191cdb83602bc5eb24d25",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLPREMIUM.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.983315,
+    "ast_hash": "9b5da5580d47a4e80224c05f9302c60e",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALLPREMIUM_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.983316,
+    "ast_hash": "abe6bcae15b55d6544f6d926a365af3b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ALL_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.983317,
+    "ast_hash": "29e16ad34fd14885ffe76548ba371f82",
+    "semantic_hash": ""
+  },
+  "steam/achievements/AUTOCOOK.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833183,
+    "ast_hash": "6d57d2654fd9e193470a98d2e070d89b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/AUTOCOOK_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833193,
+    "ast_hash": "df43950676c55c2b480027dfc7b1d13f",
+    "semantic_hash": ""
+  },
+  "steam/achievements/AWAYWIN.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833205,
+    "ast_hash": "43ddc0ba87259de4a5f8e6d494c15e21",
+    "semantic_hash": ""
+  },
+  "steam/achievements/AWAYWIN_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.983322,
+    "ast_hash": "727b948dfe950a95baa525ce5b1925e1",
+    "semantic_hash": ""
+  },
+  "steam/achievements/BILLIONAIRE.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.983323,
+    "ast_hash": "16e93c39ed19f158be81001cd76b293d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/BILLIONAIRE_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833245,
+    "ast_hash": "63023356fc48090ecc0c3d98fa7c29f6",
+    "semantic_hash": ""
+  },
+  "steam/achievements/BRUTAL.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833257,
+    "ast_hash": "b4b3e733d0b49534ffb1ddc7986c5bee",
+    "semantic_hash": ""
+  },
+  "steam/achievements/BRUTAL_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833267,
+    "ast_hash": "ac0808343564f7dc25b8871dc05f114d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CENTURION.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.983328,
+    "ast_hash": "0fbceb014abd85793083bd37fa801a81",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CENTURION_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833293,
+    "ast_hash": "a4292c688fe3cb4689ef5a63214f6dea",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CHAMP.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833302,
+    "ast_hash": "f0274e62042322aea855a11e57a5b373",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CHAMP_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833314,
+    "ast_hash": "762ea088406bded78f7a1a02625bf541",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CLEANSLATE.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833324,
+    "ast_hash": "9d09eb5ee246eb88fd7653b9cb85c580",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CLEANSLATE_locked.png": {
+    "mtime": 1794100522.976002,
+    "seen": 1794100562.9833336,
+    "ast_hash": "869430af04e4fc12f25bd9362645f604",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CLOSEENCOUNTER.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833345,
+    "ast_hash": "0171453e309913638112258a39d2d516",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CLOSEENCOUNTER_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833362,
+    "ast_hash": "17c30879746382789557c0804c71bb97",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CONQUEROR.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833374,
+    "ast_hash": "73986155b857fa58bdfc07505ed0a0e9",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CONQUEROR_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833388,
+    "ast_hash": "019ff089d0567878df55d364349df286",
+    "semantic_hash": ""
+  },
+  "steam/achievements/COOK100.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.98334,
+    "ast_hash": "48c297cae9ace9feb2a1fb93234ff257",
+    "semantic_hash": ""
+  },
+  "steam/achievements/COOK1000.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.983341,
+    "ast_hash": "a0f498b7b064503966f7aedd7fed5634",
+    "semantic_hash": ""
+  },
+  "steam/achievements/COOK1000_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833424,
+    "ast_hash": "80df9d8bbb7f98d173e0747d151be9d8",
+    "semantic_hash": ""
+  },
+  "steam/achievements/COOK100_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833434,
+    "ast_hash": "c74c992329da3669ac2a49d70e066f04",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CORKSCREW.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833446,
+    "ast_hash": "c64bbbb2163841c8da5cb33d0279827d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CORKSCREW_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833457,
+    "ast_hash": "24c873c6c7be0ca62e9132bf1eb90726",
+    "semantic_hash": ""
+  },
+  "steam/achievements/COWBOY.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.983347,
+    "ast_hash": "70cd936a60645c8d2a283ce31992b44e",
+    "semantic_hash": ""
+  },
+  "steam/achievements/COWBOY_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833481,
+    "ast_hash": "b683f5db31cd407837b322e3ae5f3d52",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CRINKLE.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833493,
+    "ast_hash": "0bcbae3f4062c378627a696d785b4afc",
+    "semantic_hash": ""
+  },
+  "steam/achievements/CRINKLE_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833505,
+    "ast_hash": "e962765082ad43129cc6905735d9aeac",
+    "semantic_hash": ""
+  },
+  "steam/achievements/DNA10.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.983352,
+    "ast_hash": "06134ba621c549c918bb0a0754060a59",
+    "semantic_hash": ""
+  },
+  "steam/achievements/DNA10_locked.png": {
+    "mtime": 1794100522.977002,
+    "seen": 1794100562.9833531,
+    "ast_hash": "4f5430171dbcf1ba117dd5b00a9f0c84",
+    "semantic_hash": ""
+  },
+  "steam/achievements/DNA50.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833543,
+    "ast_hash": "a07966118bfbcd9deb287b8aeb922568",
+    "semantic_hash": ""
+  },
+  "steam/achievements/DNA50_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833558,
+    "ast_hash": "7781d4aed9ec9dff58dbabdd32fc27f6",
+    "semantic_hash": ""
+  },
+  "steam/achievements/DYNASTY.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833567,
+    "ast_hash": "bea974826ba6c884bb6653c59747ab5c",
+    "semantic_hash": ""
+  },
+  "steam/achievements/DYNASTY_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833577,
+    "ast_hash": "0587c30f3a3be85c6192e5e902ecddef",
+    "semantic_hash": ""
+  },
+  "steam/achievements/EXPLORER.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833586,
+    "ast_hash": "97da65f1bc84ff7fa9e0d5c14aecdb00",
+    "semantic_hash": ""
+  },
+  "steam/achievements/EXPLORER_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.98336,
+    "ast_hash": "119b191ade7a6412f54272b7d1539de2",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIELDGUIDE.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.983361,
+    "ast_hash": "2ff6dd8ad3a60d57f421fece43c0ffcf",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIELDGUIDE_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.983362,
+    "ast_hash": "0b536ebb3c8e29700937fa4ee20479a0",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIFTY.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833632,
+    "ast_hash": "3bc32488b9df6f21105c3e9d3f157392",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIFTY_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833643,
+    "ast_hash": "0d0f7896be564d827d12e82903d1bf0d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIRSTWIN.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833653,
+    "ast_hash": "6d620c9a597e69661268e89a271d14f2",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIRSTWIN_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833665,
+    "ast_hash": "5fb4363345007d3aa78779c7bf5b4b21",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIRST_FRY.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833674,
+    "ast_hash": "67cbbb6c38e6a94004e6b70d0759b26a",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIRST_FRY_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833684,
+    "ast_hash": "d5be26896c38362431a4ecc79fa95b10",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIVEHUNDRED.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833698,
+    "ast_hash": "1e681cae6ae36f3de1f73c0f1a6ff3d3",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FIVEHUNDRED_locked.png": {
+    "mtime": 1794100522.9780018,
+    "seen": 1794100562.9833708,
+    "ast_hash": "988de94865c329bc98e4f27d5c6930cc",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FRIED.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833717,
+    "ast_hash": "5930faeaff1ccbe96a5f99c8c7ae9b09",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FRIED_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833727,
+    "ast_hash": "533e349a4b741cc9fcceb0dc6cac6788",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FULLBOAT.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833739,
+    "ast_hash": "245c40256460210e7d92c867f825c915",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FULLBOAT_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833748,
+    "ast_hash": "eafee674d40e9ffa27d1b093cb35394d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FULLHOUSE.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833758,
+    "ast_hash": "67265259bc8104c2ba9f970cf5091524",
+    "semantic_hash": ""
+  },
+  "steam/achievements/FULLHOUSE_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.983377,
+    "ast_hash": "d8acd5bddc1ce837a5713abf0dc675b6",
+    "semantic_hash": ""
+  },
+  "steam/achievements/GARAGESALE.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.983378,
+    "ast_hash": "982a4d0c7a0ba6b538e10fee323a0c3f",
+    "semantic_hash": ""
+  },
+  "steam/achievements/GARAGESALE_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.983379,
+    "ast_hash": "4a340e3f25440972a0c3c817a7dd8727",
+    "semantic_hash": ""
+  },
+  "steam/achievements/GLOBETROTTER.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.98338,
+    "ast_hash": "964a11a02e3ddc83f0d38d51121ca8d1",
+    "semantic_hash": ""
+  },
+  "steam/achievements/GLOBETROTTER_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.983381,
+    "ast_hash": "aeaf73c7c5da0cf0cfbd1ebba0c7a8b5",
+    "semantic_hash": ""
+  },
+  "steam/achievements/GOSSIP.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.983382,
+    "ast_hash": "29fd463b0ac190499e66e5dbc48704cb",
+    "semantic_hash": ""
+  },
+  "steam/achievements/GOSSIP_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833832,
+    "ast_hash": "d8e7c39ab501caf11925e77cd540c5c9",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HALLOFFAME.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833844,
+    "ast_hash": "d26072ccc3af6b003c48f433e369a784",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HALLOFFAME_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833853,
+    "ast_hash": "658e4a7f2457d4dc7e4628aa9963f57b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HARDBOILED.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833863,
+    "ast_hash": "bf0284ba1a9f7707c8b59b326f89f771",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HARDBOILED_locked.png": {
+    "mtime": 1794100522.979002,
+    "seen": 1794100562.9833875,
+    "ast_hash": "a0e9e813847349ce5e637c6197a37064",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HEAT.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9833884,
+    "ast_hash": "831e5307db3ec10446cde40d58a19594",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HEAT_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9833894,
+    "ast_hash": "5f9a8c7d57ebfb72286fc6f1f0b6758d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HUNDRED.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9834075,
+    "ast_hash": "2c65cfb176faf0750c57f0284e0986f5",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HUNDREDK.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9834116,
+    "ast_hash": "bee96191c262b11a23dd54566b302d4d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HUNDREDK_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9834135,
+    "ast_hash": "03f59222ed8cc22f70586882deedaa5c",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HUNDRED_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9834156,
+    "ast_hash": "40d51a00d5c5cc2a0d3facfde51daecf",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HYBRID.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.983417,
+    "ast_hash": "ba473afe357cbd589ba1a00fbbc61b6f",
+    "semantic_hash": ""
+  },
+  "steam/achievements/HYBRID_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9834187,
+    "ast_hash": "52517a713794f3df57e912fc6d2e3a8d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/IMPOSSIBLE.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.98342,
+    "ast_hash": "c48fe309e391abb65fee6afc9587cfb2",
+    "semantic_hash": ""
+  },
+  "steam/achievements/IMPOSSIBLE_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9834208,
+    "ast_hash": "b0bf1c3022aa5ed77b716ed81145b90b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/LEGACY.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.983422,
+    "ast_hash": "8f963bc226716e42d5b0558f44f10f06",
+    "semantic_hash": ""
+  },
+  "steam/achievements/LEGACY_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.983423,
+    "ast_hash": "75770dd7f28a2099149e7033a60731ae",
+    "semantic_hash": ""
+  },
+  "steam/achievements/LEGEND.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.983424,
+    "ast_hash": "d49db8977fe4a8298d84c5a90375bbf7",
+    "semantic_hash": ""
+  },
+  "steam/achievements/LEGEND_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.9834251,
+    "ast_hash": "575dcd2c8045995d1d59fc933e6332f2",
+    "semantic_hash": ""
+  },
+  "steam/achievements/LETTER.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.983426,
+    "ast_hash": "dc9ec76e9ee81f2fd6beaf5680056059",
+    "semantic_hash": ""
+  },
+  "steam/achievements/LETTER_locked.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.983427,
+    "ast_hash": "92052727b4cd25862033338d1b64c80b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/MASTER.png": {
+    "mtime": 1794100522.980002,
+    "seen": 1794100562.983428,
+    "ast_hash": "f0274e62042322aea855a11e57a5b373",
+    "semantic_hash": ""
+  },
+  "steam/achievements/MASTERCHEF.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834292,
+    "ast_hash": "0e00c659b3fa5ce27f82d03a389d9421",
+    "semantic_hash": ""
+  },
+  "steam/achievements/MASTERCHEF_locked.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834301,
+    "ast_hash": "79779acadca15223e1bbbf9cd506fdd3",
+    "semantic_hash": ""
+  },
+  "steam/achievements/MASTER_locked.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.983431,
+    "ast_hash": "762ea088406bded78f7a1a02625bf541",
+    "semantic_hash": ""
+  },
+  "steam/achievements/MILLIONAIRE.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834323,
+    "ast_hash": "587f228213418eb26a7e7c72059ebcd1",
+    "semantic_hash": ""
+  },
+  "steam/achievements/MILLIONAIRE_locked.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834332,
+    "ast_hash": "1efcbd47410d68c79ac84383d206686d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ODDITIES.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834342,
+    "ast_hash": "71f7cd02810429bd124ff26b5662d520",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ODDITIES_locked.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834352,
+    "ast_hash": "289c9b4b4a1dbe36388018c6fe9cd0a9",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PACK100.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834363,
+    "ast_hash": "4a86f0cd4cc6bca34cd0c0f0d3b5bada",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PACK100_locked.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.983437,
+    "ast_hash": "4f68809d2f2728abbf3597eea83f8872",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PACKRAT.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.983438,
+    "ast_hash": "87ec577b8c9fd73079a2e0b7158d1ca7",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PACKRAT_locked.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834394,
+    "ast_hash": "bcd8a4aae22a10fe1625f08ac41b8c2d",
+    "semantic_hash": ""
+  },
+  "steam/achievements/POUTINE.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834404,
+    "ast_hash": "aa0a5995f5144c78da6815bed3e11a60",
+    "semantic_hash": ""
+  },
+  "steam/achievements/POUTINE_locked.png": {
+    "mtime": 1794100522.9810019,
+    "seen": 1794100562.9834414,
+    "ast_hash": "1bd8ebadfbb281aa2106a80c5bc3217b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PREMIUM.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834425,
+    "ast_hash": "c1288695f231804a7a597fb122771f62",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PREMIUM_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834437,
+    "ast_hash": "3af5f7686638052916c007354a765ecd",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PRO.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.983445,
+    "ast_hash": "f0274e62042322aea855a11e57a5b373",
+    "semantic_hash": ""
+  },
+  "steam/achievements/PRO_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834461,
+    "ast_hash": "762ea088406bded78f7a1a02625bf541",
+    "semantic_hash": ""
+  },
+  "steam/achievements/RICH.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.983447,
+    "ast_hash": "c3e9823e53088bf26776d866c292f82c",
+    "semantic_hash": ""
+  },
+  "steam/achievements/RICH_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.983448,
+    "ast_hash": "cf76035739ef485cbb70104e5ccb1cc4",
+    "semantic_hash": ""
+  },
+  "steam/achievements/SCIENTIST.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.983449,
+    "ast_hash": "d575e17f06c5b5e7f8120d082129899b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/SCIENTIST_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834504,
+    "ast_hash": "9271b9e09ba5bcf246527b03c71d5684",
+    "semantic_hash": ""
+  },
+  "steam/achievements/SEVENFIFTY.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834514,
+    "ast_hash": "b180c3e89eb2aecd7e07494374c83542",
+    "semantic_hash": ""
+  },
+  "steam/achievements/SEVENFIFTY_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834526,
+    "ast_hash": "1f00fdb0d64488900c9ec371e2787248",
+    "semantic_hash": ""
+  },
+  "steam/achievements/SPLICE.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834538,
+    "ast_hash": "3eed6bdfa6da17aa89d0ea2e74043be0",
+    "semantic_hash": ""
+  },
+  "steam/achievements/SPLICE_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834547,
+    "ast_hash": "96d04790f8f50e8b322ad686d6e9acb6",
+    "semantic_hash": ""
+  },
+  "steam/achievements/STARCH.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834557,
+    "ast_hash": "2d2a8696c6169045c4810eabf985e245",
+    "semantic_hash": ""
+  },
+  "steam/achievements/STARCH_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834569,
+    "ast_hash": "d489f35dc0f6043a382effd487a6fa80",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TAMER.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834578,
+    "ast_hash": "911a9763bd7fcb84b00c919ddb4ebb54",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TAMER_locked.png": {
+    "mtime": 1794100522.982002,
+    "seen": 1794100562.9834588,
+    "ast_hash": "83a618c9c46838e8b4188697cdcd6e65",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TEN.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834602,
+    "ast_hash": "e80ec91171c8e10bfeb9002a7503a84f",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TENMILLION.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834611,
+    "ast_hash": "20bec48a37d9bbc7810727f5c2ad5016",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TENMILLION_locked.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.983462,
+    "ast_hash": "1e298af79db81e3752c4b7f6d56d1c55",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TEN_locked.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834635,
+    "ast_hash": "714541a26815ca46d158ff14c3bbd43b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/THRIFTY.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834645,
+    "ast_hash": "5467e03b5cb2a25b44f111e9a162bbd8",
+    "semantic_hash": ""
+  },
+  "steam/achievements/THRIFTY_locked.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834654,
+    "ast_hash": "eb9790aff5dc9e9443938af0332c775c",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TRAILBLAZER.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834661,
+    "ast_hash": "23a033202e76eda6d08e2fcaae0701d5",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TRAILBLAZER_locked.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834673,
+    "ast_hash": "16823f78559c3ae00a9140cd953f0178",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TRAVELER.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834685,
+    "ast_hash": "1cc9df52d0cd8bb36a90dc2bfa1df34e",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TRAVELER_locked.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834695,
+    "ast_hash": "8e79f80428e3403772ea7393152a517f",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TRIPLE.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834707,
+    "ast_hash": "ce69dc967fa0e64e6a3ddb1cd293a535",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TRIPLE_locked.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834716,
+    "ast_hash": "dd2a2e0a338fd35addf8dbf1097f26db",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TWOFIFTY.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834726,
+    "ast_hash": "d5914365ca5c51ea19de92d17ca2b139",
+    "semantic_hash": ""
+  },
+  "steam/achievements/TWOFIFTY_locked.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834738,
+    "ast_hash": "2a90f2661b7d009eee9c859733a82acf",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNIVERSE.png": {
+    "mtime": 1794100522.983002,
+    "seen": 1794100562.9834747,
+    "ast_hash": "c19b232735aeb5872ccb12d7bd52b873",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNIVERSE_locked.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.9834757,
+    "ast_hash": "c2bd6fe954966bb006df3c46eb32c51b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_FRYER.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.9834766,
+    "ast_hash": "2c7bf0a2a6a5a4606270cab0dd88849c",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_FRYER_locked.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.983478,
+    "ast_hash": "c8ad7f7c93b03908ef220e8074522f0b",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_LAB.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.983479,
+    "ast_hash": "74d6bfc407d5e9445e1c1a701f3fbce5",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_LAB_locked.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.98348,
+    "ast_hash": "9a79fd34acf167588f108db5f9fd9e16",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_PREMIUM.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.9834812,
+    "ast_hash": "7b931e11dfc4739a43f66dc482dcd0c2",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_PREMIUM_locked.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.983482,
+    "ast_hash": "c9e34233ea22f5a8cbfab3345e6c6297",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_THRIFT.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.983483,
+    "ast_hash": "6ebc409f1900fa04b8d4d9fa81d4afab",
+    "semantic_hash": ""
+  },
+  "steam/achievements/UNLOCK_THRIFT_locked.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.9834843,
+    "ast_hash": "fe8d1cbb3f88351eef759e6ee4850ab2",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ZOOKEEPER.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.9834852,
+    "ast_hash": "870b2bc0ffcb56b71d1c499ab0c77aa2",
+    "semantic_hash": ""
+  },
+  "steam/achievements/ZOOKEEPER_locked.png": {
+    "mtime": 1794100522.9840019,
+    "seen": 1794100562.9834862,
+    "ast_hash": "c2bfa87de8b2dfe9d6e671aab58908f2",
+    "semantic_hash": ""
+  },
+  "package-lock.json": {
+    "mtime": 1794100522.9530017,
+    "seen": 1794100562.9834871,
+    "ast_hash": "00438a83c0fafbb70b53dd1b902c9e9b",
+    "semantic_hash": ""
   }
 }
