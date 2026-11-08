@@ -1,0 +1,326 @@
+{
+  ".github/workflows/deploy.yml": {
+    "mtime": 1793539060.3049788,
+    "seen": 1794098548.3067155,
+    "ast_hash": "43cc4a0383389bd76679fe0ecb45a64d",
+    "semantic_hash": "43cc4a0383389bd76679fe0ecb45a64d"
+  },
+  ".github/workflows/desktop.yml": {
+    "mtime": 1793539060.3051474,
+    "seen": 1794098548.3067214,
+    "ast_hash": "fcad3a468fe782342db76ba6a26ba76f",
+    "semantic_hash": "fcad3a468fe782342db76ba6a26ba76f"
+  },
+  ".prettierrc.json": {
+    "mtime": 1793542380.8743901,
+    "seen": 1794098548.306724,
+    "ast_hash": "6f1fab0433f94a579c44789dbc3242c5",
+    "semantic_hash": "6f1fab0433f94a579c44789dbc3242c5"
+  },
+  "electron/main.cjs": {
+    "mtime": 1793542503.5193613,
+    "seen": 1794098548.3067253,
+    "ast_hash": "8a738e61df5c476bc5a60277176de6e1",
+    "semantic_hash": "8a738e61df5c476bc5a60277176de6e1"
+  },
+  "electron/preload.cjs": {
+    "mtime": 1793539060.307478,
+    "seen": 1794098548.3067267,
+    "ast_hash": "f2746180edd77350ccd4285f648f102e",
+    "semantic_hash": "f2746180edd77350ccd4285f648f102e"
+  },
+  "eslint.config.mjs": {
+    "mtime": 1793542380.8760035,
+    "seen": 1794098548.3067276,
+    "ast_hash": "7ba67e490b0fade22a7f63c07c1353b6",
+    "semantic_hash": "7ba67e490b0fade22a7f63c07c1353b6"
+  },
+  "package.json": {
+    "mtime": 1793714272.9547663,
+    "seen": 1794098548.306729,
+    "ast_hash": "4762ba96db26f2107b2a9608731dc8a1",
+    "semantic_hash": "4762ba96db26f2107b2a9608731dc8a1"
+  },
+  "scripts/build.mjs": {
+    "mtime": 1793542501.9827714,
+    "seen": 1794098548.3067298,
+    "ast_hash": "91b47abc7a91afde35337c59b8f79dcb",
+    "semantic_hash": "91b47abc7a91afde35337c59b8f79dcb"
+  },
+  "scripts/steam-achievements.mjs": {
+    "mtime": 1793544487.162689,
+    "seen": 1794098548.3067307,
+    "ast_hash": "0eca29e0d5751b51677ee05eae1eefce",
+    "semantic_hash": "0eca29e0d5751b51677ee05eae1eefce"
+  },
+  "scripts/steam-art.mjs": {
+    "mtime": 1793714604.102549,
+    "seen": 1794098548.3067315,
+    "ast_hash": "7ba83bc3c9a506c16d98f28664c360df",
+    "semantic_hash": "7ba83bc3c9a506c16d98f28664c360df"
+  },
+  "scripts/steam-screenshots.mjs": {
+    "mtime": 1793714584.5186589,
+    "seen": 1794098548.3067327,
+    "ast_hash": "6597fa00b15cb727990ff0f208e440bb",
+    "semantic_hash": "6597fa00b15cb727990ff0f208e440bb"
+  },
+  "src/art/achievementIcons.js": {
+    "mtime": 1793544487.1640418,
+    "seen": 1794098548.3067336,
+    "ast_hash": "e0292f7c441ecd8cae6de78e3efd2db1",
+    "semantic_hash": "e0292f7c441ecd8cae6de78e3efd2db1"
+  },
+  "src/art/cards.js": {
+    "mtime": 1793542657.0469,
+    "seen": 1794098548.3067346,
+    "ast_hash": "37f1b01d474365214bd6918e451d363d",
+    "semantic_hash": "37f1b01d474365214bd6918e451d363d"
+  },
+  "src/art/creatures.js": {
+    "mtime": 1793544487.1668515,
+    "seen": 1794098548.3067353,
+    "ast_hash": "41e9b8c4cd6dcd47aebf3e3196afec2f",
+    "semantic_hash": "41e9b8c4cd6dcd47aebf3e3196afec2f"
+  },
+  "src/art/fries.js": {
+    "mtime": 1793542657.0517545,
+    "seen": 1794098548.3067365,
+    "ast_hash": "965a0e01e794aaf4624563c6ceb55f7e",
+    "semantic_hash": "965a0e01e794aaf4624563c6ceb55f7e"
+  },
+  "src/art/fryguy.js": {
+    "mtime": 1793542664.4589703,
+    "seen": 1794098548.3067374,
+    "ast_hash": "0929645e19ffa2e778b3ffab41585ec1",
+    "semantic_hash": "0929645e19ffa2e778b3ffab41585ec1"
+  },
+  "src/art/ingredientArt.js": {
+    "mtime": 1793544487.1707237,
+    "seen": 1794098548.3067381,
+    "ast_hash": "720660af3bc0ec68bb0235965b29ddef",
+    "semantic_hash": "720660af3bc0ec68bb0235965b29ddef"
+  },
+  "src/art/paint.js": {
+    "mtime": 1793544487.1716368,
+    "seen": 1794098548.306739,
+    "ast_hash": "2f76a52d92fe9c5c97f93bc2700e3921",
+    "semantic_hash": "2f76a52d92fe9c5c97f93bc2700e3921"
+  },
+  "src/art/planets.js": {
+    "mtime": 1793544487.1727893,
+    "seen": 1794098548.3067403,
+    "ast_hash": "ec9f9b3433b614035b54000e366119d1",
+    "semantic_hash": "ec9f9b3433b614035b54000e366119d1"
+  },
+  "src/art/toppings.js": {
+    "mtime": 1793542664.4761753,
+    "seen": 1794098548.3067412,
+    "ast_hash": "a00aa494a2f65a1acafeba12d21e5d98",
+    "semantic_hash": "a00aa494a2f65a1acafeba12d21e5d98"
+  },
+  "src/art/worldScenes.js": {
+    "mtime": 1793542657.0592628,
+    "seen": 1794098548.306742,
+    "ast_hash": "f4a3c9a45bd7da8a745916d06019f8a0",
+    "semantic_hash": "f4a3c9a45bd7da8a745916d06019f8a0"
+  },
+  "src/audio.js": {
+    "mtime": 1793714416.1095753,
+    "seen": 1794098548.3067431,
+    "ast_hash": "f2990c26a07299d50123c305c44fa500",
+    "semantic_hash": "f2990c26a07299d50123c305c44fa500"
+  },
+  "src/data/ingredients.js": {
+    "mtime": 1793542657.0689375,
+    "seen": 1794098548.306744,
+    "ast_hash": "ede5fe88f64ef55273fceb85c2215c77",
+    "semantic_hash": "ede5fe88f64ef55273fceb85c2215c77"
+  },
+  "src/data/objects.js": {
+    "mtime": 1793542679.5348344,
+    "seen": 1794098548.306745,
+    "ast_hash": "03258996ec77f9dff60e0f2dd102524e",
+    "semantic_hash": "03258996ec77f9dff60e0f2dd102524e"
+  },
+  "src/data/recipes.js": {
+    "mtime": 1793542657.072007,
+    "seen": 1794098548.306746,
+    "ast_hash": "ce110de3e2c54919f7fe649fc9539ba8",
+    "semantic_hash": "ce110de3e2c54919f7fe649fc9539ba8"
+  },
+  "src/data/species.js": {
+    "mtime": 1793544487.1809645,
+    "seen": 1794098548.306747,
+    "ast_hash": "ce63b2c521d2452a6dc8bda7368ae5c5",
+    "semantic_hash": "ce63b2c521d2452a6dc8bda7368ae5c5"
+  },
+  "src/data/worlds.js": {
+    "mtime": 1793544487.182492,
+    "seen": 1794098548.3067477,
+    "ast_hash": "ef83f8698e4ad72f796f0f50e82be037",
+    "semantic_hash": "ef83f8698e4ad72f796f0f50e82be037"
+  },
+  "src/game/achievements.js": {
+    "mtime": 1793544487.1843195,
+    "seen": 1794098548.3067486,
+    "ast_hash": "8c754d06c2f5eeafbb8c57ac0f704066",
+    "semantic_hash": "8c754d06c2f5eeafbb8c57ac0f704066"
+  },
+  "src/game/kitchen.js": {
+    "mtime": 1793542657.1056077,
+    "seen": 1794098548.3067493,
+    "ast_hash": "4640f10a4d66687360e109c269bf3175",
+    "semantic_hash": "4640f10a4d66687360e109c269bf3175"
+  },
+  "src/game/lab.js": {
+    "mtime": 1793542604.8793566,
+    "seen": 1794098548.3067503,
+    "ast_hash": "38705b43233ebf72dec3b5737c64d223",
+    "semantic_hash": "38705b43233ebf72dec3b5737c64d223"
+  },
+  "src/game/lab/breeding.js": {
+    "mtime": 1793544487.1873994,
+    "seen": 1794098548.3067513,
+    "ast_hash": "74608d3e42b08aa1825aedd5df6f29ec",
+    "semantic_hash": "74608d3e42b08aa1825aedd5df6f29ec"
+  },
+  "src/game/lab/fryer.js": {
+    "mtime": 1793542657.161428,
+    "seen": 1794098548.306752,
+    "ast_hash": "851531353705aad5a88c66ed3490e0b5",
+    "semantic_hash": "851531353705aad5a88c66ed3490e0b5"
+  },
+  "src/game/rng.js": {
+    "mtime": 1793542657.1616335,
+    "seen": 1794098548.3067527,
+    "ast_hash": "59c80d46610f54b607ab24196af93cd6",
+    "semantic_hash": "59c80d46610f54b607ab24196af93cd6"
+  },
+  "src/game/shop.js": {
+    "mtime": 1793542657.1696305,
+    "seen": 1794098548.3067539,
+    "ast_hash": "7417e3cb924c2ec6660c93493ad3456f",
+    "semantic_hash": "7417e3cb924c2ec6660c93493ad3456f"
+  },
+  "src/game/state.js": {
+    "mtime": 1793544506.936304,
+    "seen": 1794098548.3067546,
+    "ast_hash": "cbc559b8965e8e2fe10e6d285e29ef48",
+    "semantic_hash": "cbc559b8965e8e2fe10e6d285e29ef48"
+  },
+  "src/game/worlds.js": {
+    "mtime": 1793542657.2176323,
+    "seen": 1794098548.3067553,
+    "ast_hash": "a2a4e0ef9dff448e7f3b5ab42171618d",
+    "semantic_hash": "a2a4e0ef9dff448e7f3b5ab42171618d"
+  },
+  "src/main.js": {
+    "mtime": 1793714395.7597044,
+    "seen": 1794098548.306756,
+    "ast_hash": "ca04dc34764fe21e05b07248f6785121",
+    "semantic_hash": "ca04dc34764fe21e05b07248f6785121"
+  },
+  "src/music/cosmos.js": {
+    "mtime": 1793713416.457134,
+    "seen": 1794098548.306757,
+    "ast_hash": "8c4d66280ba0b717c04fdd2c9fa88a46",
+    "semantic_hash": "8c4d66280ba0b717c04fdd2c9fa88a46"
+  },
+  "src/music/fryer.js": {
+    "mtime": 1793713245.2641606,
+    "seen": 1794098548.306758,
+    "ast_hash": "5650694a34ef1cb2442f89fb6187f9dd",
+    "semantic_hash": "5650694a34ef1cb2442f89fb6187f9dd"
+  },
+  "src/music/kitchen.js": {
+    "mtime": 1793713359.4382982,
+    "seen": 1794098548.3067589,
+    "ast_hash": "1d8a75ee63044d4b74b932102454729a",
+    "semantic_hash": "1d8a75ee63044d4b74b932102454729a"
+  },
+  "src/music/lab.js": {
+    "mtime": 1793713245.2677634,
+    "seen": 1794098548.3067596,
+    "ast_hash": "98f4be8f7c8684129f7039a79e07d7bf",
+    "semantic_hash": "98f4be8f7c8684129f7039a79e07d7bf"
+  },
+  "src/music/synth.js": {
+    "mtime": 1793712977.7332447,
+    "seen": 1794098548.3067608,
+    "ast_hash": "fca7e1cf8f2fd1a37b5ba6df5c3dc4b5",
+    "semantic_hash": "fca7e1cf8f2fd1a37b5ba6df5c3dc4b5"
+  },
+  "src/ui/battleView.js": {
+    "mtime": 1793542657.243205,
+    "seen": 1794098548.3067617,
+    "ast_hash": "dd544508f71b80f057e423fb81bf9a76",
+    "semantic_hash": "dd544508f71b80f057e423fb81bf9a76"
+  },
+  "src/ui/bookScreen.js": {
+    "mtime": 1793542657.2438207,
+    "seen": 1794098548.3067634,
+    "ast_hash": "15b371f82b3cec1d9fae4d62b89eb962",
+    "semantic_hash": "15b371f82b3cec1d9fae4d62b89eb962"
+  },
+  "src/ui/collection.js": {
+    "mtime": 1793542657.2442744,
+    "seen": 1794098548.3067644,
+    "ast_hash": "c56c5a6e05263d61f29df826cd913599",
+    "semantic_hash": "c56c5a6e05263d61f29df826cd913599"
+  },
+  "src/ui/cosmos.js": {
+    "mtime": 1793544487.1955285,
+    "seen": 1794098548.3067653,
+    "ast_hash": "47f1553d70690d6c4b39e5cb3d8b4f33",
+    "semantic_hash": "47f1553d70690d6c4b39e5cb3d8b4f33"
+  },
+  "src/ui/deckScreen.js": {
+    "mtime": 1793542657.2452245,
+    "seen": 1794098548.306766,
+    "ast_hash": "8594088e1de3cd79012fce08703a3912",
+    "semantic_hash": "8594088e1de3cd79012fce08703a3912"
+  },
+  "src/ui/dom.js": {
+    "mtime": 1793542657.2464,
+    "seen": 1794098548.3067667,
+    "ast_hash": "cc7564d3a32922798f23068c97a2ae08",
+    "semantic_hash": "cc7564d3a32922798f23068c97a2ae08"
+  },
+  "src/ui/fryerScreen.js": {
+    "mtime": 1793542657.2474475,
+    "seen": 1794098548.306768,
+    "ast_hash": "e7ee6556ed7042e1fa52326794cf6889",
+    "semantic_hash": "e7ee6556ed7042e1fa52326794cf6889"
+  },
+  "src/ui/kitchenScreen.js": {
+    "mtime": 1793544487.2000463,
+    "seen": 1794098548.3067687,
+    "ast_hash": "9b4c70765336dce92e775fe664d57162",
+    "semantic_hash": "9b4c70765336dce92e775fe664d57162"
+  },
+  "src/ui/labScreen.js": {
+    "mtime": 1793542657.251569,
+    "seen": 1794098548.3067696,
+    "ast_hash": "e4ce3d2e36857b825b72de39346c7749",
+    "semantic_hash": "e4ce3d2e36857b825b72de39346c7749"
+  },
+  "src/ui/shopScreen.js": {
+    "mtime": 1793542657.2521458,
+    "seen": 1794098548.3067708,
+    "ast_hash": "72aef5cac02b536c307ea77b102bc3bc",
+    "semantic_hash": "72aef5cac02b536c307ea77b102bc3bc"
+  },
+  "src/ui/worldsScreen.js": {
+    "mtime": 1793544487.2046149,
+    "seen": 1794098548.3067715,
+    "ast_hash": "9f44f9da16041ed10969988faa8ae103",
+    "semantic_hash": "9f44f9da16041ed10969988faa8ae103"
+  },
+  "tests/game.test.mjs": {
+    "mtime": 1793544506.936304,
+    "seen": 1794098548.3067722,
+    "ast_hash": "11fa2d24445add2f3d856e3a979eedc3",
+    "semantic_hash": "11fa2d24445add2f3d856e3a979eedc3"
+  }
+}

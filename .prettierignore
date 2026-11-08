@@ -3,3 +3,4 @@ release
 node_modules
 docs
 package-lock.json
+graphify-out/
